@@ -1,0 +1,15 @@
+@import "routes/components/layouts/layouts.css";
+@import "routes/components/molecules/molecules.css";
+@import "routes/components/components.css";
+@import "routes/transitions/transitions.css";
+@import "routes/settings/settings.css";
+
+
+*{
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.monochrome * {
+    filter: grayscale(100);
+}

@@ -1,0 +1,43 @@
+.minimalSearchBar{
+    --display:      flex;
+    --align-items:  center;
+    --height:       50px;
+    --width:        auto;
+    --padding:      15px;
+    --margin:       10px;
+
+    display:        var(--display);
+    align-items:    var(--align-items);
+    height:         var(--height);
+    width:          var(--width);
+    padding:        var(--padding);
+    margin:         var(--margin);
+}
+
+.minimalSearchBar .discreteInput{
+    --position:     relative;
+    --width:        75%;
+    --max-width:    none;
+
+    position:       var(--position);
+    width:          var(--width);
+    max-width:      var(--max-width);
+}
+
+.minimalSearchBar .iconActionBtn{
+    --size: 40px;
+}
+
+.minimalSearchBar .iconActionBtn:hover{
+    --transform:    translateY(-8%);
+    transform:      var(--transform);
+}
+
+.minimalSearchBar .iconActionBtn:active{
+    transform: translateY(4%);
+}
+
+@media screen and (max-width:600px){
+    .minimalSearchBar{width: auto;}
+    .minimalSearchBar .discreteInput{width: 0; border: 0px solid transparent; padding: 0;}
+}

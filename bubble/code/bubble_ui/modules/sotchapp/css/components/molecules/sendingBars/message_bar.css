@@ -1,0 +1,203 @@
+.message_bar{
+    --width:        50%;
+    --padding:      30px;
+    --height:       60%; 
+    --right:        calc(25% - var(--padding));
+    --top:          10%;
+    --radius:       6px;
+    --background:   var(--b4);
+    --shadow:       var(--box_shadow);
+    --z_index:      3;
+
+    position:           fixed;
+    display:            flex;
+    flex-direction:     column;
+    align-items:        center;
+    justify-content:    center;
+
+    border-radius:      var(--radius);
+    box-shadow:         var(--shadow);
+    width:              var(--width);
+    padding:            var(--padding);
+    right:              var(--right);
+    top:                var(--top);
+    height:             var(--height);
+    max-height:         var(--max_height);
+    background:         var(--background);
+    z-index:            var(--z_index);
+}
+
+.message_bar  img{
+  
+   
+}
+
+.message_bar .header{
+    height: 15%;
+    width: 100%;
+   
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+.message_bar .header .profile_pic{
+    height: 50px;
+    width: 50px;
+    float: left;
+    border-radius:  100%;
+}
+
+.message_bar .header .username{
+    max-width: 50%;
+    font-size: 1.5em;
+    
+    height: 50%;
+    margin: 10px;
+    float: left;
+}
+
+.message_bar .header .close_icon{
+    position: relative;
+    height: 60%;
+    padding: 2px;
+    border-radius: 100%;
+    margin-left: auto;
+    float: right;
+    cursor: pointer;
+}
+
+
+.message_bar .header .close_icon:hover, .message_bar .footer img:hover{
+    transform:  translateY(-5%) ;
+}
+
+.message_bar .content{
+    height: 75%;
+    width: 100%;
+
+ 
+}
+
+.message_bar .content img{
+    position: relative;
+    width: 100%;
+    object-fit: cover;
+    height: 70%;
+    box-shadow:  var(--box_shadow);
+    border-radius: 6px;
+}
+
+.message_bar .footer{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.message_bar .footer p{
+    width: 80%;
+    text-align: center;
+}
+
+.message_bar .footer img{
+    position: relative;
+    height: 90%;
+    cursor: pointer;
+}
+
+.blackscreen{
+    --background: rgba(0,0,0,.15);
+    --width:        100%;
+    --height:       100%;
+    --position:     fixed;
+    --z-index:      2;
+    --top:          0;
+    --left:         0;
+
+    background:   var(--background);
+    width:        var(--width);
+    height:       var(--height);
+    position:     var(--position);
+    z-index:      var(--z-index);
+    top:          var(--top);
+    left:         var(--left);
+}
+
+.message_bar textarea{
+    --border:       3px solid var(--bg);
+    --padding:      10px;
+    --height:       calc(25% - (var(--padding) * 2));
+    --width:        calc(100% - (var(--padding) * 2));
+    --outline :     none;
+    --background:   var(--b2);
+    --shadow:       0px 2px 4px inset rgba(0,0,0,.15); 
+    --text_color:   var(--text_color);
+    --font_size:    1.2em;
+    --font-family:  var(--font);
+   
+    resize:         none;
+    position:       relative; 
+    background:     var(--background);
+    border:         var(--border);
+    color:          var(--text_color); 
+    height:         var(--height);
+    width:          var(--width);
+    outline:        var(--outline);
+    font-size:      var(--font_size);
+    font-family:    var(--font-family);
+    padding:        var(--padding);   
+}
+
+@media screen and (min-height:1700px){
+    .message_bar{
+        --right: calc(50% - 250px - var(--padding));
+        --top: calc(50% - 250px - var(--padding));
+        --width: 500px;
+        --height: 500px;
+    }
+
+    .message_bar .header{
+        height: 50px;
+    }
+ 
+    .message_bar .footer{
+        height: 50px;
+    }
+}
+
+@media screen and (max-width:700px){
+    .message_bar{
+        --right: 0;
+        --top:0;
+        --width: calc(100% - var(--padding) * 2);
+        --height: calc(100% - var(--padding) * 2)
+    }
+
+    .message_bar .header{
+        height: 50px;
+    }
+ 
+    .message_bar .footer{
+        height: 50px;
+    }
+}
+
+@media screen and (min-width:1000px){
+    .message_bar{
+        --right: calc(50% - 250px - var(--padding));
+        --top: calc(50% - 250px - var(--padding));
+        --width: 500px;
+        --height: 500px;
+    }
+
+    .message_bar .header{
+        height: 50px;
+    }
+ 
+    .message_bar .footer{
+        height: 50px;
+    }
+}
+

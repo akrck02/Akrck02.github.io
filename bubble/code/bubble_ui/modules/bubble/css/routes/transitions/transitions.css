@@ -1,0 +1,6 @@
+@import "../../transitions/clicks.css";
+@import "../../transitions/round.css";
+@import "../../transitions/filters.css";
+
+
+.noAnimTime{transition: none;}

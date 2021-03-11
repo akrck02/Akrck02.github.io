@@ -1,0 +1,20 @@
+main.room_main{
+    --width: 80%;
+    --overflow_y: auto;
+    --z_index: 0;
+    --height: 100vh;
+
+    position: relative;
+    z-index: var(--z_index);
+    width: calc(var(--width));
+    height: var(--height);
+    overflow-y: var(--overflow_y);
+}
+
+@media screen and (max-width: 900px){
+    main.room_main{--width: 95%;}
+}
+
+@media screen and (max-width: 600px){
+    main.room_main{--width: 100%;}
+}

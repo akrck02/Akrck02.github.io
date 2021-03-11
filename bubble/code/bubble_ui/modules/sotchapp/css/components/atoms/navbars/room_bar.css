@@ -1,0 +1,75 @@
+.room_bar{
+    --width: 55px;
+    --padding: 2.5px;
+    --height: calc(100vh - 5px);
+    --background: var(--b2);
+    --box_shadow: var(--box_shadow); 
+    --z_index: 10;
+    --overflow-x: hidden;
+    --border_bottom: 3px solid var(--bg);
+
+    width: var(--width);
+    padding: var(--padding);
+    height: var(--height);
+    background: var(--background);
+    box-shadow: var(--box_shadow);
+    z-index: var(--z_index);
+    overflow-x: var(--overflow-x);
+    border-bottom: var(--border_bottom);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+html[data-theme="dark"] .room_bar{border: none;}
+
+.room_bar::-webkit-scrollbar{
+    --scrollbar_display: none;
+    display: var(--scrollbar_display);
+}
+.room_bar .room{
+    --size: 45px;
+    --radius: 100%;
+    --margin_LR: 2.5px;
+    --transition: .25s;
+    --scale: .8;
+
+    cursor: pointer;
+    position: relative;
+    height: var(--size);
+    width: var(--size);
+    border-radius: var(--radius);
+    margin: var(--margin_LR);
+    box-shadow: var(--box_shadow);
+    transition: var(--transition);
+    transform: scale(var(--scale));
+}
+.room_bar .room.selected{
+    --radius: 16px;
+    --scale: .9;
+
+    border-radius: var(--radius);
+    transform: scale(var(--scale));
+}
+
+.room_bar .room:hover, .room_bar .room:active{
+    --scale: 1;
+    transform: scale(var(--scale));
+}
+
+body.room_body{
+    --width: 100vw;
+    --height: 100%;
+    overflow: hidden;
+    margin: 0;
+
+    display: flex;
+    height: var(--height);
+    width: var(--width);
+}
+
+@media screen and (max-width: 600px){
+    .room_bar{display: none;}
+}

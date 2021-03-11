@@ -1,0 +1,26 @@
+.icon_action_btn{
+    --background:   var(--accent_color);
+    --border:       none;
+    --size:         100%;
+    --box-shadow:   var(--box_shadow);
+    --psdding:      var(--pd_btn);
+    --radius:       100%;
+
+    background:     var(--background);
+    border:         var(--border);
+    height:         var(--size);
+    width:          var(--size);
+    box-shadow:     var(--box-shadow);
+    padding:        var(--psdding);
+    border-radius:  var(--radius);
+    cursor:         pointer;
+}
+
+.icon_action_btn img{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.icon_action_btn:hover{transform: scale(1.1);}
+.icon_action_btn:active{transform:scale(.95) translateY(3px);}

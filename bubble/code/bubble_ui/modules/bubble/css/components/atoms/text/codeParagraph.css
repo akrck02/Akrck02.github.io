@@ -1,0 +1,11 @@
+.code_paragraph{
+    --background-color: var(--b_alt);
+    --font-family:      var(--fontConsole);
+    --padding:          25px;
+    --border-radius:    10px;
+
+    background-color:   var(--background-color);
+    font-family:        var(--font-family);
+    padding:            var(--padding);
+    border-radius:      var(--border-radius);
+}

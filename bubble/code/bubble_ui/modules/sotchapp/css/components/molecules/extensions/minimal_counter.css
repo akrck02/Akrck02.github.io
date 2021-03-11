@@ -1,0 +1,43 @@
+.minimal_counter{
+    color: var(--accent_color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    max-width: 585px;
+}
+
+.minimal_counter .counterBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: center;
+    width: 30%;
+}
+
+.minimal_counter .counterBox p{
+    text-align: center;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.minimal_counter .counterBox p.counter{
+    font-family: var(--fontTitle);
+    font-weight: bold;
+    font-size: 2.5em
+}
+
+.minimal_counter .counterBox p.title{
+    position: relative;
+    width: 100%;
+}
+
+@media screen and (max-width: 500px){
+    .minimal_counter .counterBox p.counter{
+        font-size: 1.5em;
+    }
+    .minimal_counter .counterBox p.title{
+        font-size: .7em;
+    }
+}

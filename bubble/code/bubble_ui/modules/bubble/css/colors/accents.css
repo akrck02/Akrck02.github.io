@@ -1,0 +1,44 @@
+.accentRed{
+  --accent_color: crimson;
+  --accent_color_light: red;
+}
+
+.accentBlue{
+  --accent_color: dodgerblue;
+   --accent_color_light: #80c0ee;
+}
+
+.accentGreen{
+  --accent_color: forestgreen;
+  --accent_color_light: lightgreen;
+}
+
+.accentPurple{
+  --accent_color: purple;
+  --accent_color_light: violet;
+}
+
+.accentBlack{
+  --accent_color: #202020;
+  --accent_color_light: #404040;
+}
+
+.accentWhite{
+  --accent_color: #fafafa;
+  --accent_color_light: #fff;
+}
+
+.accentYellow{
+  --accent_color: dodgerblue;
+  --accent_color_light: #80c0ee;
+}
+
+.accentOrange{
+  --accent_color: orange;
+  --accent_color_light: orange;
+}
+
+.accentPink{
+  --accent_color: pink;
+  --accent_color_light: lightpink;
+}

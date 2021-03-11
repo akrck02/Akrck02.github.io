@@ -1,0 +1,15 @@
+.no_max_width{
+    max-width: none;
+}
+
+.no_max_height{
+    max-height: none;
+}
+
+.auto_width{
+    width: auto;
+}
+
+.auto_height{
+    height: auto;
+}

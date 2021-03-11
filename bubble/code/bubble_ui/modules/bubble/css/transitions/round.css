@@ -1,0 +1,8 @@
+.circlify:hover{
+    --radius: 100%;
+    border-radius: var(--radius);
+}
+
+.squarefy:hover{
+    border-radius: 0;
+}

@@ -1,0 +1,44 @@
+.minimal_profile_bar{
+    width: 80%;
+    max-width: 585px;
+    display: flex;   
+    justify-content: center;
+    align-content: space-between;
+    flex-wrap: wrap;   
+}
+
+.minimal_profile_bar .profile{
+    position: relative;
+    width: 20%;
+    margin: 2.5%;
+}
+
+.minimal_profile_bar .profile img{
+    position: relative;
+    height: 120.5px;
+    width: 120.5px;
+    border-radius: 6px;
+    object-fit: cover;
+    box-shadow: 0px 2px 4px rgba(0,0,0,.15);
+}
+
+.minimal_profile_bar .profile p{
+    font-size: .9em;
+    text-align: center;
+    color: #bbbbbb;
+    margin-bottom: 2%;
+}
+
+@media screen and (max-width:700px){
+    .minimal_profile_bar .profile img{
+        width: 15vw;
+        height: 15vw;
+    }
+
+    .minimal_profile_bar .profile p{
+        font-size:45%;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

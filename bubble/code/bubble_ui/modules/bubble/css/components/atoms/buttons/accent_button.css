@@ -1,0 +1,22 @@
+/*BUTTONS*/
+.accent_btn{
+    --color:        var(--bg);
+    --radius:       3px;
+    --padding:      var(--pd_btn);
+    --box-shadow:   var(--box_shadow);
+    --background:   var(--accent_color);
+    --margin:       10px;
+    --border:       none;
+    --font-size:    1.1em;
+
+    color:          var(--color);
+    border:         var(--box-shadow);
+    border-radius:  var(--radius);
+    padding:        var(--padding);
+    box-shadow:     var(--box-shadow);
+    margin:         var(--margin);
+    background:     var(--accent_color);
+    cursor:         pointer;
+    font-size:      1.1em;
+}
+.accent_btn:hover, .accent_btn:active{transform: scale(.95);}

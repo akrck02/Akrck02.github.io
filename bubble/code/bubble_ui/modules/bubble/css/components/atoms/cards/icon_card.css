@@ -1,0 +1,35 @@
+.icon_card{
+    border-radius: 20px;
+    box-shadow:     0px 2px 4px rgba(0,4,2,.08);
+    width: 160px;
+    height: 160px;
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background:  var(--b2);
+    margin: 20px;
+    cursor: pointer;
+}
+
+.icon_card img{
+    width: 60%;   
+}
+
+.icon_card p{
+    text-align: center;
+    font-family: var(--fontTitle);
+    font-size: 1.3em;
+    margin: 0px;
+}
+
+.icon_card:hover{
+    transform: translateY(-10%);
+}
+
+
+.icon_card:hover p{
+    color: var(--accent_color);
+    filter: brightness(1.5);
+}

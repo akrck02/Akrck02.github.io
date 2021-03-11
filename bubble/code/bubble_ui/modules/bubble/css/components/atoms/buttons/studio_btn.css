@@ -1,0 +1,59 @@
+.studio_btn{
+    --color:    var(--txt_color);
+    --padding:  10px;
+
+    --border:             none;
+    --display:            flex;
+    --flex-direction:     column;
+    --align-items:        center;
+    --font-weight:        bold;
+    --font-size:          1.1em;
+    --cursor:             pointer;
+    --background:         transparent;
+
+    border:             var(--border);
+    display:            var(--display);
+    flex-direction:     var(--flex-direction);
+    align-items:        var(--align-items);
+    font-weight:        var(--font-weight);
+    cursor:             var(--cursor);
+    font-size:          var(--font-size);
+    color:              var(--color);
+    padding:            var(--padding);
+    background:         var(--background);
+}
+
+
+.studio_btn::after,
+.studio_btn::before {
+    --transition:     .5s;
+    --position:       relative;
+    --background:     transparent;
+    --bottom:         0px;
+    --width:          0%;
+    --content:        "";
+    --height:         2px;
+    --display:        block;
+    --align-self:     center;
+
+    transition:     var(--transition);
+    position:       var(--position);
+    background:     var(--background);
+    bottom:         var(--bottom);
+    width:          var(--width);
+    content:        var(--content);
+    height:         var(--height);
+    display:        var(--display);
+    align-self:     var(--align-self);
+    border-radius:  100px;
+}
+
+.studio_btn::after{margin:4px;}
+.studio_btn::before{margin: 4px;}
+
+.studio_btn:hover::after,
+.studio_btn:hover::before {
+    background:var(--color);
+    width: 100%;
+
+}

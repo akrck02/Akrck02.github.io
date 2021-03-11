@@ -1,0 +1,35 @@
+.brightnessUp:hover{
+    --brightness: 1;
+    filter: brightness(var(--brightness));
+}
+
+.brightnessDown:hover{
+    --brightness: 0;
+    filter: brightness(var(--brightness));
+}
+
+.brightnessHalf:hover{
+    --brightness: .5;
+    filter: brightness(var(--brightness));
+}
+
+.grayscale:hover{
+    --grayscale: 100%;
+    filter: grayscale(var(--grayscale));
+}
+
+.dropshadow:hover{
+    --shadow: var(--box_shadow);
+    filter:drop-shadow(var(--shadow));
+}
+
+.hue-rotate:hover{
+    --rotation: 45deg;
+    filter: hue-rotate(var(--rotation));
+}
+
+.opacity:hover{
+    --opacity: .5;
+    filter: opacity(var(--opacity));
+}
+

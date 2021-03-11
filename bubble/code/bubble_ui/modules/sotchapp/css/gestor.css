@@ -1,0 +1,13 @@
+@import "./routes/components/components.css";
+@import "./routes/components/layouts/layouts.css";
+@import "./routes/components/molecules/molecules.css";
+@import "./routes/transitions/transitions.css";
+@import "./routes/settings/settings.css";
+
+html {
+  --b4: #ffffff;
+  --smooth_txt_color: #AAAAAA;
+}
+html[data-theme="dark"] {
+  --b4: #171717;
+}

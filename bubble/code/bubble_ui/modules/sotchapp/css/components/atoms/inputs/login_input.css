@@ -1,0 +1,47 @@
+.login_input{
+    --padding:          5px;
+    --background:       transparent;
+    --border:           1px solid #f1f1f1;
+    --color:          #909090;
+    --border-radius:    3px;
+    --font-family:      var(--fontLight);
+    --font-weight:      bold;
+    --text-align:       center;
+    --max-width:        170px;
+    --margin:           5px;
+    --font-size:        1.1em;
+    --transition:       .15s;
+
+    padding:            var(--padding);
+    background:         var(--background);
+    border:             var(--border);
+    color:              var(--color);
+    border-radius:      var(--border-radius);
+    font-family:        var(--font-family);
+    font-weight:        var(--font-weight);
+    text-align:         var(--text-align);
+    max-width:          var(--max-width);
+    margin:             var(--margin);
+    font-size:          var(--font-size);
+    transition:         var(--transition);
+}
+
+.login_input:hover{
+    box-shadow: 0px 0px 3px rgba(0,0,0,.05);
+    --border: 1px solid transparent;
+}
+
+html[data-theme = 'dark'] .login_input{
+    --background: rgba(255,255,255,.01);
+    --border: none;
+    --color : rgba(255,255,255,.2);
+}
+
+html[data-theme = 'dark'] .login_input:hover{
+    --color : rgba(255,255,255,.5);
+}
+
+
+@media screen and (max-width:600px){
+    .login_input{  --font-size: 1em;}
+}

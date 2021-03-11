@@ -1,0 +1,84 @@
+.shop_stand{
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.shop_stand .box{
+    width: auto;
+    height: auto;
+}
+
+.shop_stand .box p.label{
+    width: 100%;
+    text-align: center;
+    text-overflow: ellipsis;
+    width: 100%
+}
+
+.shop_stand .box .product{
+    position: relative;
+    background: var(--b2);
+    width: 20vw;
+    height: 20vw;
+    margin: 10px;
+    box-shadow: 0px 2px 2px rgba(0,4,2,.08);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shop_stand .box .product img{
+    position: relative;
+    height: 80%;
+    width: 80%;
+}
+
+.shop_stand .box .product p.discount{
+    position: absolute;
+    right: 0%;
+    bottom: 0px;
+    font-size: 3vw;
+    font-family: var(--fontTitle);
+    text-shadow: 0px 2px 2px rgba(0,0,0,.05);
+    background: rgba(255,255,255,.50);
+    padding: 5px 10px;
+    border-radius: 100px;
+    font-weight: bolder;
+    color: var(--txt-color);
+}
+
+.shop_stand_label{
+ width: 100%;
+ text-align: center;
+ text-indent: 2%;
+ color: var(--smooth_txt_color);   
+}
+
+
+@media screen and (min-width:800px){
+    .shop_stand .box .product{
+        width: 180px;
+        height: 180px;
+    }
+
+    .shop_stand .box .product p.discount{
+        font-size: 16pt;
+    }
+}
+
+@media screen and (max-width:600px){
+    .shop_stand .box .product{
+        width: 80vw;
+        height: 80vw;
+    }
+
+    .shop_stand .box .product p.discount{
+        font-size: 16pt;
+    }
+}

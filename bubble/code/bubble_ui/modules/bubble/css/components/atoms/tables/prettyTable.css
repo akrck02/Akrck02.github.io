@@ -1,0 +1,63 @@
+.prettyTable{
+    --padding:          1%;
+    --width:            auto;
+    --display:          flex;
+    --flex-direction:   row;
+    --flex-wrap:        wrap;
+    --justify-content:  center;
+
+    padding:            var(--padding);
+    width:              var(--width);
+    display:            var(--display);
+    flex-direction:     var(--flex-direction);
+    flex-wrap:          var(--flex-wrap);
+    justify-content:    var(--justify-content);
+    justify-self:       center;
+}
+
+.prettyTableColumn{
+    --display:          flex;
+    --flex-wrap:        wrap;
+    --flex-direction:   column;
+    --justify-content:  center;
+    --padding:          0;
+    --margin:           3px;
+
+    display:            var(--display);
+    flex-wrap:          var(--flex-wrap);
+    flex-direction:     var(--flex-direction);
+    justify-content:    var(--justify-content);
+    padding:            var(--padding);
+    margin:             var(--margin);
+
+}
+
+.prettyTable .prettyTableHeader, .prettyTable .prettyTableData{
+    --box-shadow:       var(--box_shadow);
+    --padding:          10px;
+    --radius:           var(--radius);
+    --min-width:        120px;
+
+    box-shadow:         var(--box-shadow);
+    padding:            var(--padding);
+    border-radius:      var(--radius);
+    min-width:          var(--min-width);
+}
+
+.prettyTable .prettyTableData{
+    --background:   var(--b3);
+    --text-align:   center;
+
+    background:     var(--background);
+    text-align:     var(--text-align);
+}
+
+.prettyTable .prettyTableHeader{
+    --background:   var(--txt_color);
+    --color:        var(--bg);
+    --text-align:   center;
+
+    background:     var(--background);
+    color:          var(--color);
+    text-align:     var(--text-align);
+}

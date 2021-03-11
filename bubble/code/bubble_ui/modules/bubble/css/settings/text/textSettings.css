@@ -1,0 +1,23 @@
+.left_text{text-align: left;}
+.right_text{text-align: right;}
+.center_text{text-align: center;}
+
+.bold{font-weight: bold;}
+.italic{font-style: italic;}
+
+.no_copy * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.text_truncate{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: var(--min-width);
+}
+

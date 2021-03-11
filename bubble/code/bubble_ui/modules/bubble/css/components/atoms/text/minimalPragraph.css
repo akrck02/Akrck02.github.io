@@ -1,0 +1,4 @@
+.minimal_paragraph{
+    --border-top:   1px solid gray;
+    border-top:     var(--border-top);
+}

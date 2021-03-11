@@ -1,0 +1,81 @@
+.prettyPost{
+    position: relative;
+    z-index: 1;
+    padding: 25px;
+    width: calc(100% - 50px);
+    max-width: 585px; 
+    background: var(--b3);
+    display: flex;
+    margin: 0%;
+    flex-wrap: wrap;
+    border-radius: calc(var(--radius) + 0px);
+    padding-top: 15px;
+    margin-bottom: 10px;
+    align-self: center;
+    color: var(--smooth_txt_color);
+}
+
+.prettyPost img{
+    width: calc(100% - 20px);
+    object-fit: cover;
+    max-height: 300px;
+    padding: 10px;
+    align-self: center;
+    border-radius: 18px;
+}
+
+.prettyPost h1.username{
+    margin: 0;
+    width: calc(100% - 100px);
+    align-self: center;
+    color: var(--txt_color);
+    font-size: min(20pt,5vw)
+}
+
+.prettyPost h2{
+    width: 100%;
+    padding: 10px;
+    align-self: center;
+    font-weight: lighter;
+    font-family: var(--fontLight);
+    font-size: min(17pt,9vw);
+    margin: 1% 0px;
+}
+
+.prettyPost .profile_pic{
+    --size : min(10vw,50px);
+    object-fit: cover;
+    height: var(--size);
+    width: var(--size);
+    border-radius: 100%;
+    filter: none;
+}
+
+.prettyPost .comment_bar{
+    position: relative;
+    width: 100%;
+    display: flex;
+    font-size: min(13pt,3vw);
+    color: var(--smooth_txt_color);
+}
+
+.prettyPost .comment_bar .user {
+    width:  min(50px, 6vw);
+    height:  min(50px, 6vw);
+    border-radius: 100px;
+}
+
+.prettyPost .comment_bar .icon{
+    width: min(30px, 5vw);
+    border-radius: 0;
+    justify-self: flex-end;
+}
+
+.prettyPost .comment_bar  p{
+    display: flex;
+    justify-content: center;
+    text-overflow: ellipsis;
+    justify-content: center;
+}
+
+

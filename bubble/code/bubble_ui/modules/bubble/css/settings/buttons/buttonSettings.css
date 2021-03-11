@@ -1,0 +1,8 @@
+button[disabled]{
+    transition: none;
+    animation:  none;
+}
+
+.no_outline *:focus{
+    outline: 0px solid transparent;
+}

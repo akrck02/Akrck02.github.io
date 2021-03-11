@@ -1,0 +1,79 @@
+.box{
+    width:  100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+
+.b-12{
+    width: calc(100% / (12 / 12));
+}
+
+.b-11{
+    width: calc(100% / (12 / 11));
+}
+
+.b-10{
+    width: calc(100% / (12 / 10));
+}
+
+.b-9{
+    width: calc(100% / (12 / 9));
+}
+
+.b-8{
+    width: calc(100% / (12 / 8));
+}
+
+.b-7{
+    width: calc(100% / (12 / 7));
+}
+
+.b-6{
+    width: calc(100% / (12 / 6));
+}
+
+.b-5{
+    width: calc(100% / (12 / 5));
+}
+
+.b-4{
+    width: calc(100% / (12 / 4));
+}
+
+.b-3{
+    width: calc(100% / (12 / 3));
+}
+
+.b-2{
+    width: calc(100% / (12 / 2));
+}
+
+.b-1{
+    width: calc(100% / (12 / 1));
+}
+
+.h-10{
+    height: 10%;
+}
+
+.h-25{
+    height: 25%;
+}
+
+.h-33{
+    height: 33%;
+}
+
+.h-50{
+    height: 50%;
+}
+
+.h-75{
+    height: 75%;
+}
+
+.h-100{
+    height: 100%;
+}
