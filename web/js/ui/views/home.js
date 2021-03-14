@@ -94,18 +94,17 @@ export const show = () => {
     });
     lss_btn.appendTo(btn_container.element);
 
-    const nightlight_btn = ui_tools.create({
+   ui_tools.create({
         type    : 'button',
-        text    : 'Nightlight',
+        text    : 'GTD',
         classes : ['accent_btn','b-2','center_text'],
         styles: {
-            'min-width'     : '95px',
+            'min-width'     : '80px',
             'max-width'     : '120px', 
             '--accent_color': '#404040'
         },
-        events  : {click : () => window.location = '#/nightlight'}
-    });
-    nightlight_btn.appendTo(btn_container.element);
+        events  : {click : () => window.location = '#/GTD_API'}
+    }).appendTo(btn_container.element);
 }
 
 let t_index = 0;

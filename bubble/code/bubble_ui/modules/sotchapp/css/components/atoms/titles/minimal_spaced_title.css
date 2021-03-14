@@ -1,8 +1,0 @@
-.minimal_spaced_title{
-    font-weight: 200;
-    color: var(--smooth_txt_color);
-    width: 100%;
-    text-align: center;
-    padding:  min(5%, 50px) 0px;
-    font-size: 3em;
-}

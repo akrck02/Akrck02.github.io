@@ -1,5 +1,4 @@
 import * as ui_tools from "../../tools/component.js";
-import * as test from "../../../../../LSS/code/compiler/test.js";
 
 const title = 'LSS - Compiler';
 export const show = (params) => {
