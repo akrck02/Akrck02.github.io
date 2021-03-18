@@ -1,15 +1,13 @@
-import { create } from "../tools/component.js";
-
-export const title = 'Akrck02.com - Not found';
+import { create } from "../lib/component.js";
 
 export const show = () => {
+
     window.title = 'LSS Maker - Not found';
     document.title ='LSS Maker - Not found';
 
     const main = create({
         type : 'div',
         classes : ['main','box-column','box-center'],
-     
     });
     main.appendTo(document.body);
 
@@ -24,4 +22,6 @@ export const show = () => {
         text : 'This page is no longer alive :('
     })
     .appendTo(main.element);
+
+
 }

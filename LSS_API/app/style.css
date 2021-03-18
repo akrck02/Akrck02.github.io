@@ -1,0 +1,50 @@
+
+
+/*NOT COMPILED*/
+.rounded_tool_btn {
+  --size : 40px;
+  min-width: var(--size);
+  min-height: var(--size);
+  border: 1px solid #ececec;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: .25s;
+  margin: 5px;
+}
+
+.rounded_tool_btn:hover{
+    background : #fafafa;
+}
+
+*:focus{
+    outline: none;
+}
+
+html[data-theme="dark"] .rounded_tool_btn {
+  border-color: #404040;
+}
+
+html[data-theme="dark"] .rounded_tool_btn:hover{
+    background : #404040;
+}
+
+.lss_select{
+    background      : var(--b3);
+    height          : 35px;
+    width           : 90%;
+    margin          : 5%;
+    border          : 1.55px solid #E9E9E9;
+    border-radius   : 6px;
+    color           : var(--txt_color);
+    padding         : 5px;
+}
+
+html[data-theme="dark"] .lss_select{
+    border: none;
+    background : #2F2F2F;
+    color : #909090;
+}
+
+.hover_accent:hover{
+  color: var(--accent_color) !important;
+}

@@ -1,5 +1,5 @@
 import * as ui_tools from "../../tools/component.js";
-import * as router from "../router_lss.js";
+import * as router from "./router.js";
 
 const title = 'LSS - Logic UI';
 export const show = (params) => {
@@ -9,9 +9,10 @@ export const show = (params) => {
 
     document.body.className = 'box-center';
     const main = ui_tools.create({
+        classes : ['main'],
         styles : {
             padding: '50px',
-            'max-width' : '1000px'
+            'max-width' : '1000px',
         }
     });
     main.appendTo(document.body);
@@ -37,18 +38,18 @@ export const show = (params) => {
     const getting_started_btn = ui_tools.create({
         type    :  'button',
         text    :  'Getting started',
-        classes :  ['elegant_btn','horizontal'],
-        styles :  {width : '140px', '--color': 'var(--accent_color)'}
+        classes :  ['accent_btn'],
+        styles :  {width : '140px'}
     });
     getting_started_btn.appendTo(button_bar.element);
 
 
     const compiler_btn = ui_tools.create({
         type    :  'button',
-        text    :  'Online compiler',
-        classes :  ['minimal_btn','horizontal','center_text'],
-        styles :  {width : '190px', '--color': '#ccc'},
-        events :  {click : () =>{ window.location += "/compiler"}}
+        text    :  'LSS Maker',
+        classes :   ['framed_dashed_btn','horizontal'],
+        styles :  {width : '140px', '--color': ''},
+        events :  {click : () =>{ window.location += "app/"}}
     });
     compiler_btn.appendTo(button_bar.element);
 }

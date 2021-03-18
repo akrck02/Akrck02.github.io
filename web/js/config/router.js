@@ -1,7 +1,7 @@
 import * as welcome from '../ui/views/welcome.js'; 
 import * as home from '../ui/views/home.js'; 
 import * as not_found from '../ui/views/not_found.js'; 
-import * as lss from '../ui/views/router_lss.js'; 
+import * as lss from '../ui/views/lss/router.js'; 
 
 
 export const PATHS = {
@@ -19,6 +19,8 @@ export function load(){
 
     document.body.innerHTML = '';
     document.body.className = '';
+    document.body.classList.add('box-center');
+    document.body.classList.add('box-column');
 
     if(window.localStorage.getItem('akr-b') != 'celeste'){
         PATHS.welcome.show();
@@ -49,4 +51,17 @@ function show(view,params){
     document.title = view.title;
     window.title = view.title;
     view.show(params);
+
+    const main = document.querySelector('.main');
+    if(main != null){
+        main.style.transition = '.75';
+        main.style.opacity = '0';
+    } 
+    console.log("hidden");
+
+    setTimeout(() =>{
+        const main = document.querySelector('.main');
+        if(main != null) main.style.opacity = '1';
+        console.log("Show!");
+    }, 150);
 }
