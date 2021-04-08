@@ -11,7 +11,7 @@ export const show = () =>{
 
     const mobile = document.body.dataset.mobile;
     const main = create({
-        type: 'div',
+        type: 'view',
         classes : ['main','box-center','no_copy', 'box-column' ],
         styles : {
             width : '100%',
@@ -69,15 +69,15 @@ export const show = () =>{
 
 
     const button_bar = create({
-        type: 'div',
-        classes : ['button_bar']
+        type: 'box',
+        classes : ['button_bar','box-center']
     });
     button_bar.appendTo(form.element);
 
     const register = create({
-        type: 'div',
-        text: 'Register', 
-        classes : ['accent_btn'],
+        type: 'Register',
+        text: 'Go!', 
+        classes : ['accent_btn','box-center'],
         styles : {
             color:'#fff'
         }
@@ -85,8 +85,8 @@ export const show = () =>{
     register.appendTo(button_bar.element);
 
     const login = create({
-        type: 'div',
-        text: 'Login', 
+        type: 'Back',
+        text: 'Back to login', 
         classes : ['minimal_btn','center_text','box-center'],
         events : {
             click : () => window.location = settings.PATH + "login/"

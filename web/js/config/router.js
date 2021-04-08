@@ -2,6 +2,7 @@ import * as welcome from '../ui/views/welcome.js';
 import * as home from '../ui/views/home.js'; 
 import * as not_found from '../ui/views/not_found.js'; 
 import * as lss from '../ui/views/lss/router.js'; 
+import { settings } from './settings.js';
 
 
 export const PATHS = {
@@ -22,15 +23,10 @@ export function load(){
     document.body.classList.add('box-center');
     document.body.classList.add('box-column');
 
-    if(window.localStorage.getItem('akr-b') != 'celeste'){
-        PATHS.welcome.show();
-        return;
-    } 
-
     switch(params[0]){
         case "dark":       
             document.documentElement.dataset.theme = 'dark';
-            window.location = '/#/';
+            window.location = settings().PATH + '#/';
             load();  
         break;    
         case undefined:     

@@ -1,10 +1,12 @@
 import * as home      from './home.js'; 
 import * as app       from '../../../../../LSS_API/app/js/main.js'; 
+import * as welcome   from './welcome.js'; 
 import * as not_found from '../not_found.js'; 
 
 export const PATHS = {
   home:       {show: (params) => show(home,params)},
-  app:        {show: (params) => app.droga(params)},
+  app:        {show: (params) => app.show(params)},
+  welcome:    {show: (params) => show(welcome,params)},
   not_found:  {show: (params) => show(not_found,params)},
 };
 
@@ -15,9 +17,10 @@ export const load = (params) => {
 
   switch (params[0]) {
       case undefined:  
-      case "":          PATHS.home.show([]);                  break;
-      case "app":       PATHS.app.show(params.slice(1)); break;
-      default:          console.log("others");  break;
+      case "":                    PATHS.home.show([]);                  break;
+      case "app":                 PATHS.app.show(params.slice(1));      break;
+      case "getting_started":     PATHS.welcome.show(params.slice(1));  break;
+      default:                    PATHS.not_found.show();               break;
   }
 }
 

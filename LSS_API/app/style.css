@@ -48,3 +48,91 @@ html[data-theme="dark"] .lss_select{
 .hover_accent:hover{
   color: var(--accent_color) !important;
 }
+
+.minimal_login .button_bar{
+  width: 100%;
+  padding: 10px;
+}
+
+.minimal_login input{
+  font-size: 1em;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0px;
+}
+
+.login_input{
+  text-align: justify;
+}
+
+.minimal_login .button_bar .accent_btn{
+  min-width: 80px;
+}
+
+
+@media screen and (max-width : 600px){
+  .minimal_login .button_bar{ bottom: 0%;}
+} 
+
+.project_menu_entry{
+  height : auto;
+  padding : 10px;
+}
+
+.project_menu_entry .title_bar{
+  height : 30px;
+  width : 100%;
+  border-bottom: .1em solid #E5E5E5;
+  color : #404040;
+  padding : 5px;
+  font-size : .9em;
+  font-family : Roboto mono;
+  width : 100%;
+  display : block;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.new_project_button{
+  align-self : flex-end;
+  font-size : .9em;
+  font-family : 'Roboto mono';
+  font-weight : 400;
+  border-width : 2px;
+  padding-left : 20px;
+  padding-right :20px;
+  border-radius :4px;
+}
+
+html[data-theme=light] .new_project_button{
+    --accent_color : #404040;
+}
+
+html[data-theme=dark] .new_project_button {
+  --accent_color: #fff;
+  
+}
+
+html[data-theme=dark] .project_menu_entry .title_bar{
+  color:#fff;
+}
+
+.project_menu_entry .title_bar.selected, html[data-theme=dark] .project_menu_entry .title_bar.selected{
+  border-color:  #2F80ED;
+  color : #2F80ED;
+}
+
+.project_menu_entry .title_bar .icon_bar {
+  max-width:100px ;
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.project_menu_entry * { transition: 1s;}
+
+.project_menu_entry .title_bar .icon_bar img{
+  height: 100%;
+}

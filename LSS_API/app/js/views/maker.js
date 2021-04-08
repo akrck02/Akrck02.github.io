@@ -9,7 +9,7 @@ export const show = () =>{
 
     const mobile = document.body.dataset.mobile;
     const main = create({
-        type: 'div',
+        type: 'view',
         classes : ['main','box-warp','no_copy', (mobile == "true")? 'box-column':'box-row' ],
         styles : {
             width : '100%',

@@ -1,5 +1,6 @@
 import { create } from "../lib/component.js";
-import * as router from "../config/router.js";
+import { login } from "../connectors/access.js"
+import { error_message } from "../components/error_message.js"
 import { settings } from "../config/settings.js";
 
 let content;
@@ -9,9 +10,8 @@ export const show = () =>{
     window.title = 'LSS Maker - Login';
     document.title ='LSS Maker - Login';
 
-    const mobile = document.body.dataset.mobile;
     const main = create({
-        type: 'div',
+        type: 'view',
         classes : ['main','box-center','no_copy', 'box-column' ],
         styles : {
             width : '100%',
@@ -59,32 +59,64 @@ export const show = () =>{
     password.appendTo(form.element);
 
     const button_bar = create({
-        type: 'div',
-        classes : ['button_bar']
+        type: 'box',
+        classes : ['button_bar','box-center']
     });
     button_bar.appendTo(form.element);
 
-    const login = create({
-        type: 'div',
+    const login_btn = create({
+        type: 'login',
         text: 'Login', 
-        classes : ['accent_btn'],
+        classes : ['accent_btn','box-center'],
         styles : {
             color:'#fff'
         },
+        options: {type:'submit',value: 'Login'},
         events : {
-            click : () => window.location = settings.PATH + "projects/"
+            click : () =>{
+                alert('Click on login :)');
+                login(
+                    (response) =>{
+                        alert('response');
+                        if(response.success)
+                            if(response.content.accepted || settings.ENVIROMENT == 'DEVELOPMENT'){
+                                localStorage.setItem('Lssmk:usr',username.element.value);
+                                window.location = settings.PATH + "projects/"
+                            }
+                            else error_message("Invalid user", form.element);
+                        else error_message("Sorry, there is an error in our servers :(", form.element);
+                    },
+                    username.element.value,
+                    password.element.value
+                );
+            }
         }
     });
-    login.appendTo(button_bar.element);
+    login_btn.appendTo(button_bar.element);
 
-    const register = create({
-        type: 'div',
-        text: 'Register', 
+    const register_btn = create({
+        type: 'Back',
+        text: 'I\'m new here', 
         classes : ['minimal_btn','text_center','box-center'],
         events : {
             click : () => window.location = settings.PATH + "register/"
         }
     });
-    register.appendTo(button_bar.element);
+    register_btn.appendTo(button_bar.element);
+
+    const back = create({
+        type: 'img',
+        styles: {
+            position : 'fixed',
+            top : '25px',
+            left: '25px',
+            width: '25px',
+            height: '25px',
+            cursor: 'pointer'
+        },
+        options: {src : settings.ICONS + 'light/back.svg'},
+        events : {click : () => location = '/#/'}
+    });
+    back.appendTo(main.element);
 
 }

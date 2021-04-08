@@ -6,7 +6,7 @@ export const show = () => {
     document.title ='LSS Maker - Not found';
 
     const main = create({
-        type : 'div',
+        type : 'view',
         classes : ['main','box-column','box-center'],
     });
     main.appendTo(document.body);

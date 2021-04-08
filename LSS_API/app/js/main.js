@@ -1,7 +1,7 @@
 import { current_view, firstload, load } from "./config/router.js";
 import { create } from "./lib/component.js";
 
-export function droga(params){
+export function show(params){
   console.log("loaded");
   document.documentElement.style.background = 'var(--b2)';
   events();
@@ -38,8 +38,9 @@ async function events() {
         let d = new Date();
         let h = d.getHours();
 
-        if(h > 20 || h < 7) document.documentElement.dataset.theme = 'dark';
-        else document.documentElement.dataset.theme = 'light';
+       // if(h > 20 || h < 7) document.documentElement.dataset.theme = 'dark';
+        //else 
+        document.documentElement.dataset.theme = 'light';
      }).then(setTimeout(events, 150));
 }
 

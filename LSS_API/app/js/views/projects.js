@@ -1,8 +1,8 @@
-import * as router from "../config/router.js";
+import { projects_menu } from "../components/project_view/projectMenu.js";
+import { projects_menu_entry } from "../components/project_view/projectsMenuEntry.js";
 import { settings } from "../config/settings.js";
 import { create } from "../lib/component.js";
 
-let content;
 
 export const show = () =>{
 
@@ -10,48 +10,58 @@ export const show = () =>{
     document.title ='LSS Maker - Your projects';
 
     const mobile = document.body.dataset.mobile;
+
+    const bar = create({
+        type : 'minimal_bar',
+        classes : ['minimal_bar'],
+        styles : {
+            'box-shadow' : '0px 2px 4px rgba(0,0,0,.1)',
+            'justify-content' : 'space-between',
+        }
+    });
+
+    const title = create({
+        type : 'h1',
+        text : 'Projects',
+        styles : {
+            color: '#fff',
+            'font-family' : 'Roboto Mono',
+            'font-weight' : 400,
+            'font-size' : '1.2em',
+        }
+    }); 
+
+    const search = create({
+        type : 'img',
+        options : {
+            src : settings.COMMON_ICONS + "search_white.svg"
+        },
+        styles : {
+            color: '#fff',
+            'font-family' : 'Roboto Mono',
+            'font-weight' : 400,
+            'font-size' : '1.2em',
+            height : '70%',
+            cursor : 'pointer'
+        }
+    }); 
+
+    title.appendTo(bar.element);
+    search.appendTo(bar.element);
+    bar.appendTo(document.body);
+
     const main = create({
-        type: 'div',
-        classes : ['main','box-center','no_copy', 'box-column' ],
+        type: 'view',
+        classes : ['main','box-y-center',,'no_copy', 'box-column' ],
         styles : {
             width : '100%',
             height: '100%',
+            padding: '10%',
+            'padding-top' : '20px',
             opacity : 0,
             transition : '1s'
         }
     });
     main.appendTo(document.body);
-
-    const title = create({
-        type: 'h1',
-        text: 'Your projects :)',
-        classes : ['h1','box-center','no_copy', 'box-column' ]
-    });
-    title.appendTo(main.element);
-
-    const sub = create({
-        type: 'i',
-        text: 'No proyects found, start one!',
-        classes : ['h1','box-center','no_copy', 'box-column' ],
-        styles : {
-            'font-size' : '1em'
-        }
-    });
-    sub.appendTo(main.element);
-
-    const new_btn = create({
-        type: 'button',
-        text: 'Start',
-        classes : ['framed_dashed_btn','box-center','no_copy', 'box-column' ],
-        styles : {
-            margin: '50px',
-            'color' : 'white',
-        },
-        events : {
-            click : () => { window.location = settings.PATH + "maker/"}
-        }
-    });
-    new_btn.appendTo(main.element);
-
-
+    projects_menu({main : main});
 }

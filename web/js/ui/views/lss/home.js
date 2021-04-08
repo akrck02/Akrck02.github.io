@@ -39,7 +39,8 @@ export const show = (params) => {
         type    :  'button',
         text    :  'Getting started',
         classes :  ['accent_btn'],
-        styles :  {width : '140px'}
+        styles :  {width : '140px'},
+        events :  {click : () =>{ window.location += "getting_started/"}}
     });
     getting_started_btn.appendTo(button_bar.element);
 
