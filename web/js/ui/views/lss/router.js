@@ -19,7 +19,7 @@ export const load = (params) => {
       case undefined:  
       case "":                    PATHS.home.show([]);                  break;
       case "app":                 PATHS.app.show(params.slice(1));      break;
-      case "getting_started":     PATHS.welcome.show(params.slice(1));  break;
+      case "api":                 PATHS.welcome.show(params.slice(1));  break;
       default:                    PATHS.not_found.show();               break;
   }
 }

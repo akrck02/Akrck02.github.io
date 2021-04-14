@@ -115,7 +115,7 @@ export const show = () =>{
             cursor: 'pointer'
         },
         options: {src : settings.ICONS + 'light/back.svg'},
-        events : {click : () => location = '/#/'}
+        events : {click : () => location = settings.WEB_PATH + '#/lss/'}
     });
     back.appendTo(main.element);
 

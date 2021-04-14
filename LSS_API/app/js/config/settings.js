@@ -2,8 +2,11 @@ import * as web from "../../../../web/js/config/settings.js";
 export const settings =
 {
     ENVIROMENT      : "DEVELOPMENT",
-    PATH            :  web.settings().PATH +  "/#/lss/app/",
+    WEB_PATH        :  web.settings().PATH,
+    PATH            :  web.settings().PATH +  "#/lss/app/",
+    MAKER_PATH      :  web.settings().PATH +  "#/lss/app/maker/",
     REAL_PATH       :  web.settings().PATH + '/LSS_API/',
+    FAVICON         :  web.settings().PATH + '/LSS_API/app/logo.png',
     THEME           : 'light',
     RESOURCES       :  web.settings().PATH + '/LSS_API/app/res/',
     ICONS           :  web.settings().PATH + '/LSS_API/app/res/icons/',

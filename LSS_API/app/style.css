@@ -1,12 +1,15 @@
-
+.rounded{
+  border-radius: 100%;
+}
 
 /*NOT COMPILED*/
 .rounded_tool_btn {
-  --size : 40px;
-  min-width: var(--size);
-  min-height: var(--size);
-  border: 1px solid #ececec;
-  border-radius: 100%;
+
+  width: 20%;
+  max-width: 60px;
+  max-height: 35px;
+  box-shadow: 0px 0px 1px rgba(0,0,0,.25);
+  border-radius: 3px;
   cursor: pointer;
   transition: .25s;
   margin: 5px;
@@ -14,6 +17,11 @@
 
 .rounded_tool_btn:hover{
     background : #fafafa;
+}
+
+.rounded_tool_btn.selected{
+  background : #404040;
+  box-shadow: 0px 2px 4px rgba(0,0,0,.15);
 }
 
 *:focus{
@@ -32,11 +40,18 @@ html[data-theme="dark"] .rounded_tool_btn:hover{
     background      : var(--b3);
     height          : 35px;
     width           : 90%;
-    margin          : 5%;
-    border          : 1.55px solid #E9E9E9;
+    margin          : 10px;
+    margin-left     : 5%;
+    margin-right    : 5%;
+    border          : 1px solid #f9f9f9; 
+    box-shadow      : 0px 1px 3px rgba(0,0,0,.08);
     border-radius   : 6px;
     color           : var(--txt_color);
     padding         : 5px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
 }
 
 html[data-theme="dark"] .lss_select{
@@ -52,6 +67,7 @@ html[data-theme="dark"] .lss_select{
 .minimal_login .button_bar{
   width: 100%;
   padding: 10px;
+  --accent_color : #404040;
 }
 
 .minimal_login input{
@@ -87,18 +103,23 @@ html[data-theme="dark"] .lss_select{
   color : #404040;
   padding : 5px;
   font-size : .9em;
-  font-family : Roboto mono;
+  font-family : Roboto;
   width : 100%;
   display : block;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
+  transition: .25s;
+}
+
+.minimal_bar { 
+  --default:  #404040;
 }
 
 .new_project_button{
   align-self : flex-end;
   font-size : .9em;
-  font-family : 'Roboto mono';
+  font-family : Roboto;
   font-weight : 400;
   border-width : 2px;
   padding-left : 20px;

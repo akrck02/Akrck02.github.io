@@ -1,7 +1,6 @@
 import { settings } from "../../config/settings.js";
 import { get_project } from "../../connectors/projects.js";
 import { create } from "../../lib/component.js";
-import { resolveAfter } from "../../lib/sync.js";
 
 export const projects_menu_entry = (properties) => {
   const comp = create({
@@ -76,23 +75,26 @@ function break_down_project(suffix, id) {
   const cont = document.querySelector("#" + suffix + id);
   get_project((json) => {
     const content = cont.querySelector(".content");
-    for (const key in json.content) {
-      resolveAfter(() => {
+    const entries = Object.entries(json.content);
+    content.style.opacity = 0;
+
+    entries.forEach((p) => {
         create({
           type: "categories",
-          text: get_type(key) + "s",
+          text: get_type(p[0]) + "s",
           styles: {
             "font-weight": "bold",
             padding: "5px",
             "padding-left": "10px",
             "font-size": "1.0em",
             "font-family": "Roboto mono",
-          },
-        },1).appendTo(content);
-
-        for (const k in json.content[key]) entry(json.content[key][k], content);
-      });
-    }
+          }
+        }).appendTo(content);
+        
+        cont.dataset.height += 10;
+        for (const k in p[1])
+          entry(p[1][k], content);
+    });
 
     content.style.opacity = 1;
     content.style.height = "auto";
@@ -126,7 +128,6 @@ function get_type(type) {
 }
 
 function entry(data, content) {
-  console.log(data);
   const comp = create({
     type: "entry",
     classes: [],
@@ -136,7 +137,16 @@ function entry(data, content) {
       "align-items": "center",
       padding: "5px",
       "padding-left": "20px",
+      cursor : 'pointer'
     },
+    data : {
+      object : data.id
+    },
+    events : {
+      click : () => {
+        window.location.href = settings.MAKER_PATH + data.id;
+      }
+    }
   });
 
   const middle_left = create({
