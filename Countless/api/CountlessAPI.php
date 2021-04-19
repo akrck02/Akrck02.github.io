@@ -4,7 +4,7 @@ include_once "./CountlessDAO.php";
 function response()
 {
     $worth = checkOrigin();
-    if($worth == false) return;
+    if ($worth == false) return;
 
     /**
      * Getting actions in the rest API 
@@ -14,6 +14,9 @@ function response()
 
     if (isset($_REQUEST['getMonthTickets']))
         getMonthTickets($_REQUEST['getMonthTickets']);
+
+    if (isset($_REQUEST['getAllTickets']))
+        getAllTickets($_REQUEST['getAllTickets']);
 
     if (isset($_REQUEST['getMonthEvents']))
         echo "{'msg' : 'not yet implemented'}";
@@ -35,8 +38,9 @@ function response()
         echo "{'msg' : 'not yet implemented'}";
 }
 
-function checkOrigin(){
-    return true;   
+function checkOrigin()
+{
+    return true;
 }
 
 response();
