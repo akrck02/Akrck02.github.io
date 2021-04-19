@@ -7,6 +7,7 @@ import { configurationView } from "../views/configuration.js";
 import { errorView } from "../views/errors.js";
 import { settings } from "./settings.js";
 import { isLogged } from "./userSettings.js";
+import { reservationView } from "../views/reservations.js";
 
 /**
  * Paths of the application
@@ -16,6 +17,7 @@ const PATHS = {
   tickets: (params) => show(ticketView, params),
   count: (params) => show(countView, params),
   calendar: (params) => show(calendarView, params),
+  reservations: (params) => show(reservationView, params),
   config: (params) => show(configurationView, params),
   login: (params) => show(loginView, params),
   errors: (params) => show(errorView, params),
@@ -39,7 +41,9 @@ export const load = (params) => {
     case "calendar":
       PATHS.calendar(params);
       break;
-
+    case "reservations":
+      PATHS.reservations(params);
+      break;
     case "config":
       PATHS.config(params);
       break;
@@ -63,6 +67,10 @@ export const load = (params) => {
  * @param {array} params
  */
 const show = (view, params) => {
+  document.body.style.transition = "0s";
+  document.body.style.opacity = "0";
+  document.body.style.top = "-5vw";
+
   if (view == loginView || view == errorView) {
     document.body.innerHTML = "";
     view(params);
@@ -71,6 +79,11 @@ const show = (view, params) => {
     document.body.innerHTML = "";
     view(params);
   }
+  setTimeout(() => {
+    document.body.style.transition = ".5s";
+    document.body.style.top = "0";
+    document.body.style.opacity = "1";
+  }, 150);
 };
 
 export const checkLogin = () => {
@@ -78,3 +91,5 @@ export const checkLogin = () => {
     location.href = settings().URL + "login/";
   }
 };
+
+

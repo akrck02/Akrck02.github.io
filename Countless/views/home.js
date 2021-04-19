@@ -92,7 +92,7 @@ const createNavbar = () => {
       width: "calc(100% /  " + n + ")",
     },
     events: {
-      click: () => (location.href = settings().URL + "reservation/"),
+      click: () => (location.href = settings().URL + "reservations/"),
     },
   });
 
@@ -147,7 +147,8 @@ const createNotifications = () => {
   const notificationsIcon = create({
     type : 'img',
     options : {
-      src : settings().ICONS + "notifications.svg"
+      src : settings().ICONS + "notifications.svg",
+      alt : 'notifications'
     }
   });
 

@@ -17,6 +17,35 @@ export const getMonth = (index) => {
     }
 }
 
+export const getWeekDay = (index) => {
+    switch (index) {
+        case 0: return "Lunes";
+        case 1: return "Martes";
+        case 2: return "Miércoles";
+        case 3: return "Jueves";
+        case 4: return "Viernes";
+        case 5: return "Sábado";
+        case 6: return "Domingo";
+        default: return "...";
+    }
+}
+
+
+export const getWeekDayLetter = (index) => {
+    switch (index) {
+        case 0: return "L";
+        case 1: return "M";
+        case 2: return "X";
+        case 3: return "J";
+        case 4: return "V";
+        case 5: return "S";
+        case 6: return "D";
+        default: return "...";
+    }
+}
+
+
+
 /**
  * Get the last day of a month
  * @param {*} y  - The year

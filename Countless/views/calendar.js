@@ -1,7 +1,7 @@
 import { bar } from "../components/bar.js";
 import { months } from "../components/monthBar.js";
 import { checkLogin } from "../config/router.js";
-import { getMonth } from "../core/monthCalc.js";
+import { getMonth, getWeekDay, getWeekDayLetter } from "../core/monthCalc.js";
 import { create } from "../lib/component.js";
 
 /**
@@ -9,7 +9,6 @@ import { create } from "../lib/component.js";
  * @param {array} params
  */
 export const calendarView = (params) => {
-  
   const web_tittle = "Countless - Calendar";
   window.title = web_tittle;
   document.title = web_tittle;
@@ -23,7 +22,7 @@ export const calendarView = (params) => {
     },
   });
 
-  const titleBar = bar();
+  const titleBar = bar("Calendario");
   const monthBar = months();
 
   titleBar.appendTo(view.element);
@@ -88,31 +87,126 @@ const createCalendar = (m) => {
   const today = new Date();
   const last = lastday(today.getFullYear(), m);
 
-  for (let i = 1; i <= last; i++) {
-    const selected = today.getMonth() == m && i == today.getDate();
-    const classname = selected ? "selected" : "_";
+  const weekdate = new Date(today.getFullYear() + " " + (m + 1) + "-1");
+  let weekday = weekdate.getDay();
+
+  for (let i = 1; i < weekday; i++) {
     const day = create({
       type: "day",
       styles: {
         display: "block",
         height: "calc(100% /4)",
-        'min-height' : '150px',
+        "min-height": "150px",
         padding: "10px",
         width: "calc(100% / 7)",
         border: ".5px solid #e9e9e9",
-        color: "#c2c2c2",
+        background: "#f7f7f7",
         overflow: "hidden",
       },
     });
 
     const span = create({
       type: "span",
-      text: (selected ? " Hoy " : "") + i,
-      classes: [classname],
       styles: {
         padding: "8px",
         display: "block",
-        "box-shadow": selected ? "0px 2px 4px rgba(0,0,0,.1)" : "none",
+        "box-shadow": "none",
+        width: "70px",
+        "border-radius": "6px",
+      },
+    });
+
+    span.appendTo(day.element);
+    day.appendTo(calendar.element);
+  }
+
+  for (let i = 1; i <= last; i++) {
+    const selected = today.getMonth() == m && i == today.getDate();
+    const classname = selected ? "selected" : "_";
+    const day = create({
+      type: "day",
+      classes :['selectable'],
+      data: {
+        weekday: getWeekDay(weekday - 1),
+        weekdayletter: getWeekDayLetter(weekday - 1),
+      },
+      styles: {
+        display: "block",
+        height: "calc(100% /4)",
+        "min-height": "150px",
+        padding: "10px",
+        width: "calc(100% / 7)",
+        border: ".5px solid #e9e9e9",
+        color: "#c2c2c2",
+        overflow: "hidden",
+        cursor: "pointer",
+      },
+      events: selected
+        ? {}
+        : {
+            mouseover: (e) => {
+              let span = e.target.querySelector("span");
+
+              if (span == null) span = e.target;
+
+              span.innerHTML = i + " - " + e.target.dataset.weekday.substr(0,3);
+            },
+            mouseout: (e) => {
+              let span = e.target.querySelector("span");
+
+              if (span == null) span = e.target;
+
+              span.innerHTML = i;
+            },
+          },
+    });
+
+    const span = create({
+      type: "span",
+      text: (selected ? " Hoy " : "") + i,
+      classes: [classname],
+      id: "day",
+      data: {
+        weekday: getWeekDay(weekday - 1),
+        weekdayletter: getWeekDayLetter(weekday - 1),
+      },
+      styles: {
+        padding: "8px",
+        display: "block",
+        
+        width: "100%",
+        "border-radius": "4px",
+      },
+    });
+
+    weekday++;
+    if (weekday > 7) weekday = 1;
+    span.appendTo(day.element);
+    day.appendTo(calendar.element);
+  }
+
+  if(weekday != 1)  
+  for (let i = weekday; i < 8; i++) {
+    const day = create({
+      type: "day",
+      styles: {
+        display: "block",
+        height: "calc(100% /4)",
+        "min-height": "150px",
+        padding: "10px",
+        width: "calc(100% / 7)",
+        border: ".5px solid #e9e9e9",
+        background: "#f7f7f7",
+        overflow: "hidden",
+      },
+    });
+
+    const span = create({
+      type: "span",
+      styles: {
+        padding: "8px",
+        display: "block",
+        "box-shadow": "none",
         width: "70px",
         "border-radius": "6px",
       },

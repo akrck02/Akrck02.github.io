@@ -1,10 +1,9 @@
 import { bar } from "../components/bar.js";
 import { months } from "../components/monthBar.js";
 import { monthTable } from "../components/monthTable.js";
-import { settings } from "../config/settings.js";
-import { lastday } from "../core/monthCalc.js";
+import { generateDraft } from "../core/monthTicketFill.js";
 import { create } from "../lib/component.js";
-import { getMonthTicketsService } from "../services/ticketService.js";
+import { getAllTicketsService, getMonthTicketsService } from "../services/ticketService.js";
 
 /**
  * Show the tickets view
@@ -24,7 +23,7 @@ export const ticketView = (params) => {
     },
   });
 
-  const titleBar = bar();
+  const titleBar = bar("Tickets");
 
   const show = create({
     type: "box",
@@ -41,7 +40,7 @@ export const ticketView = (params) => {
     id: "selectYear",
     styles: {
       display: "block",
-      width: "100px",
+      width: "100px", 
       border: "none",
       background: "transparent",
     },
@@ -120,12 +119,12 @@ const showTickets = (y, m) => {
       let draft = {};
       if (json.success) draft = json.json;
       else draft = generateDraft(y, m);
-
       drawDraft(draft, draft.year, draft.month);
     },
     y,
     m + 1
   ); 
+  getAllTicketsService((json) => console.log(json));
 };
 
 const drawDraft = (draft, y, m) => {
@@ -163,31 +162,4 @@ const drawDraft = (draft, y, m) => {
     total.element.style.opacity = 1;
     month_table.element.style.opacity = 1;
   }, 300);
-};
-
-/**
- * Generate empty month draft
- * @param {*} y - The year
- * @param {*} m - The month
- * @returns The month's draft
- */
-const generateDraft = (y, m) => {
-  const draft = {
-    month: m,
-    year: y,
-    company: settings().COMPANY,
-    lastID: 0,
-    info: {},
-    total: 0,
-  };
-
-  const last = lastday(y, m);
-  for (let i = 0; i <= last; i++) {
-    draft.info[i] = {};
-    draft.info[i].id = "";
-    draft.info[i].number = 0;
-    draft.info[i].price = 0;
-  }
-
-  return draft;
 };
