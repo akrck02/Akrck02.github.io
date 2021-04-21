@@ -1,4 +1,5 @@
 import { settings } from "../config/settings.js";
+import { fetchJSON } from "../lib/GTD_EasyFetch.js";
 
 /**
  * Login
@@ -15,24 +16,12 @@ export function loginService(funct, user, password, token) {
     },
   };
   
-  const url = settings().API + "?login=" + JSON.stringify(request);
-  const method = { method: "GET" };
-
-  fetch(url, method)
-    .then((response) => {
-      if (response.ok) return response.json();
-      else return {
-          success : 'false',
-          error: '503'
-      };
-    })
-    .then((json) => {
-      funct(json);
-    })
-    .catch(function (err) {
-        return {
-            error : err,
-            type : 'Runtime error'
-        }
-    });
+  fetchJSON({
+    url: settings().API + "?login=" + JSON.stringify(request),
+    method: "GET",
+    request: request,
+    success: (json) => funct(json),
+    fail : (json) => {console.log("FAIL: " + json);},
+    error : (err) => {console.log("ERROR: " + err);},
+  });
 }

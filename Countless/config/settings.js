@@ -1,7 +1,7 @@
-import { isEmpty } from "../lib/objectToolkit.js";
+import { isEmpty } from "../lib/GTD_DataTools.js";
 import { getProperty } from "./userSettings.js";
 
-const configuration = {}
+const configuration = {};
 
 /**
  * Set app basic settings
@@ -39,4 +39,11 @@ export const setUser = (user) => {
  export const setCompany = (company) => {
     if(isEmpty(company)) company = '';
     configuration.COMPANY = company;
+}
+
+
+String.prototype.initCap = function(){
+    const str1 = this.substr(0,1).toUpperCase();
+    const str2 = this.substr(1).toLowerCase();
+    return str1 + "" + str2;
 }

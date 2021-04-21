@@ -1,5 +1,5 @@
-import { bar } from "../components/bar";
-import { create } from "../lib/component";
+import { bar } from "../components/bar.js";
+import { create } from "../lib/GTD_Component.js";
 
 export const reservationView = (params) => {
 

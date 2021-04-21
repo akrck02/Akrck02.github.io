@@ -1,7 +1,7 @@
 import { settings, setUser } from "../config/settings.js";
-import { getProperty, isLogged, loginInApp, setProperty } from "../config/userSettings.js";
-import { create } from "../lib/component.js";
-import { isEmpty } from "../lib/objectToolkit.js";
+import { getProperty, isLogged, loginInApp } from "../config/userSettings.js";
+import { create } from "../lib/GTD_Component.js";
+import { isEmpty } from "../lib/GTD_DataTools.js";
 
 /**
  * Show the login view
@@ -11,7 +11,6 @@ export const loginView = (params) => {
 
     if(isLogged()){
         setUser(getProperty("user"));
-        console.log(settings());
         location.href = settings().URL + "home/"
     }
 

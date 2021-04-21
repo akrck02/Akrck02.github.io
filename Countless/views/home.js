@@ -1,6 +1,6 @@
 import { bar } from "../components/bar.js";
 import { settings } from "../config/settings.js";
-import { create } from "../lib/component.js";
+import { create } from "../lib/GTD_Component.js";
 
 /**
  * Show the home view

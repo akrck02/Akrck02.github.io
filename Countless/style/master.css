@@ -75,6 +75,7 @@ html {
   padding: 0;
   width: 100%;
   overflow-x: hidden;
+  scroll-behavior: smooth;
   -webkit-tap-highlight-color: transparent;
 }
 html[data-theme="dark"] {
@@ -3151,7 +3152,7 @@ button[disabled] {
   color: #2f80ed !important;
 }
 
-day span.selected{
+day dayNum.selected{
   border: 2px solid var(--accent_color);
   color: var(--accent_color);
   font-weight: bold;
@@ -3186,7 +3187,7 @@ day *{
   transition: .5s;
 }
 
-day:hover span#day:not(.selected) , span#day:hover:not(.selected){
+day:hover dayNum:not(.selected) , dayNum:hover:not(.selected){
   color: var(--accent_color);
 }
 
@@ -3194,10 +3195,16 @@ day.selectable:hover{
   border-color : var(--accent_color) !important;
 }
 
-day span#day.selected{
+day dayNum.selected{
   width : 70px !important;
+  margin-bottom: 10px;
 }
 
-day span#day{
+day dayNum{
   width : 80px !important;
+}
+
+
+event:hover{
+ font-size: 1em;
 }

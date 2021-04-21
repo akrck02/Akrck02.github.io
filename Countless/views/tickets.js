@@ -2,7 +2,7 @@ import { bar } from "../components/bar.js";
 import { months } from "../components/monthBar.js";
 import { monthTable } from "../components/monthTable.js";
 import { generateDraft } from "../core/monthTicketFill.js";
-import { create } from "../lib/component.js";
+import { create } from "../lib/GTD_Component.js";
 import { getAllTicketsService, getMonthTicketsService } from "../services/ticketService.js";
 
 /**

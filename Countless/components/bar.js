@@ -1,5 +1,5 @@
 import { settings } from "../config/settings.js";
-import { create } from "../lib/component.js";
+import { create } from "../lib/GTD_Component.js";
 
 
 export const bar = (msg) => {

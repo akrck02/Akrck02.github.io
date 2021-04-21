@@ -1,4 +1,4 @@
-import { isEmpty } from "../lib/objectToolkit.js";
+import { isEmpty } from "../lib/GTD_DataTools.js";
 import { loginService } from "../services/accessService.js";
 import { setCompany, settings, setUser } from "./settings.js";
 

@@ -1,4 +1,4 @@
-import { create } from "../lib/component.js";
+import { create } from "../lib/GTD_Component.js";
 import { changeSelectedTab, createTicketsConfig, createUserConfig } from "../views/configuration.js";
 
 export const configBar = () => {

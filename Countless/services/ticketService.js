@@ -1,5 +1,6 @@
 import { settings } from "../config/settings.js";
 import { getProperty } from "../config/userSettings.js";
+import { fetchJSON } from "../lib/GTD_EasyFetch.js";
 
 /**
  * Get tickets of a month
@@ -9,32 +10,22 @@ import { getProperty } from "../config/userSettings.js";
  */
 export function getMonthTicketsService(funct, year, month) {
   let request = {
-    token: getProperty('token'),
-    auth: getProperty('auth'),
+    token: getProperty("token"),
+    auth: getProperty("auth"),
     content: {
       year: year,
       month: month,
     },
   };
-  
-  const url = settings().API + "?getMonthTickets=" + JSON.stringify(request);
-  const method = { method: "GET" };
 
-  fetch(url, method)
-    .then((response) => {
-      if (response.ok) return response.json();
-      else return {
-          success : 'false',
-          error: '503'
-      };
-    })
-    .then((json) =>funct(json))
-    .catch(function (err) {
-        return {
-            error : err,
-            type : 'Runtime error'
-        }
-    });
+  fetchJSON({
+    url: settings().API + "?getMonthTickets=" + JSON.stringify(request),
+    request: request,
+    method: "GET",
+    success: (json) => funct(json),
+    fail: (fail) => console.log("[Fail] : " + fail),
+    error: (error) => console.log("[Error] : " + error),
+  });
 }
 
 /**
@@ -43,27 +34,16 @@ export function getMonthTicketsService(funct, year, month) {
  */
 export function getAllTicketsService(funct) {
   let request = {
-    token: getProperty('token'),
-    auth: getProperty('auth')
+    token: getProperty("token"),
+    auth: getProperty("auth"),
   };
-  
-  const url = settings().API + "?getAllTickets=" + JSON.stringify(request);
-  const method = { method: "GET" };
 
-  fetch(url, method)
-    .then((response) => {
-      if (response.ok) return response.json();
-      else return {
-          success : 'false',
-          error: '503'
-      };
-    })
-    .then((json) => funct(json))
-    .catch(function (err) {
-        return {
-            error : err,
-            type : 'Runtime error'
-        }
-    });
+  fetchJSON({
+    url: settings().API + "?getAllTickets=" + JSON.stringify(request),
+    request: request,
+    method: "GET",
+    success: (json) => funct(json),
+    fail: (json) => console.log("[Fail] : " + json),
+    error: (err) => console.log("[Error] : " + err),
+  });
 }
-

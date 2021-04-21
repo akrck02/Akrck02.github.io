@@ -2,8 +2,8 @@ import { bar } from "../components/bar.js";
 import { configBar } from "../components/configBar.js";
 import { settings } from "../config/settings.js";
 import { destroy } from "../config/userSettings.js";
-import { create } from "../lib/component.js";
-import { isEmpty } from "../lib/objectToolkit.js";
+import { create } from "../lib/GTD_Component.js";
+import { isEmpty } from "../lib/GTD_DataTools.js";
 
 /**
  * Show the calendar view

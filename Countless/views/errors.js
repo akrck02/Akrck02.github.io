@@ -1,6 +1,6 @@
 import { miniBar } from "../components/bar.js";
 import { settings } from "../config/settings.js";
-import { create } from "../lib/component.js";
+import { create } from "../lib/GTD_component.js";
 
 export const errorView = (params) => {
   const code = +params[1];

@@ -1,6 +1,6 @@
 import { load } from "./config/router.js";
 import { setSettings, settings } from "./config/settings.js";
-import { getParametersByIndex } from "./lib/urlTools.js";
+import { getParametersByIndex } from "./lib/GTD_UrlTools.js";
 
 setSettings();
 
@@ -17,4 +17,4 @@ const loadFromURL = () => {
 
 window.onload = loadFromURL;
 window.onhashchange = loadFromURL;
-
+window.addEventListener('offline', () => console.log('Became offline'));
