@@ -1,9 +1,11 @@
-import { bar } from "../components/bar.js";
-import { months } from "../components/monthBar.js";
-import { monthTable } from "../components/monthTable.js";
-import { generateDraft } from "../core/monthTicketFill.js";
-import { create } from "../lib/GTD_Component.js";
-import { getAllTicketsService, getMonthTicketsService } from "../services/ticketService.js";
+import { bar } from "../../components/bar.js";
+import { months } from "../../components/monthBar.js";
+import { monthTable } from "./monthTable.js";
+import { generateDraft } from "../../core/monthTicketFill.js";
+import { create } from "../../lib/GTD_Component.js";
+import { getAllTicketsService, getMonthTicketsService } from "../../services/ticketService.js";
+import { DOWNLOAD } from "../../lib/GTD_MaterialIcons.js";
+import { showAndroidNotification, showAndroidToast } from "../../core/androidEvents.js";
 
 /**
  * Show the tickets view
@@ -23,7 +25,25 @@ export const ticketView = (params) => {
     },
   });
 
-  const titleBar = bar("Tickets");
+  const titleBar = bar({
+    title : "Tickets",
+    options : [
+      create({
+        type : 'icon',
+        classes : ['box-center'],
+        text : DOWNLOAD({
+          fill : "#fff",
+          size : "28px" 
+        }),
+        styles : {
+          cursor : 'pointer'
+        },
+        events : {
+          click : () => showAndroidNotification("Downloading..","Your file is downloading.")
+        }
+      })
+    ]
+  });
 
   const show = create({
     type: "box",
@@ -141,7 +161,7 @@ const drawDraft = (draft, y, m) => {
     },
   });
 
-  const month_table = monthTable(draft);
+  const month_table = monthTable(draft,y,m);
   const show = document.querySelector("#show");
 
   const old_total = show.querySelector("#total");

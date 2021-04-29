@@ -1,5 +1,6 @@
 import { settings } from "../config/settings.js";
 import { create } from "../lib/GTD_Component.js";
+import { CLOCK } from "../lib/GTD_MaterialIcons.js";
 
 export const toolTip = (icon, msg, event) => {
   const comp = create({
@@ -24,15 +25,9 @@ export const toolTip = (icon, msg, event) => {
   });
 
   const img = create({
-    type: "img",
-    options: {
-      src: icon,
-      alt: "i",
-    },
-    styles: {
-      height: "15px",
-      width: "15px",
-    },
+    type: "div",
+    classes: ['box-center'],
+    text: icon
   });
 
   const text = create({

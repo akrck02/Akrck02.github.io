@@ -12,3 +12,19 @@ export const isEmpty = (object) => {
 
   return false;
 }
+
+export const exists = (object) => {
+  return !isEmpty(object);
+}
+
+export const orElse = (object, value) => {
+  return isEmpty(object) ? value : object;
+}
+
+export const jsonForEach = (object , fn) => {
+  for (const key in object) {
+    if (Object.hasOwnProperty.call(object, key)) {
+      fn(object[key]);
+    }
+  }
+}

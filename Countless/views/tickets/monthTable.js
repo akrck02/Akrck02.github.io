@@ -1,11 +1,10 @@
-import { lastday } from "../core/monthCalc.js";
-import { create } from "../lib/GTD_Component.js"
+import { lastday } from "../../core/monthCalc.js";
+import { create } from "../../lib/GTD_Component.js"
 
-export const  monthTable = (monthDraft) => {
+export const  monthTable = (monthDraft,y,m) => {
     const i = monthDraft.month;
     const info = monthDraft.info;
 
-    let y = new Date().getFullYear();
     let max_day = lastday(y,i);
   
     const table = create({

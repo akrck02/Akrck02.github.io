@@ -1,7 +1,7 @@
-import { settings, setUser } from "../config/settings.js";
-import { getProperty, isLogged, loginInApp } from "../config/userSettings.js";
-import { create } from "../lib/GTD_Component.js";
-import { isEmpty } from "../lib/GTD_DataTools.js";
+import { settings, setUser } from "../../config/settings.js";
+import { getProperty, isLogged, loginInApp } from "../../config/userSettings.js";
+import { create } from "../../lib/GTD_Component.js";
+import { isEmpty } from "../../lib/GTD_DataTools.js";
 
 /**
  * Show the login view

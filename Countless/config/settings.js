@@ -2,17 +2,19 @@ import { isEmpty } from "../lib/GTD_DataTools.js";
 import { getProperty } from "./userSettings.js";
 
 const configuration = {};
+//const host = "localhost";
+const host = "192.168.0.20";
+
+configuration.URL = "http://" + host + "/akrck02.com/countless/#/";
+configuration.REAL_URL = "http://" + host + "/akrck02.com/countless/";
+configuration.API = configuration.REAL_URL + "api/CountlessAPI.php";
+configuration.RESOURCES = configuration.REAL_URL + "resources/";
+configuration.ICONS = configuration.RESOURCES + "icons/";
 
 /**
  * Set app basic settings
  */
 export const setSettings = () => {
-    configuration.URL = "http://localhost/akrck02.com/countless/#/";
-    configuration.REAL_URL = "http://localhost/akrck02.com/countless/";
-    configuration.API = configuration.REAL_URL + "api/CountlessAPI.php";
-    configuration.RESOURCES = configuration.REAL_URL + "resources/";
-    configuration.ICONS = configuration.RESOURCES + "icons/";
-
     const user = getProperty("user");
     setUser(user);
 }

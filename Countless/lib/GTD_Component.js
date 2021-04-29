@@ -3,40 +3,110 @@
 export function create(properties){
     if(properties == undefined) properties = {};
     properties.element  =  document.createElement('div');
+
+    //inner functions
+    properties.appendChild = (e) => properties.element.appendChild(e);
     properties.appendTo =  (e) => e.appendChild(properties.element);
+    properties.clean = () => properties.element.innerHTML = '';
 
-    if(properties.type != undefined)    properties.element           = document.createElement(properties.type);
-    if(properties.id   != undefined)    properties.element.id        = properties.id;
-    if(properties.text != undefined)    properties.element.innerHTML = properties.text;
+    //check properties
+    if(properties.type)   
+        properties.element = document.createElement(properties.type);
 
-    if(properties.options    != undefined) 
-        for (const key in properties.options)  
-            properties.element.setAttribute(key,properties.options[key]);
+    if(properties.id)   
+        properties.element.id = properties.id;
 
-    if(properties.dataset    != undefined) 
-        for (const key in properties.dataset) 
-            properties.element.dataset[key] = properties.dataset[key];
+    if(properties.text)
+        properties.element.innerHTML = properties.text;
 
-    if(properties.events     != undefined) 
-        for (const key in properties.events)  
-            properties.element.addEventListener(key,properties.events[key]);
-
-    if(properties.styles != undefined) 
-        for (const key in properties.styles)  
-            properties.element.style.setProperty(key,properties.styles[key]);  
-
-    if(properties.classes != undefined) 
-        properties.classes.forEach(cl => properties.element.classList.add(cl));
+    //set properties to th element
+    setOptions(properties.element , properties.options);
+    setDataset(properties.element , properties.dataset);
+    setDataset(properties.element , properties.data);
+    setEvents(properties.element , properties.events);
+    setStyles(properties.element , properties.styles)
+    setClasses(properties.element , properties.classes);
    
-    if(properties.data != undefined) 
-    for (const key in properties.data)  
-        properties.element.dataset[key] = properties.data[key];
-
-    properties.clean = function(){properties.element.innerHTML = '';};
-
     return properties;
 } 
 
-export function set_parameter(element,variable,value){
-    element.style.setProperty("--"+variable,value);
+/**
+ * Set attributes to a DOM element
+ * @param {*} element 
+ * @param {*} options 
+ */
+export const setOptions = (element,options) => {
+    if(options) 
+        for (const key in options)  
+            element.setAttribute(key,options[key]);
+}
+
+/**
+ * Set dataset to a DOM element
+ * @param {*} element 
+ * @param {*} dataset 
+ */
+export const setDataset = (element,dataset) => {
+    if(dataset) 
+        for (const key in dataset) 
+            element.dataset[key] = dataset[key];
+}
+
+/**
+ * Set events to a DOM element
+ * @param {*} element 
+ * @param {*} events 
+ */
+export const setEvents = (element , events) =>{
+    if(events) 
+        for (const key in events)  
+            element.addEventListener(key , events[key]);
+}
+
+/**
+ * Set styles to a DOM element
+ * @param {*} element 
+ * @param {*} styles 
+ */
+export const setStyles = (element , styles) => {
+    if(styles) 
+        for (const key in styles)  
+            element.style[key] = styles[key];  
+}
+
+/**
+ * Set classes to a DOM element
+ * @param {*} element 
+ * @param {*} classes 
+ */
+export const setClasses = (element , classes) => {
+    if(classes) 
+        classes.forEach(cl => element.classList.add(cl));
+}
+
+/**
+ * Remove the NODE matching the selector
+ * @param {*} selector 
+ */
+export const remove = (selector) => {
+    const comp = document.querySelector(selector);
+    if(comp != null)
+        comp.parentNode.removeChild(comp);
+}
+
+/**
+ * Remove all the NODEs matching the selector
+ * @param {*} selector 
+ */
+export const removeAll = (selector) => {
+    const comps = document.querySelectorAll(selector);
+    if(comps != null)
+        comps.forEach(comp => comp.parentNode.removeChild(comp));
+}
+
+
+export const forAll = (selector,funct) => {
+    const comps = document.querySelectorAll(selector);
+    if(comps != null)
+        comps.forEach(comp => funct(comp));
 }

@@ -2,6 +2,7 @@
 include_once "./JSON/accessJsonService.php";
 include_once "./JSON/ticketJsonService.php";
 include_once "./JSON/eventJsonService.php";
+include_once "./JSON/productJsonService.php";
 
 function response()
 {
@@ -47,6 +48,15 @@ function response()
      */
     if (isset($_REQUEST['getLastNotifications']))
         echo "{'msg' : 'not yet implemented'}";
+
+
+    /**
+     * PRODUCT FUNCTIONS
+     */
+
+    if (isset($_REQUEST['getProducts']))
+        getProducts($_REQUEST['getProducts']);
+      
 }
 
 function checkOrigin()

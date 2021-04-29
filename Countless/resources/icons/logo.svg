@@ -1,12 +1,18 @@
-<svg width="514" height="500" viewBox="0 0 514 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0)">
-<rect width="500" height="500" rx="250" fill="#202020"/>
-<path d="M230.5 86.6667H-14.5V127.5L118.208 250L-14.5 372.5V413.333H230.5V352.083H87.5833L189.667 250L87.5833 147.917H230.5V86.6667Z" fill="white"/>
-<path d="M230.5 86.6667H-14.5V127.5L118.208 250L-14.5 372.5V413.333H230.5V352.083H87.5833L189.667 250L87.5833 147.917H230.5V86.6667Z" stroke="#202020"/>
+<svg width="580" height="580" viewBox="0 0 580 580" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d)">
+<rect x="40" y="36" width="500" height="500" rx="100" fill="#202020"/>
 </g>
+<path d="M386.658 156.5H193.553V188.75L298.151 285.5L193.553 382.25V414.5H386.658V366.125H274.013L354.473 285.5L274.013 204.875H386.658V156.5Z" fill="white"/>
+<path d="M386.658 156.5H193.553V188.75L298.151 285.5L193.553 382.25V414.5H386.658V366.125H274.013L354.473 285.5L274.013 204.875H386.658V156.5Z" stroke="#202020"/>
 <defs>
-<clipPath id="clip0">
-<rect width="514" height="500" rx="250" fill="white"/>
-</clipPath>
+<filter id="filter0_d" x="0" y="0" width="580" height="580" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="20"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+</filter>
 </defs>
 </svg>

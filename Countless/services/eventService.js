@@ -1,5 +1,5 @@
 import { settings } from "../config/settings";
-import { fetchJSON, fetchText } from "../lib/GTD_EasyFetch";
+import { fetchJSON } from "../lib/GTD_EasyFetch";
 
  export const getMonthEventService = (funct,auth,start,end) =>{
 
@@ -12,7 +12,7 @@ import { fetchJSON, fetchText } from "../lib/GTD_EasyFetch";
     };
 
     fetchJSON({
-        url : "http://localhost/akrck02.com/countless/api/CountlessAPI.php?getEventsBetween=" + JSON.stringify(request),
+        url : settings().API + "?getEventsBetween=" + JSON.stringify(request),
         method : "GET",
         request : request,
         success : (json) => funct(json),

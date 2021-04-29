@@ -1,9 +1,8 @@
-import { bar } from "../components/bar.js";
-import { create } from "../lib/GTD_Component.js";
+import { bar } from "../../components/bar.js";
+import { create } from "../../lib/GTD_Component.js";
 
-export const reservationView = (params) => {
-
-    const web_tittle = "Countless - Reservas";
+export const analiticsView = (params) => {
+    const web_tittle = "Countless - Analisis";
     window.title = web_tittle;
     document.title = web_tittle;
   
@@ -16,11 +15,13 @@ export const reservationView = (params) => {
       },
     });
   
-    const titleBar = bar("Reservas");
+    const titleBar = bar({
+      title: "Análisis"
+    });
 
     const tit = create({
       type : 'p',
-      text : 'Últimas resevas: ',
+      text : '',
       styles : {
         
       }
@@ -30,4 +31,5 @@ export const reservationView = (params) => {
     tit.appendTo(view.element);
 
     view.appendTo(document.body);
+
 }

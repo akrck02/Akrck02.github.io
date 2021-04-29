@@ -1,13 +1,14 @@
-import { homeView } from "../views/home.js";
-import { ticketView } from "../views/tickets.js";
-import { countView } from "../views/count.js";
-import { loginView } from "../views/login.js";
-import { calendarView } from "../views/calendar.js";
-import { configurationView } from "../views/configuration.js";
-import { errorView } from "../views/errors.js";
+import { homeView } from "../views/home/home.js";
+import { ticketView } from "../views/tickets/tickets.js";
+import { loginView } from "../views/login/login.js";
+import { calendarView } from "../views/calendar/calendar.js";
+import { configurationView } from "../views/configuration/configuration.js";
+import { errorView } from "../views/errors/errors.js";
+import { productView } from "../views/products/products.js";
+import { eventView } from "../views/events/events.js";
 import { settings } from "./settings.js";
 import { isLogged } from "./userSettings.js";
-import { reservationView } from "../views/reservations.js";
+import { analiticsView } from "../views/analitics/analitics.js";
 
 /**
  * Paths of the application
@@ -15,9 +16,10 @@ import { reservationView } from "../views/reservations.js";
 const PATHS = {
   home: (params) => show(homeView, params),
   tickets: (params) => show(ticketView, params),
-  count: (params) => show(countView, params),
   calendar: (params) => show(calendarView, params),
-  reservations: (params) => show(reservationView, params),
+  analitics: (params) => show(analiticsView, params),
+  events: (params) => show(eventView, params),
+  products: (params) => show(productView, params),
   config: (params) => show(configurationView, params),
   login: (params) => show(loginView, params),
   errors: (params) => show(errorView, params),
@@ -35,14 +37,17 @@ export const load = (params) => {
     case "tickets":
       PATHS.tickets(params);
       break;
-    case "count":
-      PATHS.count(params);
-      break;
     case "calendar":
       PATHS.calendar(params);
       break;
-    case "reservations":
-      PATHS.reservations(params);
+    case "events":
+      PATHS.events(params);
+      break;
+    case "products":
+      PATHS.products(params);
+      break;
+    case "analitics": 
+      PATHS.analitics(params);
       break;
     case "config":
       PATHS.config(params);
@@ -60,6 +65,14 @@ export const load = (params) => {
       location = settings().URL + "error/404/";
   }
 };
+
+/**
+ * Load Quiet view
+ * @param {*} params 
+ */
+export const loadQuiet = (params) =>  {
+  load(params);
+}
 
 /**
  * Show a view

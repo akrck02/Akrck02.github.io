@@ -1,5 +1,5 @@
-import { create } from "../lib/GTD_Component.js";
-import { changeSelectedTab, createTicketsConfig, createUserConfig } from "../views/configuration.js";
+import { create } from "../../lib/GTD_Component.js";
+import { changeSelectedTab, createTicketsConfig, createUserConfig } from "./configuration.js";
 
 export const configBar = () => {
   const comp = create({
@@ -52,27 +52,7 @@ export const configBar = () => {
     }
   });
 
-  const calendarTab = create({
-    type: "div",
-    text: 'Calendario',
-    id: "calendar",
-    classes: [
-      "tab",
-      "center_text",
-      "box-center",
-    ],
-    styles: {
-      width: "calc(100% / 5)",
-    },
-    events : {
-        click : () => {
-            
-        }
-    }
-  });
-
   userTab.appendTo(comp.element);
   ticketTab.appendTo(comp.element);
-  calendarTab.appendTo(comp.element);
   return comp;
 };

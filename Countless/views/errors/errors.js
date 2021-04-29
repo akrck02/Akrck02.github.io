@@ -1,28 +1,17 @@
-import { miniBar } from "../components/bar.js";
-import { settings } from "../config/settings.js";
-import { create } from "../lib/GTD_component.js";
+import { bar } from "../../components/bar.js";
+import { settings } from "../../config/settings.js";
+import { create } from "../../lib/GTD_component.js";
+import { HELP, SUPPORT } from "../../lib/GTD_MaterialIcons.js";
 
 export const errorView = (params) => {
   const code = +params[1];
-  console.log("Error code: " + code);
   
-  switch (code) {
-    case 0:
-    case 404:
-      showNotFound(params);
-      break;
-    default:
-      showInternalServerError(params);
-      break;
-  }
-};
-
-const showNotFound = (params) => {
-  const web_tittle = "Countless ";
+  const web_tittle = "Countless - Not found";
   window.title = web_tittle;
   document.title = web_tittle;
-
-  const bar = miniBar();
+  const navbar = bar({
+    title : "Countless"
+  });
 
   const view = create({
     type: "view",
@@ -32,16 +21,36 @@ const showNotFound = (params) => {
     },
   });
 
+  switch (code) {
+    case 0:
+    case 404:
+      showNotFound(view,params);
+      break;
+    default:
+      showInternalServerError(view,params);
+      break;
+  }
+
+  navbar.appendTo(document.body);
+  view.appendTo(document.body);
+};
+
+const showNotFound = (view,params) => {
+  const web_tittle = "Countless ";
+  window.title = web_tittle;
+  document.title = web_tittle;
+
   const img = create({
-    type: "img",
+    type: "icon",
+    classes : ['box-center'],
     styles: {
       width: "80%",
       "max-width": "150px",
     },
-    options: {
-      src: settings().ICONS + "help.svg",
-      alt: "Not found",
-    },
+    text : HELP({
+      fill : "#202020",
+      size : "100%"
+    })
   });
 
   const title = create({
@@ -65,35 +74,21 @@ const showNotFound = (params) => {
   img.appendTo(view.element);
   title.appendTo(view.element);
   button.appendTo(view.element);
-  bar.appendTo(document.body);
-  view.appendTo(document.body);
 };
 
-const showInternalServerError = (params) => {
-  const web_tittle = "Countless - Not found";
-  window.title = web_tittle;
-  document.title = web_tittle;
-
-  const bar = miniBar();
-
-  const view = create({
-    type: "view",
-    classes: ["box-center", "box-column", "onepage_app"],
-    styles: {
-      height: "92vh",
-    },
-  });
+const showInternalServerError = (view,params) => {
 
   const img = create({
-    type: "img",
+    type: "icon",
+    classes : ['box-center'],
     styles: {
       width: "80%",
       "max-width": "150px",
     },
-    options: {
-      src: settings().ICONS + "support.svg",
-      alt: "Not found",
-    },
+    text : SUPPORT({
+      fill : "#202020",
+      size : "100%"
+    })
   });
 
   const title = create({
@@ -135,6 +130,4 @@ const showInternalServerError = (params) => {
   title.appendTo(view.element);
   subtitle.appendTo(view.element);
   button.appendTo(view.element);
-  bar.appendTo(document.body);
-  view.appendTo(document.body);
 };

@@ -22,8 +22,10 @@ function get_auth_events_between_impl($conn,$auth,$start,$end){
 /**
  * Create a new event
  */
-function new_event_impl($conn,$auth,$content,$title,$show_date,$expiration_date){
-
+function new_event_impl($conn,$auth,$type,$content,$title,$date,$location){
+    $query = 'INSERT INTO ' . DB_DB . '.event(auth,type,content,title,date,location) VALUES("' . $auth . '","' . $type . '", "' . $content . '" , "'.$date.'","'.$location.'")';
+    $rs = mysqli_query($conn, $query);
+    
 
 
 

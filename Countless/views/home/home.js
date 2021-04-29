@@ -1,6 +1,7 @@
-import { bar } from "../components/bar.js";
-import { settings } from "../config/settings.js";
-import { create } from "../lib/GTD_Component.js";
+import { bar } from "../../components/bar.js";
+import { settings } from "../../config/settings.js";
+import { create } from "../../lib/GTD_Component.js";
+import { NOTIFICATIONS , CHECK } from "../../lib/GTD_MaterialIcons.js";
 
 /**
  * Show the home view
@@ -13,7 +14,7 @@ export const homeView = (params) => {
 
   const view = create({
     type: "view",
-    classes: ["main", "box-column"],
+    classes: ["main", "box-column","no_copy"],
     styles: {
       height: "100vh",
       width: "100vw",
@@ -42,7 +43,7 @@ const createNavbar = () => {
   });
 
   let n = 9;
-  if(window.innerWidth < 900) 
+  if(window.innerWidth < 1000) 
     n = 5; 
 
   const home = create({
@@ -64,9 +65,7 @@ const createNavbar = () => {
       width: "calc(100% /  " + n + ")",
     },
     events: {
-      click: () => {
-        location.href = settings().URL + "tickets/";
-      },
+      click: () => location.href = settings().URL + "tickets/"
     },
   });
 
@@ -83,16 +82,29 @@ const createNavbar = () => {
     },
   });
 
-  const reservations = create({
+  const products = create({
     type: "div",
-    text: "Reservas",
-    id: "reservations",
+    text: "Productos",
+    id: "products",
     classes: ["tab", "center_text", "box-center"],
     styles: {
       width: "calc(100% /  " + n + ")",
     },
     events: {
-      click: () => (location.href = settings().URL + "reservations/"),
+      click: () => (location.href = settings().URL + "products/"),
+    },
+  });
+
+  const analitics = create({
+    type: "div",
+    text: "Análisis",
+    id: "calendar",
+    classes: ["tab", "center_text", "box-center"],
+    styles: {
+      width: "calc(100% / " + n + ")",
+    },
+    events: {
+      click: () => (location.href = settings().URL + "analitics/"),
     },
   });
 
@@ -109,12 +121,11 @@ const createNavbar = () => {
     },
   });
 
-
-
   home.appendTo(comp.element);
   tickets.appendTo(comp.element);
   calendar.appendTo(comp.element);
-  reservations.appendTo(comp.element);
+  products.appendTo(comp.element);
+  analitics.appendTo(comp.element);
   config.appendTo(comp.element);
 
   return comp;
@@ -131,7 +142,7 @@ const createNotifications = () => {
 
   const titleBar = create({
     type: 'titleBar',
-    classes : ['box-row']
+    classes : ['box-row','box-y-center']
   });
 
   const title = create({
@@ -145,16 +156,33 @@ const createNotifications = () => {
   });
 
   const notificationsIcon = create({
-    type : 'img',
-    options : {
-      src : settings().ICONS + "notifications.svg",
-      alt : 'notifications'
+    type : 'div',
+    text : NOTIFICATIONS({
+      fill: '#404040',
+      size: '25px'
+    }), 
+  });
+
+  const noNotifications = create({
+    type: 'div',
+    classes : ['box-y-center'],
+    text : 'No tienes notificaciones. &nbsp;'+ CHECK({
+      fill: '#d9d9d9',
+      size: '25px'
+    }),
+    styles : {
+      'margin-top' : '10',
+      padding : '10px',
+      width : '300px',
+      color: '#c5c5c5',
+      'font-family' : 'Roboto Light'
     }
   });
 
   notificationsIcon.appendTo(titleBar.element);
   title.appendTo(titleBar.element);
   titleBar.appendTo(comp.element);
+  noNotifications.appendTo(comp.element);
 
 
   return comp;

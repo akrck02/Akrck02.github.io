@@ -1,9 +1,9 @@
-import { bar } from "../components/bar.js";
-import { configBar } from "../components/configBar.js";
-import { settings } from "../config/settings.js";
-import { destroy } from "../config/userSettings.js";
-import { create } from "../lib/GTD_Component.js";
-import { isEmpty } from "../lib/GTD_DataTools.js";
+import { bar } from "../../components/bar.js";
+import { configBar } from "./configBar.js";
+import { destroy } from "../../config/userSettings.js";
+import { create } from "../../lib/GTD_Component.js";
+import { isEmpty } from "../../lib/GTD_DataTools.js";
+import { LOGOUT } from "../../lib/GTD_MaterialIcons.js";
 
 /**
  * Show the calendar view
@@ -16,14 +16,16 @@ export const configurationView = (params) => {
 
   const view = create({
     type: "view",
-    classes: ["main", "box-column"],
+    classes: ["main", "box-column","no_copy"],
     styles: {
       height: "100vh",
       width: "100vw",
     },
   });
 
-  const titleBar = bar("Configuración");
+  const titleBar = bar({
+      title : "Configuración"
+    });
   const cfgBar = configBar();
 
   const config = create({
@@ -64,11 +66,9 @@ export const createUserConfig = () => {
   });
 
   const exitIcon = create({
-    type: "img",
-    options: {
-      src: settings().ICONS + "logout.svg",
-      alt: "logout",
-    },
+    text : LOGOUT({
+      size: '25px'
+    })
   });
 
   const exitMsg = create({

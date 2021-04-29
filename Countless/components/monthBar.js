@@ -9,7 +9,7 @@ export const months = () => {
         classes : ['no_copy','tab_bar','box-row'],
         styles : {
             background : 'transparent',
-            border : 'none'
+            border : 'none',
         }
     });
 
@@ -24,7 +24,8 @@ export const months = () => {
                 month : i
            },
            styles : {
-               width: 'calc(100% / 12)'
+               width: 'calc(100% / 12)',
+               'min-width' : "50px"
            }
        });
 

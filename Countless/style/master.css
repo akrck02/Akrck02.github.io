@@ -91,6 +91,7 @@ html[data-theme="dark"] {
 * {
   box-sizing: border-box;
   transition: 0.25s;
+  scroll-behavior: smooth;
 }
 *:focus {
   outline: var(--outline);
@@ -1858,10 +1859,7 @@ html[data-theme="dark"] .minimal_bar {
   --color: var(--default_hover_txt);
   border-bottom: var(--border-bottom);
 }
-.minimal_bar * {
-  --margin: 10px;
-  margin: var(--margin);
-}
+
 .tab_bar {
   --width: 100%;
   --background: var(--b3);
@@ -3153,9 +3151,9 @@ button[disabled] {
 }
 
 day dayNum.selected{
-  border: 2px solid var(--accent_color);
   color: var(--accent_color);
-  font-weight: bold;
+  border-radius: 2px !important;
+  text-align: center;
 }
 
 bar.minimal_bar{
@@ -3204,7 +3202,183 @@ day dayNum{
   width : 80px !important;
 }
 
+@media screen and (max-width : 800px) {
+  calendar {
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+  }
+  
+  day {
+    width: 100% !important;
+  }
+
+  day:not(.selectable) {
+    display: none !important;
+  }
+}
 
 event:hover{
  font-size: 1em;
+}
+
+.accent_hover:hover{
+  color: var(--accent_color) !important;
+}
+
+.accent_hover:hover svg {
+  fill: var(--accent_color) !important;
+}
+
+.eventBreakout img {
+  transform: rotate(0deg);
+}
+
+
+.eventBreakout.selected #expand svg{transform : rotate(-90deg);}
+.transitionSlow{transition: 1s;}
+.transitionNormal{transition: .5s;}
+.transitionQuick{transition: .25s;}
+
+materialinput {
+  --color: #c5c5c5;
+  --border-color: #e9e9e9;
+  width: 150px;
+  height: 60px;
+  padding: 5px;
+  margin: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+materialinput * {
+  transition: .25s;
+  COLOR: var(--color); 
+}
+
+materialInput text {
+  font-size: .8em;
+  padding: 5px;
+  position: relative;
+  top: 20px;
+  z-index: -1;
+  color: var(--color);
+}
+
+materialInput.filled text{
+  top: 0;
+}
+
+
+materialInput input {
+  position: relative;
+  z-index: 0;
+  background: transparent;
+  border: none;
+}
+
+materialinput icon {
+  margin-left: 5px;
+}
+
+materialinput icon svg {
+  fill: var(--color) !important;
+  color: var(--color) !important;
+}
+
+
+materialInput.focus { 
+  --color : var(--accent_color);
+  --border-color : var(--accent_color);
+}
+
+materialInput.focus text{
+  top: 0;
+}
+
+materialinput.error {
+ --color: var(--error_color);
+ --border-color: var(--error_color);
+}
+
+close{
+  padding: 2px;
+  position : absolute;
+  top : 0px;
+  right : 0px;
+  border-radius : 3px;
+  cursor: pointer;
+}
+
+close svg{
+  transition:  .1s;
+}
+
+close:hover svg {
+  fill: var(--error_color) ;
+}
+
+hourchooser svg:hover{
+  fill: var(--accent_color);
+}
+
+input::placeholder {
+  color : #c5c5c5;
+}
+
+materialSelect.focus {
+  --color: var(--accent_color);
+  --border-color: var(--accent_color);
+}
+
+materialSelect input::placeholder {
+    color : var(--color);
+}
+
+materialSelect {
+  --color: #c5c5c5;
+  --border-color: #e9e9e9;
+}
+
+.select_accent.selected{
+  color: #fff !important;
+  background: var(--accent_color) !important;
+}
+
+.select_accent.selected * {
+  color: #fff !important;
+}
+
+.select_accent.selected svg{
+  fill: #fff
+}
+
+productMenuItem{
+  position: relative;
+  cursor: pointer;
+}
+
+productMenuItem * {
+  transition: .25s;
+}
+
+productMenuItem:before{
+  background: var(--color);
+  border-radius: 2px;
+  position: absolute;
+  margin-left: -15px;
+  width: 5px;
+  height: 70%;
+  display: block;
+  content: "";
+  transition: .25s;
+}
+
+productMenuItem.selected>div{
+  margin-left: 5px;
+}
+
+
+productMenuItem.selected:before{
+  opacity: 1;
+  --color : var(--accent_color);
+  margin-left: -11px;
 }
