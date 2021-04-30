@@ -7,6 +7,7 @@ import { removeAll } from "./lib/GTD_Component.js";
 setSettings();
 executeAsync(
     () => {
+        //Game loop in web development uwu
         //console.warn("Checking notifications...")
     },
     2500

@@ -1,7 +1,8 @@
-import { hideTooltip } from "../../components/tooltip.js";
+import { hideTooltip, showTooltip } from "../../components/tooltip.js";
 import { settings } from "../../config/settings.js";
 import { getMonth, getWeekDay, getWeekDayLetter } from "../../core/monthCalc.js";
 import { create } from "../../lib/GTD_Component.js";
+import { CLOCK } from "../../lib/GTD_MaterialIcons.js";
 
 export const desktopCalendar = (properties) => {
 

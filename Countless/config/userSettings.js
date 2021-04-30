@@ -67,3 +67,9 @@ export const destroy = () =>{
   localStorage.removeItem("CLSS");
   location.href = settings().URL;
 }
+
+
+
+export const USER_SETTINGS = {
+  AUTH : "auth"
+}

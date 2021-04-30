@@ -80,23 +80,28 @@ export const loadQuiet = (params) =>  {
  * @param {array} params
  */
 const show = (view, params) => {
-  document.body.style.transition = "0s";
-  document.body.style.opacity = "0";
-  document.body.style.top = "-5vw";
+  try{
+    document.body.style.transition = "0s";
+    document.body.style.opacity = "0";
+    document.body.style.top = "-5vw";
 
-  if (view == loginView || view == errorView) {
-    document.body.innerHTML = "";
-    view(params);
-  } else {
-    checkLogin();
-    document.body.innerHTML = "";
-    view(params);
+    if (view == loginView || view == errorView) {
+      document.body.innerHTML = "";
+      view(params);
+    } else {
+      checkLogin();
+      document.body.innerHTML = "";
+      view(params);
+    }
+    setTimeout(() => {
+      document.body.style.transition = ".5s";
+      document.body.style.top = "0";
+      document.body.style.opacity = "1";
+    }, 150);
+  }catch(error){
+    console.error(error);
+    location.href = settings().URL + "error/500";
   }
-  setTimeout(() => {
-    document.body.style.transition = ".5s";
-    document.body.style.top = "0";
-    document.body.style.opacity = "1";
-  }, 150);
 };
 
 export const checkLogin = () => {
