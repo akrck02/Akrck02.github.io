@@ -85,6 +85,8 @@ html {
   scroll-behavior: smooth;
   -webkit-tap-highlight-color: transparent;
 }
+
+
 html[data-theme="dark"] {
   --bg: #202020;
   --b2: #151515;
@@ -103,6 +105,7 @@ html[data-theme="dark"] {
 *:focus {
   outline: var(--outline);
 } /*ELEMENT OPTIONS*/
+
 body {
   position: relative;
   background: var(--bg);
@@ -3248,7 +3251,8 @@ event:hover{
 materialinput {
   --color: #c5c5c5;
   --border-color: #e9e9e9;
-  width: 150px;
+  --scale: 1;
+  min-width: 150px;
   height: 60px;
   padding: 5px;
   margin: 15px;
@@ -3261,7 +3265,7 @@ materialinput * {
 }
 
 materialInput text {
-  font-size: .8em;
+  font-size: calc(.8em * var(--scale));
   padding: 5px;
   position: relative;
   top: 20px;
@@ -3273,10 +3277,20 @@ materialInput.filled text{
   top: 0;
 }
 
+input{
+  -webkit-appearance: none;
+}
+input::-webkit-inner-spin-button,
+input::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
 
 materialInput input {
   position: relative;
   z-index: 0;
+  width: 100%;
+  font-size: calc(1em * var(--scale));
   background: transparent;
   border: none;
 }
@@ -3289,7 +3303,12 @@ materialinput icon svg {
   fill: var(--color) !important;
   color: var(--color) !important;
 }
-
+ materialInput:not(.filled) input {
+  color: transparent;
+ } 
+ materialInput.focus:not(.filled) input , materialInput.filled input {
+  color: var(--color);
+ } 
 
 materialInput.focus { 
   --color : var(--accent_color);

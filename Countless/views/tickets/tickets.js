@@ -6,6 +6,7 @@ import { create } from "../../lib/GTD_Component.js";
 import { getAllTicketsService, getMonthTicketsService } from "../../services/ticketService.js";
 import { DOWNLOAD } from "../../lib/GTD_MaterialIcons.js";
 import { showAndroidNotification, showAndroidToast } from "../../core/androidEvents.js";
+import { ticketForm } from "./ticketForm.js";
 
 /**
  * Show the tickets view
@@ -144,13 +145,13 @@ const showTickets = (y, m) => {
     y,
     m + 1
   ); 
-  getAllTicketsService((json) => console.log(json));
+  //getAllTicketsService((json) => console.log(json));
 };
 
 const drawDraft = (draft, y, m) => {
   const total = create({
     type: "h3",
-    text: "Total : " + 0.0 + "€",
+    text: "Total mes: " + 0.0 + "€",
     id: "total",
     styles: {
       color: "#c5c5c5",
@@ -161,11 +162,12 @@ const drawDraft = (draft, y, m) => {
     },
   });
 
-  const month_table = monthTable(draft,y,m);
+  const form = ticketForm(draft,y,m);
+  //const form = monthTable(draft,y,m);
   const show = document.querySelector("#show");
 
   const old_total = show.querySelector("#total");
-  const old_table = show.querySelector("#monthTable");
+  const old_table = show.querySelector("#ticketform");
 
   if (old_total != null) old_total.style.opacity = "0";
   if (old_table != null) old_table.style.opacity = "0";
@@ -176,10 +178,10 @@ const drawDraft = (draft, y, m) => {
   }, 100);
 
   total.appendTo(show);
-  month_table.appendTo(show);
+  form.appendTo(show);
 
   setTimeout(() => {
     total.element.style.opacity = 1;
-    month_table.element.style.opacity = 1;
+    form.element.style.opacity = 1;
   }, 300);
 };

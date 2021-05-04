@@ -13,7 +13,10 @@ export const COMPONENT_TYPES = {
     OPTION : "option",   
     WRAPPER : "wrapper",   
     
+    //COUNTLESS COMPONENTS
+    MATERIAL_INPUT : "materialInput",
 
     //STANDARD HTML
     IMG : "img",
+    INPUT : "input",
 }
