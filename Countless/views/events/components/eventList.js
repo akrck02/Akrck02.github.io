@@ -1,7 +1,7 @@
 import { create } from "../../../lib/GTD_Component.js";
 import { NO_EVENT } from "../../../lib/GTD_MaterialIcons.js";
 import { isSmallDevice } from "../../../lib/GTD_ResponsiveTools.js";
-import { eventBreakout } from "./eventBreakOut.js";
+import { eventBreakout } from "./eventBreakout.js";
 
 /**
  * Create a list

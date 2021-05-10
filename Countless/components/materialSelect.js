@@ -1,6 +1,6 @@
-import { create, removeAll, setEvents } from "../lib/GTD_Component";
-import { isEmpty, orElse } from "../lib/GTD_DataTools";
-import { EXPAND } from "../lib/GTD_MaterialIcons";
+import { create, removeAll, setEvents } from "../lib/GTD_Component.js";
+import { isEmpty, orElse } from "../lib/GTD_DataTools.js";
+import { EXPAND } from "../lib/GTD_MaterialIcons.js";
 
 const getMatchingOptions = (list,text) => {
     let options = []

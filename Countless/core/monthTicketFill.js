@@ -35,7 +35,7 @@ export const fillJsonWithDrafts = (json, year) => {
       company: settings().COMPANY,
       lastID: 0,
       info: {},
-      total: 0,
+      total: '0.00',
     };
   
     const last = lastday(y, m);

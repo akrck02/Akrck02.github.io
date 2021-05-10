@@ -1,4 +1,9 @@
 
+/**
+ * Gettmonth name
+ * @param {*} index 
+ * @returns 
+ */
 export const getMonth = (index) => {
     switch (index) {
         case 0: return "Enero";
@@ -17,6 +22,11 @@ export const getMonth = (index) => {
     }
 }
 
+/**
+ * Get week day
+ * @param {*} index 
+ * @returns 
+ */
 export const getWeekDay = (index) => {
     switch (index) {
         case 0: return "Lunes";
@@ -30,7 +40,11 @@ export const getWeekDay = (index) => {
     }
 }
 
-
+/**
+ * Get week dey letter 
+ * @param {*} index 
+ * @returns 
+ */
 export const getWeekDayLetter = (index) => {
     switch (index) {
         case 0: return "L";
@@ -44,14 +58,31 @@ export const getWeekDayLetter = (index) => {
     }
 }
 
+/**
+ * Get week day index
+ * @param {*} year 
+ * @param {*} month 
+ * @param {*} day 
+ * @returns The weekday index
+ */
+export const getWeekDayIndex = (year,month,day) =>{
+    const date = new Date(year,month,day);
+    return date.getDay();
+}
+
 
 
 /**
  * Get the last day of a month
- * @param {*} y  - The year
- * @param {*} m  - The month
+ * @param {*} year  - The year
+ * @param {*} month  - The month
  * @returns The last day of the given month
  */
-export const lastday = (y,m) => {
-    return  new Date(y, m +1, 0).getDate();
+export const lastday = (year,month) => {
+    return  new Date(year, month +1, 0).getDate();
 }
+
+
+export const currentDay = () => new Date().getDate();
+export const currentMonth = () => new Date().getMonth();
+export const currentYear = () => new Date().getFullYear();

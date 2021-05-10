@@ -1,6 +1,6 @@
 import { bar } from "../../components/bar.js";
 import { settings } from "../../config/settings.js";
-import { create } from "../../lib/GTD_component.js";
+import { create } from "../../lib/GTD_Component.js";
 import { HELP, SUPPORT } from "../../lib/GTD_MaterialIcons.js";
 
 export const errorView = (params) => {

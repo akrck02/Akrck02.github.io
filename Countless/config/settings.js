@@ -2,8 +2,8 @@ import { isEmpty } from "../lib/GTD_DataTools.js";
 import { getProperty } from "./userSettings.js";
 
 const configuration = {};
-//const host = "localhost";
-const host = "192.168.0.20";
+const host = "localhost";
+//const host = "192.168.0.20";
 
 configuration.URL = "http://" + host + "/akrck02.com/countless/#/";
 configuration.REAL_URL = "http://" + host + "/akrck02.com/countless/";

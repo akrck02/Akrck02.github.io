@@ -6,6 +6,10 @@ export const STYLES = {
         ACCENT : "var(--accent_color)" ,
         BLACK : "var(--Countless)" ,
         SOFT_BLACK : "var(--soft-black)" ,
+        SUCCESS : "var(--success_color)" ,
+        ERROR : "var(--error_color)" ,
+        INFO : "var(--info_color)" ,
+        WARNING : "var(--warning_color)" ,
     },
     FONTS : {
         ROBOTO : "Roboto",

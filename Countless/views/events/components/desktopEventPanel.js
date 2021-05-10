@@ -2,7 +2,7 @@ import { create } from "../../../lib/GTD_Component.js";
 import { CLOCK, EVENTS, INFO, LOCATION, SAVE } from "../../../lib/GTD_MaterialIcons.js";
 import { materialInput } from "../../../components/materialInput.js";
 import { materialSelect } from "../../../components/materialSelect.js";
-import { materialHourChooser } from "../../../components/materialHourHandler";
+import { materialHourChooser } from "../../../components/materialHourHandler.js";
 import { COMPONENT_TYPES } from "../../../config/constants/components.js";
 import { CLASSES } from "../../../lib/BubbleClasses.js";
 import { EVENT_BUNDLE } from "../bundles/bundle_es.js";

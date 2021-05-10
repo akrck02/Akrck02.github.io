@@ -1,6 +1,6 @@
-import { settings } from "../../config/settings";
-import { create } from "../../lib/GTD_Component";
-import { jsonForEach } from "../../lib/GTD_DataTools";
+import { settings } from "../../config/settings.js";
+import { create } from "../../lib/GTD_Component.js";
+import { jsonForEach } from "../../lib/GTD_DataTools.js";
 
 export const mobileCalendar = (properties) => {
   const calendar = create({

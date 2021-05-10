@@ -37,6 +37,7 @@ export const materialInput = (properties) => {
     options: {
       placeholder: orElse(properties.placeholder, ""),
       type: orElse(properties.type, "text"),
+      value : properties.default ? properties.default : ""
     },
     events: events,
   });
@@ -103,6 +104,11 @@ export const materialInput = (properties) => {
 
   title.appendTo(comp.element);
   inputRow.appendTo(comp.element);
+
+  //functions
+  comp.getInput = () => input.element;
+  comp.getValue = () => input.element.value;
+  comp.clear = () => input.element.value = '';
 
   return comp;
 };

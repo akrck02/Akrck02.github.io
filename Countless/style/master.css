@@ -2030,7 +2030,7 @@ html[data-theme="dark"] .tab_bar {
 .prettyTable .prettyTableData {
   --background: var(--b3);
   --text-align: center;
-  background: var(--background);
+
   text-align: var(--text-align);
 }
 .prettyTable .prettyTableHeader {
@@ -2980,6 +2980,11 @@ html[data-theme="dark"] .tab_bar {
   display: flex;
   flex-direction: row;
 }
+
+.box-row-reverse {
+  display: flex;
+  flex-direction: row-reverse;
+}
 .b-fr {
   --n: 1;
   width: calc(100% / var(--n));
@@ -3406,4 +3411,13 @@ productMenuItem.selected:before{
   opacity: 1;
   --color : var(--accent_color);
   margin-left: -11px;
+}
+
+.hover_gray:hover { 
+  background: #f0f0f0;
+}
+
+
+#minicalendar .day.selected {
+  color: var(--accent_color)
 }

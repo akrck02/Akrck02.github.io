@@ -1,12 +1,14 @@
 import { bar } from "../../components/bar.js";
 import { months } from "../../components/monthBar.js";
-import { monthTable } from "./monthTable.js";
+import { showAndroidNotification } from "../../core/androidEvents.js";
 import { generateDraft } from "../../core/monthTicketFill.js";
 import { create } from "../../lib/GTD_Component.js";
-import { getAllTicketsService, getMonthTicketsService } from "../../services/ticketService.js";
-import { DOWNLOAD } from "../../lib/GTD_MaterialIcons.js";
-import { showAndroidNotification, showAndroidToast } from "../../core/androidEvents.js";
+import { DOWNLOAD, SAVE } from "../../lib/GTD_MaterialIcons.js";
+import { getMonthTicketsService } from "../../services/ticketService.js";
+import { STYLES } from "../configuration/styles.js";
 import { ticketForm } from "./ticketForm.js";
+
+export let draft;
 
 /**
  * Show the tickets view
@@ -40,7 +42,28 @@ export const ticketView = (params) => {
           cursor : 'pointer'
         },
         events : {
-          click : () => showAndroidNotification("Downloading..","Your file is downloading.")
+          click : () =>{
+            showAndroidNotification("Downloading..","Your file is downloading.");
+          }
+        }
+      }),
+      create({
+        type : 'icon',
+        classes : ['box-center'],
+        text : SAVE({
+          fill : "#fff",
+          size : "25px" 
+        }),
+        styles : {
+          margin : '15px',
+          cursor : 'pointer'
+        },
+        events : {
+          click : () =>{
+            console.info("Saving...");
+            console.info(draft);
+            document.querySelector("#status").style['borderColor'] = STYLES.COLORS.SUCCESS;
+          }
         }
       })
     ]
@@ -64,6 +87,7 @@ export const ticketView = (params) => {
       width: "100px", 
       border: "none",
       background: "transparent",
+      cursor : "pointer"
     },
     events: {
       change: (e) => {
@@ -84,21 +108,59 @@ export const ticketView = (params) => {
 
   const months_title = create({
     type: "h2",
+    id : 'status',
     text: "Meses contables:",
     styles: {
-      "border-left" : "4px solid var(--success_color)",
+      "border-left" : "4px solid " + STYLES.COLORS.ERROR,
       "font-family": "Roboto thin",
       'padding-left' : "10px"
     },
   });
+
+  const optionBar = create({
+    classes : ['box-row','box-x-start']
+  });
+
+  const regime_dropdown = create({
+    type: "select",
+    id: "selectRegime",
+    styles: {
+      display: "block",
+      width: "100px", 
+      marginLeft : "10px",
+      border: "none",
+      background: "transparent",
+      cursor : "pointer"
+    },
+    events: {
+      change: (e) => {
+        const select = e.target;
+        const option = select.options[select.selectedIndex];
+        //showTickets(+option.value, +monthTab.dataset.month);
+      },
+    },
+  });
+
+  create({
+    type: "option",
+    text: "Masajes",
+  }).appendTo(regime_dropdown.element);
+
+  create({
+    type: "option",
+    text: "Estética",
+  }).appendTo(regime_dropdown.element);
 
   const months_bar = months();
 
   titleBar.appendTo(view.element);
   show.appendTo(view.element);
 
+  year_dropdown.appendTo(optionBar.element);
+  regime_dropdown.appendTo(optionBar.element);
+
   months_title.appendTo(show.element);
-  year_dropdown.appendTo(show.element);
+  optionBar.appendTo(show.element);
   months_bar.appendTo(show.element);
   view.appendTo(document.body);
 
@@ -137,7 +199,7 @@ const prepareEvents = () => {
 const showTickets = (y, m) => {
   getMonthTicketsService(
     (json) => {
-      let draft = {};
+      draft = {};
       if (json.success) draft = json.json;
       else draft = generateDraft(y, m);
       drawDraft(draft, draft.year, draft.month);
@@ -145,43 +207,19 @@ const showTickets = (y, m) => {
     y,
     m + 1
   ); 
-  //getAllTicketsService((json) => console.log(json));
 };
 
 const drawDraft = (draft, y, m) => {
-  const total = create({
-    type: "h3",
-    text: "Total mes: " + 0.0 + "€",
-    id: "total",
-    styles: {
-      color: "#c5c5c5",
-      "font-family": "Roboto thin",
-      "margin-left": "20px",
-      opacity: "0",
-      transition: "1.2s",
-    },
-  });
-
   const form = ticketForm(draft,y,m);
-  //const form = monthTable(draft,y,m);
   const show = document.querySelector("#show");
-
-  const old_total = show.querySelector("#total");
   const old_table = show.querySelector("#ticketform");
 
-  if (old_total != null) old_total.style.opacity = "0";
   if (old_table != null) old_table.style.opacity = "0";
 
   setTimeout(() => {
-    if (old_total != null) show.removeChild(old_total);
     if (old_table != null) show.removeChild(old_table);
   }, 100);
-
-  total.appendTo(show);
   form.appendTo(show);
 
-  setTimeout(() => {
-    total.element.style.opacity = 1;
-    form.element.style.opacity = 1;
-  }, 300);
+  setTimeout(() => form.element.style.opacity = 1, 300);
 };

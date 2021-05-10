@@ -1,5 +1,5 @@
-import { settings } from "../config/settings";
-import { fetchJSON } from "../lib/GTD_EasyFetch";
+import { settings } from "../config/settings.js";
+import { fetchJSON } from "../lib/GTD_EasyFetch.js";
 
  export const getMonthEventService = (funct,auth,start,end) =>{
 
