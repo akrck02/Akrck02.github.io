@@ -2,8 +2,14 @@ import { CLASS } from "../../core/css.js";
 import { create } from "../../lib/GTD_Component.js";
 import { SEARCH } from "../../lib/GTD_MaterialIcons.js";
 import { PROJECTS } from "../../res/projects.js";
+import { SETTINGS } from "../../settings/settings.js";
 
 export const codeV = (params) => {
+
+  let title = SETTINGS.APP_NAME + " - Projects";
+  window.title = title;
+  document.title = title;
+
   const view = create({
     classes: [CLASS.BOX_ROW, CLASS.BOX_X_START, CLASS.BOX_Y_CENTER],
     styles: {

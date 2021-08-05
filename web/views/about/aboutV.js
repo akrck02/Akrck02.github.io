@@ -2,9 +2,14 @@ import { CLASS } from "../../core/css.js";
 import { create } from "../../lib/GTD_Component.js";
 import { FAVORITE } from "../../lib/GTD_MaterialIcons.js";
 import { GITHUB, TWITCH, TWITTER, YOUTUBE } from "../../res/icons.js";
-import { AKRCK02 } from "../../settings/settings.js";
+import { AKRCK02, SETTINGS } from "../../settings/settings.js";
 
 export const aboutV = (params) => {
+
+  let title = SETTINGS.APP_NAME + " - About me";
+  window.title = title;
+  document.title = title;
+
   const view = create({
     classes: [CLASS.BOX_COLUMN, CLASS.BOX_X_CENTER, CLASS.BOX_Y_CENTER],
     styles: {
@@ -19,7 +24,7 @@ export const aboutV = (params) => {
     fill: "#2F80ED",
   });
 
-  const title = create({
+  const main_title = create({
     text: "ABOUT ME " + love,
     classes: [CLASS.H1],
     styles: {
@@ -115,7 +120,7 @@ export const aboutV = (params) => {
   twitch.appendTo(social_media_box);
   youtube.appendTo(social_media_box);
 
-  title.appendTo(view);
+  main_title.appendTo(view);
   text.appendTo(view);
   social_media_box.appendTo(view);
 
