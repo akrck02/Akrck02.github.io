@@ -1,8 +1,11 @@
 import { SETTINGS } from "../settings/settings.js";
 import { errorV } from "./error/errorV.js";
 import { homeV } from "./home/homeV.js";
-import { projectsV } from "./projects/projectsV.js";
 import { consoleV } from "./console/consoleV.js";
+import { gamesV } from "./games/gamesV.js";
+import { mediaV } from "./media/mediaV.js";
+import { aboutV } from "./about/aboutV.js";
+import { codeV } from "./code/codeV.js";
 
 
 /**
@@ -10,7 +13,11 @@ import { consoleV } from "./console/consoleV.js";
  */
  const PATHS = {
     home: (params) => show(homeV, params),
-    projects: (params) => show(projectsV, params),
+    code: (params) => show(codeV, params),
+    games: (params) => show(gamesV, params),
+    media: (params) => show(mediaV, params),
+    about: (params) => show(aboutV, params),
+
     error: (params) => show(errorV, params),
     console: (params) => show(consoleV, params),
   };
@@ -22,7 +29,7 @@ import { consoleV } from "./console/consoleV.js";
       view(params);
     } catch (error) {
       console.error(error);
-      location.href = SETTINGS.URL + "#/error/500";
+      location.href = SETTINGS.URL + "error/500";
     }
   };
   
@@ -32,22 +39,37 @@ import { consoleV } from "./console/consoleV.js";
    */
    export const load = (params) => {
       switch (params[0]) {
+
+        /* Views */
         case undefined:
         case "":
         case "home":
           PATHS.home(params);
           break;
-        case "projects":
-          PATHS.projects(params);
+        case "code":
+          PATHS.code(params);
           break;
+        case "games":
+          PATHS.games(params);
+          break;
+        case "media":
+          PATHS.media(params);
+          break;
+        case "about":
+          PATHS.about(params);
+          break;
+
+        /* Debuging tools */
         case "error":
           PATHS.error(params);
           break;
         case "console":
           PATHS.console(params);
           break;
+
+        /* Default state (Not found) */
         default:
           console.log(params);
-          location = SETTINGS.URL + "#/error/404/";
+          location = SETTINGS.URL + "error/404/";
       }
     };

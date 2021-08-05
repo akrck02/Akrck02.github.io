@@ -61,3 +61,39 @@
 .lss_button:hover *{
     color: #2F80ED  !important;
 }
+
+
+.home_button {
+    --accent_color :#2F80ED;
+    display: flex;
+    flex-direction: column;
+    height : 100px;
+    max-width : 200px;
+    min-width : 70px;
+    border-radius : 5px;
+    justify-content : space-between;
+    align-items : center;
+    padding : 10px;
+    cursor: pointer;
+    border: none;
+    transition: .35s;
+    justify-content: center;
+    align-items: center;
+}
+
+.home_button svg{
+    transition: .1s;
+}
+
+.home_button:hover, .home_button:active, .home_button:focus {
+    color: var(--accent_color);
+    outline: none;
+}
+
+.home_button:hover svg , .home_button:active svg, .home_button:focus svg {
+    fill: var(--accent_color);
+}
+
+.home_button:hover div, .home_button:active div, .home_button:focus div {
+    color: var(--accent_color) !important;
+}
