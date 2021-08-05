@@ -12,6 +12,9 @@ export const setUp = () => {
   SETTINGS.URL = SETTINGS.HOST + "#/";
 
   AKRCK02.GITHUB = "https://Github.com/Akrck02/";
+  AKRCK02.TWITTER = "https://twitter.com/Akrck_02/";
+  AKRCK02.TWITCH = "https://www.twitch.tv/akrck02/";
+  AKRCK02.YOUTUBE = "https://www.youtube.com/channel/UC4aP0PZoBiCIiM2NmBnxGbw";
 
   /** Setting up paths */
   PATHS.ROOT = SETTINGS.HOST + "/";
