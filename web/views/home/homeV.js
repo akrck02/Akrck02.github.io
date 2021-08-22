@@ -2,8 +2,8 @@ import { materialIconButton } from "../../components/material_icon_button.js";
 import { CLASS } from "../../core/css.js";
 import { create } from "../../lib/GTD_Component.js";
 import { CODE, FAVORITE, GAME, PLAY } from "../../lib/GTD_MaterialIcons.js";
-import { isSmallDevice } from "../../lib/GTD_ResponsiveTools.js";
-import { VIEWS } from "../../settings/settings.js";
+import { isShortDevice, isSmallDevice } from "../../lib/GTD_ResponsiveTools.js";
+import { PATHS, VIEWS } from "../../settings/settings.js";
 
 export const homeV = () => {
   const view = create({
@@ -11,17 +11,35 @@ export const homeV = () => {
     styles: {
       width: "100%",
       height: "100%",
-      backgroundColor: "#ffffff",
+      background: "URL('" + PATHS.IMAGES + "Wallpaper.png')",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover"
+    },
+  });
+
+  const logo = create({
+    type: "img",
+    options: {
+      src: PATHS.IMAGES + "logo.svg",
+      alt: "Logo",
+    },
+    styles: {
+      maxHeight: isShortDevice()? "35vh" : "50vh",
     },
   });
 
   const title = create({
     type: "h1",
-    text: "Akrck02.com",
+    text: "Akrck02",
     classes: [CLASS.H1, CLASS.TEXT_CENTER],
     styles: {
+      fontFamily: "Caesar dressing",
+      fontWeight: "400",
       padding: "10px",
-      fontSize: "2.5em",
+      fontSize: "3em",
+      margin: "0 3px",
+      color: '#fff'
     },
   });
 
@@ -31,10 +49,12 @@ export const homeV = () => {
 
   const code_button = materialIconButton({
     icon: CODE({
-      size: isSmallDevice()? 28 : 40,
-      fill: "#404040",
+      size: isSmallDevice() || isShortDevice() ? 28 : 40,
+      fill: "#fff",
     }),
     title : "Code",
+    color: "#fff",
+    accent : "#fff",
     index : 1,
     events: {
       click : () => location.href = VIEWS.CODE
@@ -42,11 +62,12 @@ export const homeV = () => {
   });
   const game_button = materialIconButton({
     icon: GAME({
-      size: isSmallDevice()? 28 : 40,
-      fill: "#404040",
+      size: isSmallDevice() || isShortDevice() ? 28 : 40,
+      fill: "#fff",
     }),
     title : "Games",
-    accent : "#EB5757",
+    color: "#fff",
+    accent : "#fff",
     index : 2,
     events: {
       click : () => location.href = VIEWS.GAMES
@@ -54,11 +75,12 @@ export const homeV = () => {
   });
   const media_button = materialIconButton({
     icon: PLAY({
-      size: isSmallDevice()? 28 : 40,
-      fill: "#404040",
+      size: isSmallDevice() || isShortDevice() ? 28 : 40,
+      fill: "#fff",
     }),
     title : "Media",
-    accent : "#219653",
+    color: "#fff",
+    accent : "#fff",
     index : 3,
     events: {
       click : () => location.href = VIEWS.MEDIA
@@ -66,11 +88,12 @@ export const homeV = () => {
   });
   const about_us_button = materialIconButton({
     icon: FAVORITE({
-      size: isSmallDevice()? 28 : 40,
-      fill: "#404040",
+      size: isSmallDevice() || isShortDevice() ? 28 : 40,
+      fill: "#fff",
     }),
     title : "About me",
-    accent : "#D96BCE",
+    color: "#fff",
+    accent : "#fff",
     index : 4,
     events: {
       click : () => location.href = VIEWS.ABOUT
@@ -102,6 +125,7 @@ export const homeV = () => {
 
   text.appendTo(footer);
 
+  logo.appendTo(view.element);
   title.appendTo(view.element);
   button_box.appendTo(view.element);
   footer.appendTo(view.element);

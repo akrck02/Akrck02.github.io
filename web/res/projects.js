@@ -32,3 +32,15 @@ export const PROJECTS = () => {
     },
   };
 };
+
+//returns a set of languages from all projects and filters repeated languages
+export const getLanguages = () => {
+  const projects = PROJECTS();
+  const languages = {};
+  for (const project in projects) {
+    for (const lang in projects[project].langs) {
+      languages[projects[project].langs[lang]] = true;
+    }
+  }
+  return Object.keys(languages);
+}

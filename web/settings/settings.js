@@ -17,7 +17,7 @@ export const setUp = () => {
   AKRCK02.YOUTUBE = "https://www.youtube.com/channel/UC4aP0PZoBiCIiM2NmBnxGbw";
 
   /** Setting up paths */
-  PATHS.ROOT = SETTINGS.HOST + "/";
+  PATHS.ROOT = SETTINGS.HOST;
   PATHS.RESOURCES = PATHS.ROOT + "resources/";
   PATHS.IMAGES = PATHS.RESOURCES + "images/";
   PATHS.FONTS = PATHS.RESOURCES + "fonts/";
@@ -29,7 +29,7 @@ export const setUp = () => {
   /** Setting up views */
   VIEWS.URL = SETTINGS.URL;
   VIEWS.CODE = VIEWS.URL + "code/";
-  VIEWS.GAMES = VIEWS.URL + "games/";
+  VIEWS.GAMES = VIEWS.URL + "nightlight/";
   VIEWS.MEDIA = VIEWS.URL + "media/";
   VIEWS.ABOUT = VIEWS.URL + "about/";
   VIEWS.HOME = VIEWS.URL + "home/";

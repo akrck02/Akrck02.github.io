@@ -6,6 +6,13 @@
 export const isSmallDevice = () =>{
     return  window.matchMedia("only screen and (max-width: 760px)").matches;
 }
+/**
+ * Get if is small device
+ * @returns 
+ */
+ export const isShortDevice = () =>{
+    return  window.matchMedia("only screen and (max-height: 460px)").matches;
+}
 
 
 /**

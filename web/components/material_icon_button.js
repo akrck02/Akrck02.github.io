@@ -22,7 +22,7 @@ export const materialIconButton = (properties) => {
     text: properties.title,
     styles: {
       fontSize: isSmallDevice()? ".9em" : "1.2em",
-      fontWeight: "bold",
+      fontWeight: properties.bold ? "bold" : "",
       color: properties.color || "#404040"
     },
   });

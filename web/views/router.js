@@ -2,10 +2,10 @@ import { SETTINGS } from "../settings/settings.js";
 import { errorV } from "./error/errorV.js";
 import { homeV } from "./home/homeV.js";
 import { consoleV } from "./console/consoleV.js";
-import { gamesV } from "./games/gamesV.js";
 import { mediaV } from "./media/mediaV.js";
 import { aboutV } from "./about/aboutV.js";
 import { codeV } from "./code/codeV.js";
+import { start as nightlight } from "../../nightlight/app.js";
 
 
 /**
@@ -17,6 +17,8 @@ import { codeV } from "./code/codeV.js";
     games: (params) => show(gamesV, params),
     media: (params) => show(mediaV, params),
     about: (params) => show(aboutV, params),
+
+    nightlight: (params) => show(nightlight, params),
 
     error: (params) => show(errorV, params),
     console: (params) => show(consoleV, params),
@@ -49,14 +51,17 @@ import { codeV } from "./code/codeV.js";
         case "code":
           PATHS.code(params);
           break;
-        case "games":
-          PATHS.games(params);
-          break;
         case "media":
           PATHS.media(params);
           break;
         case "about":
           PATHS.about(params);
+          break;
+
+        /* Special sites */
+        case "games":
+        case "nightlight":
+          PATHS.nightlight(params);
           break;
 
         /* Debuging tools */

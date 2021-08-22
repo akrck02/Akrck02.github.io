@@ -1,8 +1,9 @@
 import { CLASS } from "../../core/css.js";
 import { create } from "../../lib/GTD_Component.js";
 import { FAVORITE } from "../../lib/GTD_MaterialIcons.js";
+import { isShortDevice, isSmallDevice } from "../../lib/GTD_ResponsiveTools.js";
 import { GITHUB, TWITCH, TWITTER, YOUTUBE } from "../../res/icons.js";
-import { AKRCK02, SETTINGS } from "../../settings/settings.js";
+import { AKRCK02, PATHS, SETTINGS } from "../../settings/settings.js";
 
 export const aboutV = (params) => {
 
@@ -14,14 +15,32 @@ export const aboutV = (params) => {
     classes: [CLASS.BOX_COLUMN, CLASS.BOX_X_CENTER, CLASS.BOX_Y_CENTER],
     styles: {
       width: "100%",
+      minHeight:  "100%",
+      overflowY: "auto",
+      background: "URL('" + PATHS.IMAGES + "Wallpaper.png')",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover"
+    },
+  });
+
+  let height = "auto";
+  height = isShortDevice() ? "100%" : height;
+
+  const content = create({
+    classes: [CLASS.BOX_COLUMN, CLASS.BOX_X_CENTER, CLASS.BOX_Y_CENTER],
+    styles: {
+      width: "100%",
       minHeight: "100%",
-      backgroundColor: "#ffffff",
+      height: height,
+      background: "RGBA(255,255,255,0.5)",
+      paddingTop: "15px",
     },
   });
 
   const love = FAVORITE({
     size: 24,
-    fill: "#2F80ED",
+    fill: "#202020",
   });
 
   const main_title = create({
@@ -46,7 +65,7 @@ export const aboutV = (params) => {
       <br>
       I founded a small company called <b>Nightlight Studios</b> that is currently working on a game called <b>Starlight</b>. </br>
       <br>
-      <b>I love GNU/linux and open source</b> so I let most of my code open on <b><a href=${AKRCK02.GITHUB}>github</a></b>
+      <b>I love GNU/linux and open source</b> so I let most of my code open on <b><a style="color:#202020" href=${AKRCK02.GITHUB}>github</a></b>
       `,
   });
 
@@ -61,7 +80,7 @@ export const aboutV = (params) => {
 
   const twitter = create({
     text: TWITTER({
-      fill: "#2F80ED",
+      fill: "#202020",
       size: 32,
     }),
     styles: {
@@ -75,7 +94,7 @@ export const aboutV = (params) => {
 
   const github = create({
     text: GITHUB({
-      fill: "#404040",
+      fill: "#202020",
       size: 32,
     }),
     styles: {
@@ -89,7 +108,7 @@ export const aboutV = (params) => {
 
   const twitch = create({
     text: TWITCH({
-      fill: "#9147ff",
+      fill: "#202020",
       size: 32,
     }),
     styles: {
@@ -103,7 +122,7 @@ export const aboutV = (params) => {
 
   const youtube = create({
     text: YOUTUBE({
-      fill: "#f00",
+      fill: "#202020",
       size: 32,
     }),
     styles: {
@@ -120,9 +139,10 @@ export const aboutV = (params) => {
   twitch.appendTo(social_media_box);
   youtube.appendTo(social_media_box);
 
-  main_title.appendTo(view);
-  text.appendTo(view);
-  social_media_box.appendTo(view);
+  main_title.appendTo(content.element);
+  text.appendTo(content.element);
+  social_media_box.appendTo(content.element);
 
+  content.appendTo(view);
   view.appendTo(document.body);
 };
