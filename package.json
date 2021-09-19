@@ -4,7 +4,8 @@
   "description": "Akrck02's personal website",
   "main": "webpack.config.js",
   "scripts": {
-    "dist": "webpack"
+    "dist": "webpack",
+    "watch": "webpack -w"
   },
   "repository": {
     "type": "git",
