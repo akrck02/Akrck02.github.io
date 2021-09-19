@@ -1,0 +1,29 @@
+{
+  "name": "akrck02.com",
+  "version": "1.0.0",
+  "description": "Akrck02's personal website",
+  "main": "webpack.config.js",
+  "scripts": {
+    "dist": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akrck02/Akrck02.com.git"
+  },
+  "keywords": [
+    "web",
+    "singlepage",
+    "javascript"
+  ],
+  "author": "akrck02",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/akrck02/Akrck02.com/issues"
+  },
+  "homepage": "https://github.com/akrck02/Akrck02.com#readme",
+  "dependencies": {
+    "cli": "^1.0.1",
+    "webpack": "^5.48.0",
+    "webpack-cli": "^4.7.2"
+  }
+}
