@@ -8,7 +8,7 @@ export const setUp = () => {
   /** Setting up general parameters */
   SETTINGS.APP_NAME = "Akrck02.com";
   SETTINGS.APP_VERSION = "v.01b";
-  SETTINGS.HOST = "http://192.168.0.16/akrck02.com/";
+  SETTINGS.HOST = "http://akrck02.com/";
   SETTINGS.URL = SETTINGS.HOST + "#/";
 
   AKRCK02.GITHUB = "https://Github.com/Akrck02/";
