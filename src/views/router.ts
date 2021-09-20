@@ -1,12 +1,27 @@
 import homeV from './home/homeV';
 import errorV from './error/errorV';
 import { CONFIG } from '../config/config';
+import codeV from './code/codeV';
+import GamesV from './games/gamesV';
+import mediaV from './media/mediaV';
+import aboutV from './about/aboutV';
+import nightlight from './nightlight/nightlight';
 
 /**
  * Paths of the application
  */
  const PATHS = {
+   //views
     home: (params : string[]) => show(homeV, params),
+    code: (params : string[]) => show(codeV, params),
+    games: (params : string[]) => show(GamesV, params),
+    media: (params : string[]) => show(mediaV, params),
+    about: (params : string[]) => show(aboutV, params),
+
+    //especific websites
+    nightlight: (params : string[]) => show(nightlight, params),
+
+    //debug
     error: (params : string[]) => show(errorV, params),
   };
   
