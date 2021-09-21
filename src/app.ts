@@ -1,5 +1,5 @@
-import { CONFIG, PATHS, setUpConfigurations } from './config/config';
-import { load } from './views/router';
+import { CONFIG, PATHS, setUpConfigurations } from './config/config.js';
+import { load } from './views/router.js';
 
 const loadFromUrl = () => {
     // get the url paramaters or routes and load the page

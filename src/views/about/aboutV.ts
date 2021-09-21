@@ -1,4 +1,4 @@
-import { CONFIG } from "../../config/config";
+import { CONFIG } from "../../config/config.js";
 
 export default function aboutV(params :  string[]) : void {
     let title = CONFIG.APP_NAME + " - About me";

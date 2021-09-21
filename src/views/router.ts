@@ -1,11 +1,11 @@
-import homeV from './home/homeV';
-import errorV from './error/errorV';
-import { CONFIG } from '../config/config';
-import codeV from './code/codeV';
-import GamesV from './games/gamesV';
-import mediaV from './media/mediaV';
-import aboutV from './about/aboutV';
-import nightlight from './nightlight/nightlight';
+import homeV from './home/homeV.js';
+import errorV from './error/errorV.js';
+import { CONFIG } from '../config/config.js';
+import codeV from './code/codeV.js';
+import GamesV from './games/gamesV.js';
+import mediaV from './media/mediaV.js';
+import aboutV from './about/aboutV.js';
+import nightlight from './nightlight/nightlight.js';
 
 /**
  * Paths of the application
@@ -28,9 +28,11 @@ import nightlight from './nightlight/nightlight';
   /** show a view */
   const show = (view , params) => {
     try {
-      document.querySelector('main').innerHTML = "";
+      if(document.querySelector('main'))
+        document.querySelector('main').innerHTML = "";
+
       view(params);
-    } catch (error) {
+    } catch (error) { 
       console.error(error);
       location.href = CONFIG.URL + "#/error/500";
     }

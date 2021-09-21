@@ -5,7 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "dist": "webpack",
-    "watch": "webpack -w"
+    "watch": "webpack -w",
+    "tswatch": "tsc -w"
   },
   "repository": {
     "type": "git",
