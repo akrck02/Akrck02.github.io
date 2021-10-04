@@ -1,28 +1,28 @@
 export interface UIProperties{
-    type ?: string | 'div';
-    text ?: string | '';
+    type ?: string;
+    text ?: string;
     id ?: string | undefined;
-    classes ?: string[] | [];
-    attributes ?: { [key: string]: string } | {};
-    styles ?: { [key: string]: string } | {};
-    data ?: { [key: string]: string } | {};
-    events ?: { [key: string]: (event: Event) => void } | {};
+    classes ?: string[];
+    attributes ?: { [key: string]: string };
+    styles ?: { [key: string]: string };
+    data ?: { [key: string]: string };
+    events ?: { [key: string]: (event: Event) => void };
 }
 
 export class UIComponent  {
     element: HTMLElement;
 
-    type: string | 'div';
-    text: string | '';
-    id: string | undefined;
-    classes: string[] | [];
-    attributes: { [key: string]: string } | {};
-    styles: { [key: string]: string } | {};
-    data: { [key: string]: string } | {};
+    type ?: string ; 
+    text ?: string ;
+    id : string;
+    classes: string[];
+    attributes: { [key: string]: string };
+    styles: { [key: string]: string };
+    data: { [key: string]: string };
     events: { [key: string]: (event: Event) => void } | {};
 
     constructor( props: UIProperties ) {
-        this.type = props.type;
+        this.type = props.type || 'div';
         this.text = props.text;
         this.id = props.id;
         this.classes = props.classes;
@@ -36,14 +36,12 @@ export class UIComponent  {
     createElement(): HTMLElement {
         let element: HTMLElement;
 
-        if (this.type === 'div') {
-            element = document.createElement('div');
-        } else {
+        if (this.type) {
             element = document.createElement(this.type);
-        }
+        } else throw "Element without type.";
 
         if (this.text) {
-            element.innerText = this.text;
+            element.innerHTML = this.text;
         }
 
         if (this.id) {

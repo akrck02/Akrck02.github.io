@@ -12,8 +12,14 @@ export interface MaterialIconsProperties {
  * @returns svg innerHTML
  */
 export function createSVG (properties : MaterialIconsProperties) : string {
+
+  properties.fill = properties.fill || "#202020";
+  properties.size = properties.size || "#24px";
+  properties.classes = properties.classes || [];
+  properties.svg = properties.svg || "";
+
   const svg = `
-    <svg class="${properties.classes?.join(" ")}" width="${
+    <svg class="${properties.classes.join(" ")}" width="${
     properties.size
   }" height="${properties.size}" viewBox="0 0 24 24" fill="${
     properties.fill

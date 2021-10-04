@@ -18,7 +18,7 @@ export default class IconButton {
     constructor(properties : IconButtonProperties) {
     
         this.component = new UIComponent({
-            type: "div",
+     
             classes: [CLASS.HOME_BUTTON],
             events: properties.events || {},
             styles : isSmallDevice() ? {

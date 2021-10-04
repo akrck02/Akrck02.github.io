@@ -31,7 +31,10 @@ export const API = {};
 //view URLs
 export const VIEWS = {
     BASE_URL : '',
-    HOME : '',
+    CODE : '',
+    GAMES : '',
+    MEDIA : '',
+    ABOUT : ''
 };
 
 
@@ -53,6 +56,9 @@ export function setUpConfigurations() : void {
 
     //views 
     VIEWS['BASE_URL'] = CONFIG['URL'] + '/#/';
-    VIEWS['HOME'] = VIEWS['BASE_URL'] + 'home/';
+    VIEWS['CODE'] = VIEWS['BASE_URL'] + 'code/';
+    VIEWS['GAMES'] = VIEWS['BASE_URL'] + 'games/';
+    VIEWS['MEDIA'] = VIEWS['BASE_URL'] + 'media/';
+    VIEWS['ABOUT'] = VIEWS['BASE_URL'] + 'about/';
 
 }
