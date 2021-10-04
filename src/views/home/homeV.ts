@@ -1,9 +1,12 @@
 import { CONFIG, PATHS, VIEWS } from "../../config/config.js";
 import { UIComponent } from "../../lib/gtd/web/uicomponent.js";
-import { isShortDevice, isSmallDevice } from "../../lib/gtd/web/responsivetools.js";
+import {
+    isShortDevice,
+    isSmallDevice,
+} from "../../lib/gtd/web/responsivetools.js";
 import { CLASS } from "../../core/css.js";
 import IconButton from "../../components/iconButton.js";
-import { CODE } from "../../lib/gtd/material/materialicons.js";
+import { CODE, FAVORITE, GAME, PLAY } from "../../lib/gtd/material/materialicons.js";
 
 export default function show(): void {
     let title = CONFIG.APP_NAME;
@@ -28,47 +31,89 @@ export default function show(): void {
             src: PATHS.IMAGES + "logo.svg",
             alt: "Logo",
         },
-        styles: { 
+        styles: {
             maxHeight: isShortDevice() ? "35vh" : "50vh",
         },
     });
 
     const mainTitle = new UIComponent({
-        
-            type: "h1",
-            text: "Akrck02",
-            classes: [CLASS.H1, CLASS.CENTER_TEXT],
-            styles: {
-              fontFamily: "Caesar dressing",
-              fontWeight: "400",
-              padding: "10px",
-              fontSize: "3em",
-              margin: "0 3px",
-              color: '#fff'
-            },
-        
+        type: "h1",
+        text: "Akrck02",
+        classes: [CLASS.H1, CLASS.CENTER_TEXT],
+        styles: {
+            fontFamily: "Caesar dressing",
+            fontWeight: "400",
+            padding: "10px",
+            fontSize: "3em",
+            margin: "0 3px",
+            color: "#fff",
+        },
     });
 
     const buttonBar = new UIComponent({
         classes: [CLASS.BOX_ROW, CLASS.BOX_X_CENTER, CLASS.BOX_Y_CENTER],
     });
 
-
     const codeButton = new IconButton({
         icon: CODE({
+            size: isSmallDevice() || isShortDevice() ? 28 : 40,
+            fill: "#fff",
+        }),
+        title: "Code",
+        color: "#fff",
+        accent: "#fff",
+        index: 1,
+        events: {
+            click: () => (location.href = VIEWS.CODE),
+        },
+    }).get();
+
+    const gameButton = new IconButton({
+        icon: GAME({
+            size: isSmallDevice() || isShortDevice() ? 28 : 40,
+            fill: "#fff",
+        }),
+        title: "Games",
+        color: "#fff",
+        accent: "#fff",
+        index: 1,
+        events: {
+            click: () => (location.href = VIEWS.GAMES),
+        },
+    }).get();
+
+    const mediaButton = new IconButton({
+      icon: PLAY({
           size: isSmallDevice() || isShortDevice() ? 28 : 40,
           fill: "#fff",
-        }),
-        title : "Code",
-        color: "#fff",
-        accent : "#fff",
-        index : 1,
-        events: {
-          click : () => location.href = VIEWS.CODE
-        }
-      }).get();
+      }),
+      title: "Media",
+      color: "#fff",
+      accent: "#fff",
+      index: 1,
+      events: {
+          click: () => (location.href = VIEWS.MEDIA),
+      },
+  }).get();
 
-    //codeButton.appendTo(buttonBar);
+  const aboutButton = new IconButton({
+    icon: FAVORITE({
+        size: isSmallDevice() || isShortDevice() ? 28 : 40,
+        fill: "#fff",
+    }),
+    title: "About me",
+    color: "#fff",
+    accent: "#fff",
+    index: 1,
+    events: {
+        click: () => (location.href = VIEWS.ABOUT),
+    },
+}).get();
+
+    codeButton.appendTo(buttonBar);
+    gameButton.appendTo(buttonBar);
+    mediaButton.appendTo(buttonBar);
+    aboutButton.appendTo(buttonBar);
 
     logo.appendTo(view);
     mainTitle.appendTo(view);
