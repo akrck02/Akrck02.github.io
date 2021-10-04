@@ -1,6 +1,7 @@
 import homeV from './home/homeV.js';
 import errorV from './error/errorV.js';
 import { CONFIG } from '../config/config.js';
+import docsV from './docs/docsV.js';
 import codeV from './code/codeV.js';
 import GamesV from './games/gamesV.js';
 import mediaV from './media/mediaV.js';
@@ -17,6 +18,7 @@ import nightlight from './nightlight/nightlight.js';
     games: (params : string[]) => show(GamesV, params),
     media: (params : string[]) => show(mediaV, params),
     about: (params : string[]) => show(aboutV, params),
+    docs: (params : string[]) => show(docsV, params),
 
     //especific websites
     nightlight: (params : string[]) => show(nightlight, params),
@@ -28,8 +30,8 @@ import nightlight from './nightlight/nightlight.js';
   /** show a view */
   const show = (view , params) => {
     try {
-      if(document.querySelector('main'))
-        document.querySelector('main').innerHTML = "";
+      if(document.querySelector('body'))
+        document.querySelector('body').innerHTML = "";
 
       view(params);
     } catch (error) { 
@@ -43,11 +45,19 @@ import nightlight from './nightlight/nightlight.js';
    * @param {array} params
    */
    export const load = (params) => {
+     console.log(params);
+     
       switch (params[0]) {
         case undefined:
         case "":
         case "home":
           PATHS.home(params);
+          break;
+        case "code":
+          PATHS.code(params);
+          break;
+        case "docs":
+          PATHS.docs(params);
           break;
         case "error":
           PATHS.error(params);

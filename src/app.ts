@@ -1,9 +1,10 @@
 import { CONFIG, PATHS, setUpConfigurations } from './config/config.js';
+import { getParametersByIndex } from './lib/gtd/data/urltools.js';
 import { load } from './views/router.js';
 
 const loadFromUrl = () => {
     // get the url paramaters or routes and load the page
-    const params = [] // getParametersByIndex(window.location.hash.slice(1).toLowerCase(),1);
+    const params = getParametersByIndex(window.location.hash.slice(1).toLowerCase(),1);
     //if(token) check token 
 
     if(params[0] == undefined){
@@ -18,7 +19,6 @@ const loadFromUrl = () => {
 }
 
 window.addEventListener('hashchange',() =>{
-    
     loadFromUrl();
 });
 
