@@ -7,21 +7,25 @@ import {
 import { CLASS } from "../../core/css.js";
 import IconButton from "../../components/iconButton.js";
 import { CODE, FAVORITE, GAME, PLAY } from "../../lib/gtd/material/materialicons.js";
+import { current_events } from "../../core/yearEvents.js";
 
 export default function show(): void {
     let title = CONFIG.APP_NAME;
     document.title = title;
+    const a = current_events;
 
-    const view = new UIComponent({
+    const view = new UIComponent({ 
         classes: [CLASS.BOX_COLUMN, CLASS.BOX_X_CENTER, CLASS.BOX_Y_CENTER],
         type: "div",
         styles: {
             width: "100%",
             height: "100%",
-            background: "URL('" + PATHS.IMAGES + "Wallpaper.png')",
-            backgroundPosition: "center",
+            background: "#fff",
+            backgroundPosition: "center", 
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
+            transition: ".25s",
+            opacity: "0",
         },
     });
 
@@ -46,7 +50,7 @@ export default function show(): void {
             padding: "10px",
             fontSize: "3em",
             margin: "0 3px",
-            color: "#fff",
+            color: "#707070",
         },
     });
 
@@ -57,11 +61,11 @@ export default function show(): void {
     const codeButton = new IconButton({
         icon: CODE({
             size: isSmallDevice() || isShortDevice() ? 28 : 40,
-            fill: "#fff",
+            fill: "#707070",
         }),
         title: "Code",
-        color: "#fff",
-        accent: "#fff",
+        color: "#707070",
+        accent: "dodgerblue",
         index: 1,
         events: {
             click: () => (location.href = VIEWS.CODE),
@@ -71,11 +75,11 @@ export default function show(): void {
     const gameButton = new IconButton({
         icon: GAME({
             size: isSmallDevice() || isShortDevice() ? 28 : 40,
-            fill: "#fff",
+            fill: "#707070",
         }),
         title: "Games",
-        color: "#fff",
-        accent: "#fff",
+        color: "#707070",
+        accent: "dodgerblue",
         index: 1,
         events: {
             click: () => (location.href = VIEWS.GAMES),
@@ -85,11 +89,11 @@ export default function show(): void {
     const mediaButton = new IconButton({
       icon: PLAY({
           size: isSmallDevice() || isShortDevice() ? 28 : 40,
-          fill: "#fff",
+          fill: "#707070",
       }),
       title: "Media",
-      color: "#fff",
-      accent: "#fff",
+      color: "#707070",
+      accent: "dodgerblue",
       index: 1,
       events: {
           click: () => (location.href = VIEWS.MEDIA),
@@ -99,11 +103,11 @@ export default function show(): void {
   const aboutButton = new IconButton({
     icon: FAVORITE({
         size: isSmallDevice() || isShortDevice() ? 28 : 40,
-        fill: "#fff",
+        fill: "#707070",
     }),
     title: "About me",
-    color: "#fff",
-    accent: "#fff",
+    color: "#707070",
+    accent: "dodgerblue",
     index: 1,
     events: {
         click: () => (location.href = VIEWS.ABOUT),
@@ -119,4 +123,9 @@ export default function show(): void {
     mainTitle.appendTo(view);
     buttonBar.appendTo(view);
     view.appendTo(document.body);
+
+
+    setTimeout(() => {
+        view.element.style.opacity = "1";
+    }, 200);
 }

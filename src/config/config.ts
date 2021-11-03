@@ -55,7 +55,7 @@ export function setUpConfigurations() : void {
     PATHS['JSON'] = PATHS['RESOURCES'] + 'json/'; 
 
     //views 
-    VIEWS['BASE_URL'] = CONFIG['URL'] + '/#/';
+    VIEWS['BASE_URL'] = CONFIG['URL'] + '#/';
     VIEWS['CODE'] = VIEWS['BASE_URL'] + 'code/';
     VIEWS['GAMES'] = VIEWS['BASE_URL'] + 'games/';
     VIEWS['MEDIA'] = VIEWS['BASE_URL'] + 'media/';
