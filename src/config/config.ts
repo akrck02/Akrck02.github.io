@@ -37,6 +37,14 @@ export const VIEWS = {
     ABOUT : ''
 };
 
+//akrck02 social media
+export const SOCIAL = {
+    GITHUB : '',
+    TWITTER : '',
+    TWITCH : '',
+    YOUTUBE : ''
+}
+
 
 //start settings
 export function setUpConfigurations() : void {
@@ -60,5 +68,11 @@ export function setUpConfigurations() : void {
     VIEWS['GAMES'] = VIEWS['BASE_URL'] + 'games/';
     VIEWS['MEDIA'] = VIEWS['BASE_URL'] + 'media/';
     VIEWS['ABOUT'] = VIEWS['BASE_URL'] + 'about/';
+
+    //social media
+    SOCIAL['GITHUB'] = "https://Github.com/Akrck02/";
+    SOCIAL['TWITTER'] = "https://twitter.com/Akrck_02/";
+    SOCIAL['TWITCH'] = "https://www.twitch.tv/akrck02/";
+    SOCIAL['YOUTUBE'] = "https://www.youtube.com/channel/UC4aP0PZoBiCIiM2NmBnxGbw";
 
 }

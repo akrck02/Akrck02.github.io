@@ -56,6 +56,9 @@ import nightlight from './nightlight/nightlight.js';
         case "code":
           PATHS.code(params);
           break;
+        case "about":
+          PATHS.about(params);
+          break;
         case "docs":
           PATHS.docs(params);
           break;
