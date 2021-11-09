@@ -19,7 +19,6 @@ export default function aboutV(params: string[]): void {
         },
     });
 
-
     let height = "auto";
     height = isShortDevice() ? "100%" : height;
   
@@ -35,12 +34,12 @@ export default function aboutV(params: string[]): void {
     });
   
     const love = FAVORITE({
-      size: 24,
+      size: 28,
       fill: "#202020",
     });
   
     const main_title = new UIComponent({
-      text: "ABOUT ME " + love,
+      text: "AB0UT ME " + love,
       classes: [CLASS.H1],
       styles: {
         marginBottom: "10px",
