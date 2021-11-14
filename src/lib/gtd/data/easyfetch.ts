@@ -12,11 +12,10 @@ export function fetchJSON(properties: EasyFetchProperties): void {
     let options = {
         method: properties.method,
         headers: { "Content-type": "application/json; charset=UTF-8" },
-        body: "",
     };
 
     if (properties.method === HTTPS_METHOD.POST) {
-        options.body = JSON.stringify(properties.parameters);
+        options["body"] = JSON.stringify(properties.parameters);
     }
 
     try {
@@ -37,11 +36,10 @@ export function fetchText(properties): void {
     let options = {
         method: properties.method,
         headers: { "Content-type": "application/json; charset=UTF-8" },
-        body: "",
     };
 
     if (properties.method === HTTPS_METHOD.POST) {
-        options.body = JSON.stringify(properties.parameters);
+        options["body"] = JSON.stringify(properties.parameters);
     }
 
     try {
@@ -62,11 +60,10 @@ export const fetchBlob = (properties) => {
     let options = {
         method: properties.method,
         headers: { "Content-type": "application/json; charset=UTF-8" },
-        body: "",
     };
 
     if (properties.method === HTTPS_METHOD.POST) {
-        options.body = JSON.stringify(properties.parameters);
+        options["body"] = JSON.stringify(properties.parameters);
     }
 
     try {

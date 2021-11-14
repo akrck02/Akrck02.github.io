@@ -19,6 +19,7 @@ export const PATHS = {
     LOGS : '',
     FONTS : '',
     IMAGES : '',
+    GITHUB_IMAGES : '',
     VIDEOS : '' ,
     AUDIOS : '',
     JSON : ''     
@@ -31,6 +32,7 @@ export const API = {};
 //view URLs
 export const VIEWS = {
     BASE_URL : '',
+    HOME : '',
     CODE : '',
     GAMES : '',
     MEDIA : '',
@@ -45,7 +47,9 @@ export const SOCIAL = {
     YOUTUBE : ''
 }
 
-
+export const GITHUB = {
+    USERNAME : '',
+};
 //start settings
 export function setUpConfigurations() : void {
 
@@ -57,13 +61,17 @@ export function setUpConfigurations() : void {
     PATHS['LOGS'] = PATHS['ROOT'] + 'logs/';
     PATHS['RESOURCES'] = PATHS['ROOT'] + 'resources/';
     PATHS['FONTS'] = PATHS['RESOURCES'] + 'fonts/';
+
     PATHS['IMAGES'] = PATHS['RESOURCES'] + 'images/';
+    PATHS['GITHUB_IMAGES'] = PATHS['IMAGES'] + 'github/';
+
     PATHS['VIDEOS'] = PATHS['RESOURCES'] + 'videos/';
     PATHS['AUDIOS'] = PATHS['RESOURCES'] + 'audios/';
     PATHS['JSON'] = PATHS['RESOURCES'] + 'json/'; 
 
     //views 
     VIEWS['BASE_URL'] = CONFIG['URL'] + '#/';
+    VIEWS['HOME'] = VIEWS['BASE_URL'] + 'home';
     VIEWS['CODE'] = VIEWS['BASE_URL'] + 'code/';
     VIEWS['GAMES'] = VIEWS['BASE_URL'] + 'games/';
     VIEWS['MEDIA'] = VIEWS['BASE_URL'] + 'media/';
@@ -74,5 +82,8 @@ export function setUpConfigurations() : void {
     SOCIAL['TWITTER'] = "https://twitter.com/Akrck_02/";
     SOCIAL['TWITCH'] = "https://www.twitch.tv/akrck02/";
     SOCIAL['YOUTUBE'] = "https://www.youtube.com/channel/UC4aP0PZoBiCIiM2NmBnxGbw";
+
+    //Github data
+    GITHUB['USERNAME'] = "Akrck02";
 
 }
