@@ -45,7 +45,7 @@ export default function codeV(params :  string[]) : void {
 
     getUserRepos(GITHUB.USERNAME,(repos) => {
         repos.forEach((repo) => {
-            const card = new ProjectCard(repo.name, repo.description, PATHS.GITHUB_IMAGES + repo.id +".png", repo.html_url);
+            const card = new ProjectCard(repo.name, repo.description, PATHS.GITHUB_IMAGES + repo.id +".png", repo.html_url, repo.id);
             card.appendTo(content);
             setTimeout(() => card.show(), 250);
         });
