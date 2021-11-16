@@ -5,9 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "dist": "webpack",
-    "watch": "webpack -w",
-    "tswatch": "tsc -w",
-    "tsbuild": "tsc"
+    "ts": "tsc -w",
+    "deploy": "tsc && webpack"
   },
   "repository": {
     "type": "git",
