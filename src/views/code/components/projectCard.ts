@@ -1,17 +1,19 @@
 import { PATHS } from "../../../config/config.js";
 import { UIComponent } from "../../../lib/gtd/web/uicomponent.js";
+import { PROJECT_INFO } from "../../../services/projects.js";
 
 export class ProjectCard {
 
-    private project: { name: string, description: string, image: string, link: string };
+    private project: { name: string, description: string, image: string, link: string, id: string };
     private component : UIComponent;
 
-    constructor( name: string, description: string, image: string, link: string ) {
+    constructor( name: string, description: string, image: string, link: string, id: string ) {
         this.project = {
             name: name,
             description: description,
             image: image,
-            link: link
+            link: link,
+            id: id
         }
         
         this.component = new UIComponent({
@@ -39,6 +41,9 @@ export class ProjectCard {
                 mouseout : () => {
                     this.component.element.style.transform = "scale(1)";
                 }
+            },
+            data : {
+                id : this.project.id
             }
         });
         
@@ -56,7 +61,6 @@ export class ProjectCard {
                 fontSize: "0",
             },
             attributes : {
-                id: image,
                 src : image,
                 onerror:"this.src = '" + PATHS.GITHUB_IMAGES + "unknown.png'"
             }
@@ -95,6 +99,52 @@ export class ProjectCard {
         imageComp.appendTo(this.component);
         titleComp.appendTo(this.component);
         descriptionComp.appendTo(this.component);
+
+        if(PROJECT_INFO[id]) {
+
+            const langs = PROJECT_INFO[id];
+            const langBar = new UIComponent({
+                type : "div",
+                styles : {
+                    width : "100%",
+                    height : "20px",
+                    fontSize : ".6em",  
+                    display: "flex",
+                    justifyContent: "flex-start",
+                    alignItems: "center",
+                    textAlign : "left",
+                    color : "#202020",
+                    marginTop : "10px",
+                },
+            });
+
+            const length = langs.length < 2 ? langs.length : 2;
+            for(let i = 0; i < length; i++) {
+                const lang = langs[i];
+                const langComp = new UIComponent({
+                    type : "div",
+                    styles : {
+                        height : "25px",
+                        width: "auto",
+                        fontSize : ".75em",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        textAlign : "left",
+                        color : "#fff",
+                        padding : "5px 9px",
+                        background : lang.color,
+                        borderRadius: "100px",
+                        fontWeight : "bold",
+                        letterSpacing: "2px",
+                        marginRight : "3%",
+                    },
+                    text : lang.name
+                });
+                langComp.appendTo(langBar);
+            }            
+            langBar.appendTo(this.component);
+        }
     }
 
     appendTo(parent: UIComponent) {
