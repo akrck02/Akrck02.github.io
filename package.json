@@ -4,7 +4,7 @@
   "description": "Akrck02's personal website",
   "main": "webpack.config.js",
   "scripts": {
-    "dist": "webpack",
+    "dist": "webpack -w",
     "ts": "tsc -w",
     "deploy": "tsc && webpack"
   },

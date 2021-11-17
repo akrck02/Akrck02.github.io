@@ -3,7 +3,7 @@
 export const CONFIG  = {
     APP_NAME: 'Akrck02.com',
     APP_VERSION: 'v1.0',
-    HOST: 'localhost/akrck02.com',
+    HOST: 'akrck02.com',
     PORT: 80,
     URL: '',
     ENVIROMENT : 'development',
@@ -48,6 +48,7 @@ export const SOCIAL = {
 }
 
 export const GITHUB = {
+    URL : 'https://akrck-git.herokuapp.com/api/v1/',
     USERNAME : '',
 };
 //start settings
