@@ -8,7 +8,7 @@ import { fetchJSON } from "../lib/gtd/data/easyfetch.js";
  * @param user The user to get the repos for
  */
 export function getUserRepos(fn: Function){
-    const url = GITHUB.URL;
+    const url = GITHUB.URL + "repositories";
     const properties = {
         method: HTTPS_METHOD.GET,
         parameters: {},
