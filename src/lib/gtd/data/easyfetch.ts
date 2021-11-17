@@ -11,7 +11,10 @@ export interface EasyFetchProperties {
 export function fetchJSON(properties: EasyFetchProperties): void {
     let options = {
         method: properties.method,
-        headers: { "Content-type": "application/json; charset=UTF-8" },
+        headers: { 
+            "Content-type": "application/json; charset=UTF-8", 
+            'Access-Control-Allow-Origin': '*',
+        },
     };
 
     if (properties.method === HTTPS_METHOD.POST) {
