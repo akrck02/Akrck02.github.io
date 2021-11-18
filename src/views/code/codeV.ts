@@ -44,11 +44,27 @@ export default function codeV(params :  string[]) : void {
     });
 
     getUserRepos((repos) => {
-        repos.forEach((repo) => {
-            const card = new ProjectCard(repo.name, repo.description, PATHS.GITHUB_IMAGES + repo.id +".png", repo.html_url, repo.id);
-            card.appendTo(content);
-            setTimeout(() => card.show(), 250);
-        });
+        try{        
+            repos.forEach((repo) => {
+                const card = new ProjectCard(repo.name, repo.description, PATHS.GITHUB_IMAGES + repo.id +".png", repo.html_url, repo.id);
+                card.appendTo(content);
+                setTimeout(() => card.show(), 250);
+            });
+        }catch(err){
+            const message = new UIComponent({
+                type : "div",
+                styles : {
+                    margin: "20px",
+                    padding: "15px",
+                    color: "#f1f1f1",
+                    borderRadius: "5px",
+                    height: "50px",
+                    background: "var(--error_color)",
+                },
+                text : "Ups, We're having some problems to find the projects :("
+            });
+            message.appendTo(content);
+        }
     });
 
     content.appendTo(view);
