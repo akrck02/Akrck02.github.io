@@ -1,1 +1,4 @@
-/node_modules/
+node_modules
+app
+temp/javascript
+package-lock.json
