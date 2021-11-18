@@ -13,7 +13,6 @@ export function fetchJSON(properties: EasyFetchProperties): void {
         method: properties.method,
         headers: { 
             "Content-type": "application/json; charset=UTF-8", 
-            'Access-Control-Allow-Origin': '*',
         },
     };
 
