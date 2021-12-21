@@ -7,6 +7,7 @@ import GamesV from './games/gamesV.js';
 import mediaV from './media/mediaV.js';
 import aboutV from './about/aboutV.js';
 import nightlight from './nightlight/nightlight.js';
+import Construction from './construction/constructionV.js';
 
 /**
  * Paths of the application
@@ -19,6 +20,7 @@ import nightlight from './nightlight/nightlight.js';
     media: (params : string[]) => show(mediaV, params),
     about: (params : string[]) => show(aboutV, params),
     docs: (params : string[]) => show(docsV, params),
+    construction: (params : string[]) => show(new Construction().show, params),
 
     //especific websites
     nightlight: (params : string[]) => show(nightlight, params),
@@ -48,6 +50,7 @@ import nightlight from './nightlight/nightlight.js';
      console.log(params);
      
       switch (params[0]) {
+        /*
         case undefined:
         case "":
         case "home":
@@ -60,12 +63,13 @@ import nightlight from './nightlight/nightlight.js';
           PATHS.about(params);
           break;
         case "docs":
-          PATHS.docs(params);
+          PATHS.docs(params); 
           break;
         case "error":
           PATHS.error(params);
-          break;
-        default:
-          location.href = CONFIG.URL + "#/error/404/";
+          break;*/
+        default: 
+          PATHS.construction(params);
+          //location.href = CONFIG.URL + "#/error/404/";
       }
     };
