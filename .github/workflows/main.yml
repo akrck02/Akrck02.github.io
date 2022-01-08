@@ -33,3 +33,4 @@ jobs:
           npm run bundle
           ls -lha .
           cat src/app.ts
+          cat app/app_min.js
