@@ -1,3 +1,6 @@
-node_modules
-temp/javascript
+node_modules/
+temp/
+app/
+
+delete.txt
 package-lock.json

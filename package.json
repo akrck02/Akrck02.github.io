@@ -4,18 +4,19 @@
   "description": "Akrck02's personal website",
   "main": "webpack.config.js",
   "scripts": {
-    "dist": "webpack -w",
-    "ts": "tsc -w",
-    "deploy": "tsc && webpack"
+    "compile-watch": "tsc -w",
+    "compile": "tsc",
+    "bundle-watch": "webpack -w",
+    "bundle": "webpack"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/akrck02/Akrck02.com.git"
   },
   "keywords": [
-    "web",
+    "website",
     "singlepage",
-    "javascript"
+    "typescript"
   ],
   "author": "akrck02",
   "license": "GPL-3.0-or-later",
