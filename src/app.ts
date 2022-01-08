@@ -22,6 +22,8 @@ const loadFromUrl = () => {
 window.addEventListener('hashchange',loadFromUrl);
 
 window.onload = () => {  
+    console.log("Typescript compiled succesfully! 💙💙💙");
+    
     setUpConfigurations();
     loadFromUrl();
 }
