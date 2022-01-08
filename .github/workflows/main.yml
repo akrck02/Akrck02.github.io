@@ -31,3 +31,5 @@ jobs:
           npm install
           npm run compile
           npm run bundle
+          ls -lha .
+          cat src/app.ts
