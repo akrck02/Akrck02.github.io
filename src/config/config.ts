@@ -3,7 +3,7 @@
 export const CONFIG  = {
     APP_NAME: 'Akrck02.com',
     APP_VERSION: 'v1.0',
-    HOST: 'akrck02.com',
+    HOST: 'akrck02.github.com',
     PORT: 80,
     URL: '',
     ENVIROMENT : 'development',
