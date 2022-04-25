@@ -1,6 +1,4 @@
-node_modules/
-temp/
-app/
-
-delete.txt
-package-lock.json
+*/**/delete.*
+/node_modules/
+/client/temp/
+/client/out/
