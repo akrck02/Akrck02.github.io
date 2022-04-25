@@ -6,6 +6,7 @@ import ErrorV from "./error/errorV.js";
 import DummyV from "./dummy/dummyView.ui.js";
 
 import Modal from "../components/modal/modal.js";
+import HomeView from "./home/home.ui.js";
 
 export default class Router {
 
@@ -46,12 +47,16 @@ export default class Router {
             
                 case undefined:
                 case "":
+                case "home":
+                    new HomeView().show(params.splice(1), this.container);
+                    this.sidebar.setSelected(0);
+                    break;
                 case "error":
                     new ErrorV().show(params.splice(1), this.container);
                     break;
                 case "dummy":
                     new DummyV().show(params.splice(1), this.container);
-                    this.sidebar.setSelected(-1);
+                    this.sidebar.setSelected(1);
                     break;
                 default:
                     location.href = Configurations.VIEWS.ERROR;

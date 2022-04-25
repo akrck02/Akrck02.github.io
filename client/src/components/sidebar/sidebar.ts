@@ -45,6 +45,18 @@ export class Sidebar extends UIComponent {
 
     public build() {
 
+        const home = new UIComponent({
+            type: "a",
+            classes: ["sidebar-item","box-center"],
+            text: getMaterialIcon("home",{
+                size: "1.25rem",
+                fill: "#404040",
+            }).toHTML(),
+            attributes: {
+                href: Configurations.VIEWS.HOME,
+            },
+        });
+
         const dummy = new UIComponent({
             type: "a",
             classes: ["sidebar-item","box-center"],
@@ -57,7 +69,8 @@ export class Sidebar extends UIComponent {
             },
         });
 
-        this.elements = [dummy];
+
+        this.elements = [home,dummy];
 
         this.elements.forEach((element) => {
             this.buttonBar.appendChild(element);

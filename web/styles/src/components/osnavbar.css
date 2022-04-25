@@ -16,19 +16,6 @@ header#os-navbar {
     background: rgba(0, 0, 0, .07);
 }
 
-header#os-navbar div.drag-region {
-    -webkit-app-region: drag;
-    display: flex;
-    flex-direction: row;
-    width: auto;
-    align-items: center;
-}
-
-header#os-navbar div.drag-region#first {
-    position: relative;
-    min-width: 25%;
-}
-
 header#os-navbar h1#title {
     font-size: .7rem;
     font-weight: bold;
@@ -44,51 +31,6 @@ header#os-navbar h1#title {
 :root[data-theme=dark] header#os-navbar h1#title {
     color: #fff;
     margin-right: 2rem;
-}
-
-header#os-navbar div#control-panel {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    height: 100%;
-    margin-right: 1.2rem;
-}
-
-header#os-navbar div#window-controls {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-header#os-navbar div#window-controls .button {
-    padding: .2rem;
-    height: 100%;
-    box-sizing: border-box;
-    transition: background var(--fast);
-    cursor: pointer;
-}
-
-header#os-navbar div#window-controls .button:hover, header#os-navbar div#window-controls .button:focus {
-    background: rgba(0, 0, 0, .05);
-}
-
-:root[data-theme=dark] header#os-navbar div#window-controls .button:hover {
-    background: rgba(255, 255, 255, .1);
-}
-
-header#os-navbar div#window-controls svg {
-    --size: 1.8rem;
-    padding: .25rem;
-    fill: #404040;
-    border-radius: .35rem;
-    width: var(--size);
-    height: var(--size);
-}
-
-:root[data-theme=dark] header#os-navbar div#window-controls svg {
-    fill: #fff;
 }
 
 header#os-navbar div#search {

@@ -35,8 +35,9 @@ export class Configurations {
 
     public static VIEWS = {
         BASE_URL: "../web/index.html#/",
-        ERROR: "../web/index.html#/error/",
-        DUMMY: "../web/index.html#/dummy/",
+        HOME: "../web/#/home",
+        ERROR: "../web/#/error/",
+        DUMMY: "../web/#/dummy/",
     };
     
     public static API = {};
