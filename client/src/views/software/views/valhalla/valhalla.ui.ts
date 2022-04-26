@@ -1,4 +1,6 @@
+import { App } from "../../../../app.js";
 import { Configurations } from "../../../../config/config.js";
+import { getMaterialIcon } from "../../../../lib/gtd-ts/material/materialicons.js";
 import { getOs } from "../../../../lib/gtd-ts/web/responsivetools.js";
 import { UIComponent } from "../../../../lib/gtd-ts/web/uicomponent.js";
 
@@ -84,7 +86,7 @@ export default class ValhallaView extends UIComponent {
         const description = new UIComponent({
             type: "p",
             id: "valhalla-view-description",
-            text: "Valhalla - The modern productivity app",
+            text: "Valhalla - " + App.getBundle().valhalla.THE_MODERN_PRODUCTIVITY_APP,
         });
 
         const os = getOs();
@@ -92,7 +94,7 @@ export default class ValhallaView extends UIComponent {
         const downloadWindows = new UIComponent({
             type: "a",
             id: "valhalla-view-download",
-            text: "Download for Windows",
+            text: App.getBundle().valhalla.DOWNLOAD_FOR_WINDOWS,
             attributes: {
                 href: "https://github.com/akrck02/Valhalla/releases/download/v1.0.6b/Valhalla.Setup.1.0.6-b.exe",
             },
@@ -108,9 +110,9 @@ export default class ValhallaView extends UIComponent {
         const downloadLinux = new UIComponent({
             type: "a",
             id: "valhalla-view-download",
-            text: "Download for Linux",
+            text: App.getBundle().valhalla.DOWNLOAD_FOR_LINUX,
             attributes: {
-                href: "https://github.com/akrck02/Valhalla/releases/download/v1.0.6b/Valhalla.Setup.1.0.6-b.AppImage",
+                href: "https://github.com/akrck02/Valhalla/releases/download/v1.0.6b/Valhalla-1.0.6-b.AppImage",
             },
             styles: {
                 fontSize: ".9rem",
@@ -136,13 +138,13 @@ export default class ValhallaView extends UIComponent {
 
         if(os === "Windows"){
             downloadLinux.element.style.background = "transparent";
-            downloadLinux.element.innerText = "or Linux";
+            downloadLinux.element.innerText = App.getBundle().valhalla.OR_LINUX;
 
             buttonContainer.appendChild(downloadWindows);
             buttonContainer.appendChild(downloadLinux);
         } else if(os === "Linux"){
             downloadWindows.element.style.background = "transparent";
-            downloadWindows.element.innerText = "or Windows";
+            downloadWindows.element.innerText = App.getBundle().valhalla.OR_WINDOWS;
 
             buttonContainer.appendChild(downloadLinux);
             buttonContainer.appendChild(downloadWindows);
@@ -161,48 +163,98 @@ export default class ValhallaView extends UIComponent {
             type: "div",
             id: "valhalla-view-task",
             classes: ["box-row","box-center","section","reverse"],
-            styles: {
-                position: "relative",
-                width: "100%",
-                minHeight: "100%",
-                backgroundColor: "rgba(2,90,255,.01)",
-            }
         });
 
         section.element.style.setProperty("--background-image","url(/client/" + Configurations.PATHS.WALLPAPERS + "wall11.png)",);
 
         const image = new UIComponent({
             type: "img",
-            id: "valhalla-view-task-image",
+            id: "screenshot",
             attributes: {
                 src: Configurations.PATHS.IMAGES + "valhalla-2.png",
             },
-            styles: {
-                width: "40%",
-                borderRadius: ".35rem",
-                marginRight: "5rem",
-                boxShadow: "0 0 .5rem .5rem rgba(0,0,0,.15)",
-            }
         });
 
-        const description = new UIComponent({
-            type: "p",
+        const box = new UIComponent({
+            type: "div",
+            classes: ["box-center","box-column"],
             id: "valhalla-view-task-description",
-            text: `
-            Valhalla is a modern productivity app that helps you 
-            manage your time.
-            
-            Create tasks, organize them in categories, check out your calendar
-            `.replaceAll("\n","<br>"),
-
             styles: {
                 width: "30%",
             }
-
         });
 
+
+        const title = new UIComponent({
+            type : "h1",
+            text :  App.getBundle().valhalla.ORGANIZE + ", " +
+                    App.getBundle().valhalla.SAVE_TIME +
+                    ", <br><b class='bold'>" + App.getBundle().valhalla.CREATE + ".</b>",
+            styles : {
+                lineHeight: "1.5rem",
+                textTransform : "uppercase"
+            }
+        });
+
+        const iconBar = new UIComponent({
+            classes: ["box-row"],
+            id : "icon-bar",
+        });
+
+        const calendar = new UIComponent({
+            classes:["box-column","icon"],
+        });
+        
+        const calendarIcon = getMaterialIcon("calendar_today", {
+            size: "1.7rem",
+            fill: "#fff",
+        });
+
+        calendar.appendChild(calendarIcon);
+        calendar.appendChild(new UIComponent({
+            text: App.getBundle().valhalla.CALENDAR,
+            classes : ["text"]
+        }));
+
+        const tasks = new UIComponent({
+            classes:["box-column","icon"],
+        });
+        
+        const tasksIcon = getMaterialIcon("task_alt", {
+            size: "1.7rem",
+            fill: "#fff",
+        });
+
+        tasks.appendChild(tasksIcon);
+        tasks.appendChild(new UIComponent({
+            text:  App.getBundle().valhalla.TASKS,
+            classes : ["text"]
+        }));
+
+        const notes = new UIComponent({
+            classes:["box-column","icon"],
+        });
+        
+        const notesIcon = getMaterialIcon("sticky_note_2", {
+            size: "1.7rem",
+            fill: "#fff",
+        });
+
+        notes.appendChild(notesIcon);
+        notes.appendChild(new UIComponent({
+            text: App.getBundle().valhalla.NOTES,
+            classes : ["text"]
+        }));
+
+        iconBar.appendChild(calendar);
+        iconBar.appendChild(tasks);
+        iconBar.appendChild(notes);
+
+        box.appendChild(title);
+        box.appendChild(iconBar);
+
         section.appendChild(image);
-        section.appendChild(description);
+        section.appendChild(box);
 
 
         return section;
@@ -214,7 +266,7 @@ export default class ValhallaView extends UIComponent {
         const section = new UIComponent({
             type: "div",
             id: "valhalla-view-task",
-            classes: ["box-row","box-center","section","reverse"],
+            classes: ["box-row","box-center","section"],
             styles: {
                 position: "relative",
                 width: "100%",

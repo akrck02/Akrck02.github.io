@@ -90,3 +90,46 @@ view {
 .backdrop {
     backdrop-filter: blur(1rem);
 }
+
+
+/**
+    TODO: MOVE TO SETTINGS
+_**/
+@media (max-width: 60rem) {
+
+    #view-container{
+        flex-direction: column-reverse !important;
+    }
+
+    #view-container-box {
+        width: 100% !important;
+        height: calc(100%) !important;
+    }
+
+    #sidebar{
+        bottom: 0;
+    }
+
+    #sidebar, #sidebar div {
+        width: 100% !important;
+        height: 4rem !important;
+        flex-direction: row !important;
+    }
+
+    div#sidebar a.sidebar-item {
+        --sidebar-item-size: 4rem;
+        display: inline;
+    }
+
+    div#sidebar a.sidebar-item svg {
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+
+    div#sidebar a.sidebar-item::before {
+        left: 0;
+        width: 100%;
+        top: -0rem;
+        height: .2rem;
+    }
+}   
