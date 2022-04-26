@@ -19,6 +19,9 @@ jobs:
 
     - name: Compile and minify the code
       run: npm run dist
+    
+    - name: Remove gitignore
+      run: rm .gitignore
       
     - name: Check the output
       run: ls -lha web/styles/ && ls -lha client/
