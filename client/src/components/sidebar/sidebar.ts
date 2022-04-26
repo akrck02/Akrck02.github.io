@@ -18,29 +18,16 @@ export class Sidebar extends UIComponent {
 
         this.buttonBar = new UIComponent({
             type: "div",
+            classes : ["box-y-center", "box-column"],
             styles: {
-                height: "calc(100% - 2.5rem)"
+                height: "calc(100% - 2.5rem)",
+                width : "100%",
             }
-        });
-
-        this.userImage = new UIComponent({
-            type: "img",
-            attributes : {
-                src: Configurations.PATHS.ICONS + "/default-user.png"
-            },
-            styles: {
-                width: "1.7rem",
-                height: "1.7rem",
-                borderRadius: "20rem",
-                cursor: "pointer",
-            },
-
         });
 
         this.build();
 
         this.appendChild(this.buttonBar);
-        this.appendChild(this.userImage);
     }
 
     public build() {
@@ -60,15 +47,14 @@ export class Sidebar extends UIComponent {
         const dummy = new UIComponent({
             type: "a",
             classes: ["sidebar-item","box-center"],
-            text: getMaterialIcon("science",{
+            text: getMaterialIcon("code",{
                 size: "1.25rem",
                 fill: "#404040",
             }).toHTML(),
             attributes: {
-                href: Configurations.VIEWS.DUMMY,
+                href: Configurations.VIEWS.SOFTWARE,
             },
         });
-
 
         this.elements = [home,dummy];
 

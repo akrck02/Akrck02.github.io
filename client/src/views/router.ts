@@ -7,6 +7,7 @@ import DummyV from "./dummy/dummyView.ui.js";
 
 import Modal from "../components/modal/modal.js";
 import HomeView from "./home/home.ui.js";
+import SoftwareRouter from "./software/router.js";
 
 export default class Router {
 
@@ -22,7 +23,7 @@ export default class Router {
             type: "div",
             id: "view-container-box",
             styles: {
-                width: "calc(100% - 3rem)",
+                width: "calc(100%)",
                 height: "100%",
             },
         });
@@ -51,12 +52,16 @@ export default class Router {
                     new HomeView().show(params.splice(1), this.container);
                     this.sidebar.setSelected(0);
                     break;
+
+                case "software" : 
+                    SoftwareRouter.load(params.splice(1), this.container);
+                    this.sidebar.setSelected(1);
+                    break;
                 case "error":
                     new ErrorV().show(params.splice(1), this.container);
                     break;
                 case "dummy":
                     new DummyV().show(params.splice(1), this.container);
-                    this.sidebar.setSelected(1);
                     break;
                 default:
                     location.href = Configurations.VIEWS.ERROR;

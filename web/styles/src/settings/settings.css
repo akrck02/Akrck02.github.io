@@ -74,16 +74,13 @@ div#view-container {
     overflow: hidden;
     align-items: center;
     justify-content: start;
-    height: calc(100% - 2.5rem);
+    height: calc(100% - 0rem);
     width: 100%;
     max-width: 100%;
-    backdrop-filter: blur(1rem);
-
 }
 
 view {
     scroll-behavior: smooth;
-    border-top: .1rem solid rgba(0, 0, 0, .05);
 }
 
 :root[data-theme=dark] view {

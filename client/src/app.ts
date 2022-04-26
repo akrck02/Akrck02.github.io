@@ -125,7 +125,7 @@ window.onload = async () => {
         await Configurations.setDefaultVariables();
         
         APP = new App();   
-        Configurations.setTheme("light"); 
+        Configurations.setTheme("dark"); 
         const theme = Configurations.getTheme();
         Configurations.setTheme(theme);
     }
