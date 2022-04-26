@@ -17,9 +17,6 @@ jobs:
     - name: Change to production mode
       run: npm run prod
 
-    - name: Replace index with production index HTML
-      run: rm ./index.html && mv index-prod.html index.html
-
     - name: Compile and minify the code
       run: npm run dist
       
