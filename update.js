@@ -89,10 +89,10 @@ function main(type, env, prefix, update = true){
     let configStringUpdated = "";
     
     if(env == "-d") {
-        configStringUpdated = configString.replaceAll("index-prod.html", "index.html");
+        configStringUpdated = configString.replaceAll("../#/", "index-dev.html#/");
     }
     else {
-        configStringUpdated =  configString.replaceAll("index.html", "index-prod.html");
+        configStringUpdated = configString.replaceAll("index-dev.html#/","../#/");
     }
     
     const configFileUpdated = fs.openSync("client/src/config/config.ts", "w");
