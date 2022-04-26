@@ -1,0 +1,5 @@
+*/**/delete.*
+/node_modules/
+/client/temp/
+/client/out/
+/web/styles/out/
