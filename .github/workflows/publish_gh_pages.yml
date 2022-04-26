@@ -1,7 +1,7 @@
 name: Stable release
 on:
   push:
-    branches: [ gh-pages ]
+    branches: [ master ]
 jobs:
   build:
     runs-on: ubuntu-18.04
