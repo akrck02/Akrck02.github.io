@@ -1,0 +1,30 @@
+name: Stable release
+on:
+  push:
+    branches: [ gh-pages ]
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    - name: instal node dependencies
+      run: npm install
+
+    - name: Change to production mode
+      run: npm run prod
+
+    - name: Replace index with production index HTML
+      run: rm ./index.html && mv index-prod.html index.html
+
+    - name: Compile and minify the code
+      run: npm run dist
+
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@v4.3.0
+      with:
+        branch: gh-pages # The branch the action should deploy to.
+        folder: . # The folder the action should deploy.

@@ -34,11 +34,11 @@ export class Configurations {
     };
 
     public static VIEWS = {
-        BASE_URL: "../web/index.html#/",
-        HOME: "../web/#/home",
-        SOFTWARE: "../web/#/software",
-        ERROR: "../web/#/error/",
-        DUMMY: "../web/#/dummy/",
+        BASE_URL: "../#/",
+        HOME: "../#/home",
+        SOFTWARE: "../#/software",
+        ERROR: "../#/error/",
+        DUMMY: "../#/dummy/",
     };
     
     public static API = {};
