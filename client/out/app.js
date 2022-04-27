@@ -291,7 +291,8 @@
         "cancel": `<path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/>`,
         "home": `<path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>`,
         "code": `<path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>`,
-        "business": `<path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/>`
+        "business": `<path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/>`,
+        "all_inclusive": `<path d="M18.6 6.62c-1.44 0-2.8.56-3.77 1.53L12 10.66 10.48 12h.01L7.8 14.39c-.64.64-1.49.99-2.4.99-1.87 0-3.39-1.51-3.39-3.38S3.53 8.62 5.4 8.62c.91 0 1.76.35 2.44 1.03l1.13 1 1.51-1.34L9.22 8.2C8.2 7.18 6.84 6.62 5.4 6.62 2.42 6.62 0 9.04 0 12s2.42 5.38 5.4 5.38c1.44 0 2.8-.56 3.77-1.53l2.83-2.5.01.01L13.52 12h-.01l2.69-2.39c.64-.64 1.49-.99 2.4-.99 1.87 0 3.39 1.51 3.39 3.38s-1.52 3.38-3.39 3.38c-.9 0-1.76-.35-2.44-1.03l-1.14-1.01-1.51 1.34 1.27 1.12c1.02 1.01 2.37 1.57 3.82 1.57 2.98 0 5.4-2.41 5.4-5.38s-2.42-5.37-5.4-5.37z"/>`,
     };
 
     class UINotification extends UIComponent {
@@ -602,7 +603,7 @@
          * @returns the application configurations
          */
         static getConfig() {
-            let localStorageConfiguration = JSON.parse(localStorage.getItem("vallhala-config"));
+            let localStorageConfiguration = JSON.parse(localStorage.getItem("akrck02.github.io-config"));
             if (!localStorageConfiguration) {
                 localStorageConfiguration = {};
             }
@@ -617,7 +618,7 @@
             let localStorageConfiguration = Configurations.getConfig();
             const config = localStorageConfiguration;
             config[key] = value;
-            localStorage.setItem("vallhala-config", JSON.stringify(config));
+            localStorage.setItem("akrck02.github.io-config", JSON.stringify(config));
         }
         /**
          * Get a configuration variable
@@ -1050,11 +1051,10 @@
                     paddingLeft: "calc(4rem + 7rem)",
                     paddingRight: "calc(10rem)",
                     paddingTop: "6rem",
-                    backgroundColor: "#151515",
-                    backgroundImage: `url(${Configurations.PATHS.WALLPAPERS}/wallpaper.png)`,
-                    backgroundSize: "cover",
                     fontFamily: "Inter",
-                    overflowY: "auto"
+                    overflowY: "auto",
+                    opacity: "0",
+                    transition: "opacity var(--slow)",
                 }
             });
         }
@@ -1064,6 +1064,7 @@
             this.appendChild(presentation);
             this.appendChild(tecnologies);
             this.appendTo(container);
+            setTimeout(() => this.element.style.opacity = "1", 40);
         }
         buildPresentationSection() {
             const section = new UIComponent({
@@ -1363,37 +1364,233 @@
         "Sqlite",
     ];
 
+    class SoftwareCore {
+        static getTechnologies() {
+            const technologies = [];
+            for (const name in this.projects) {
+                let local = this.projects[name].technologies || [];
+                local.forEach(t => {
+                    if (technologies.indexOf(t.toLowerCase()) == -1) {
+                        technologies.push(t.toLowerCase());
+                    }
+                });
+            }
+            return technologies;
+        }
+        static getLangs() {
+            const langs = [];
+            for (const name in this.projects) {
+                let local = this.projects[name].langs || [];
+                local.forEach(t => {
+                    if (langs.indexOf(t.toLowerCase()) == -1) {
+                        langs.push(t.toLowerCase());
+                    }
+                });
+            }
+            return langs;
+        }
+        static getProjectsByCategory(tech) {
+            if (tech == "all" || tech == "" || tech == undefined) {
+                return this.projects;
+            }
+            const projectsByCategory = {};
+            for (const name in this.projects) {
+                let local = this.projects[name].langs || [];
+                let localTech = this.projects[name].technologies || [];
+                local = local.map(l => l.toLowerCase());
+                localTech = localTech.map(l => l.toLowerCase());
+                if (local.indexOf(tech.toLocaleLowerCase()) != -1) {
+                    projectsByCategory[name] = this.projects[name];
+                }
+                if (localTech.indexOf(tech.toLocaleLowerCase()) != -1) {
+                    projectsByCategory[name] = this.projects[name];
+                }
+            }
+            return projectsByCategory;
+        }
+    }
+    SoftwareCore.projects = {
+        "Valhalla": {
+            technologies: ["Electron", "Nodejs", "SQLite"],
+            langs: ["Typescript", "Mariadb", "HTML", "CSS"],
+            icon: Configurations.PATHS.ICONS + "valhalla-logo-light.svg",
+            url: Configurations.VIEWS.SOFTWARE + "/valhalla",
+            github: "akrck02/valhalla"
+        },
+        "GTD Framework": {
+            technologies: [],
+            langs: ["Typescript"],
+            github: "akrck02/GTD-Framework",
+            icon: Configurations.PATHS.ICONS + "gtdf-logo.svg",
+        },
+        "GTD-LIB-TS": {
+            technologies: [],
+            langs: ["Typescript"],
+            github: "akrck02/GTD-LIB-TS",
+            icon: Configurations.PATHS.ICONS + "gtd-logo.svg",
+        },
+        "GTDF-CLI": {
+            technologies: [],
+            langs: ["Go"],
+            github: "akrck02/GTDF-CLI",
+            icon: Configurations.PATHS.ICONS + "gtdf-cli-logo.svg",
+        },
+        "Bubble-UI": {
+            technologies: [],
+            langs: ["CSS"],
+            github: "akrck02/Bubble-UI",
+            icon: Configurations.PATHS.ICONS + "BubbleUI-logo.svg",
+        },
+        "Github backup script": {
+            technologies: ["nodejs"],
+            langs: ["Typescript"],
+            github: "akrck02/Github-backup-script",
+            icon: Configurations.PATHS.ICONS + "gh-backup-script-logo.svg",
+        },
+        "moonbot": {
+            techologies: ["nodejs", "discordjs"],
+            langs: ["Typescript"],
+            github: "akrck02/moonbot",
+            icon: Configurations.PATHS.ICONS + "moonbot-logo.svg",
+        },
+    };
+
     class SoftwareView extends UIComponent {
         constructor() {
             super({
                 type: "view",
                 id: "software-view",
-                classes: ["box-column", "box-center"],
-                styles: {
-                    padding: "1rem",
-                    width: "100%",
-                    height: "100%",
-                }
+                classes: ["box-row"],
             });
         }
         show(params, container) {
-            const valhalla = new UIComponent({
-                type: "a",
-                id: "valhalla-link",
-                text: "Valhalla",
-                attributes: {
-                    href: Configurations.VIEWS.SOFTWARE + "/valhalla",
-                },
+            const navbar = new UIComponent({
+                type: "navbar",
+                id: "software-view-navbar",
+            });
+            this.selected = params[0] || "all";
+            const tech = SoftwareCore.getTechnologies();
+            const langs = SoftwareCore.getLangs();
+            const all = this.createNavbarItem("all");
+            navbar.appendChild(all);
+            langs.forEach((lang) => {
+                const item = this.createNavbarItem(lang);
+                navbar.appendChild(item);
+            });
+            tech.forEach((tech) => {
+                const item = this.createNavbarItem(tech);
+                navbar.appendChild(item);
+            });
+            this.techContainer = new UIComponent({
+                type: "div",
+                id: "tech-container",
+                classes: ["box-row", "box-x-center"],
                 styles: {
-                    fontSize: "1rem",
-                    backgroundColor: "rgba(255,255,255,.15)",
                     padding: "1rem",
-                    borderRadius: ".35rem",
-                    color: "white",
                 }
             });
-            this.appendChild(valhalla);
+            this.showTechByCategory(params[0]);
+            this.appendChild(navbar);
+            this.appendChild(this.techContainer);
             container.appendChild(this);
+            setTimeout(() => this.element.style.opacity = "1", 40);
+        }
+        createNavbarItem(name) {
+            const item = new UIComponent({
+                type: "div",
+                classes: ["box-x-between", "box-row", "navbar-item"],
+                text: name,
+            });
+            setEvents(item.element, {
+                click: (e) => {
+                    this.showTechByCategory(name);
+                    item.element.classList.add("selected");
+                    const navbarItems = document.querySelectorAll(".navbar-item");
+                    for (let i = 0; i < navbarItems.length; i++) {
+                        if (navbarItems[i] !== item.element) {
+                            navbarItems[i].classList.remove("selected");
+                        }
+                    }
+                }
+            });
+            if (name === this.selected) {
+                item.element.classList.add("selected");
+            }
+            if (name !== "all") {
+                const icon = new UIComponent({
+                    type: "img",
+                    id: "software-view-navbar-item-icon",
+                    attributes: {
+                        src: Configurations.PATHS.ICONS + name + ".svg",
+                        alt: name
+                    },
+                });
+                item.appendChild(icon);
+            }
+            else {
+                const icon = getMaterialIcon("all_inclusive", {
+                    size: "1.5rem",
+                    fill: "#fff",
+                });
+                item.appendChild(icon);
+            }
+            return item;
+        }
+        showTechByCategory(category) {
+            this.selected = category;
+            this.techContainer.clean();
+            setStyles(this.techContainer.element, {
+                transition: "none",
+                opacity: "0",
+            });
+            const projectsByCategory = SoftwareCore.getProjectsByCategory(category);
+            for (const name in projectsByCategory) {
+                const project = projectsByCategory[name];
+                const projectComp = new UIComponent({
+                    type: "a",
+                    classes: ["box-center", "box-column", "project"],
+                    attributes: {
+                        href: project.url || "https://github.com/" + project.github,
+                        target: project.url ? "" : "_blank"
+                    },
+                });
+                const title = new UIComponent({
+                    text: name
+                });
+                if (project.icon) {
+                    const logo = new UIComponent({
+                        type: "img",
+                        attributes: {
+                            src: project.icon,
+                        },
+                        styles: {
+                            width: "6rem",
+                            height: "6rem",
+                            filter: "drop-shadow(0 .2rem .2rem rgba(0,0,0,.35))"
+                        }
+                    });
+                    projectComp.appendChild(logo);
+                }
+                else {
+                    const defaultIcon = getMaterialIcon("code", {
+                        fill: "#fff",
+                        size: "4rem"
+                    });
+                    setStyles(defaultIcon.element, {
+                        marginBottom: "1rem",
+                        padding: ".5rem"
+                    });
+                    projectComp.appendChild(defaultIcon);
+                }
+                projectComp.appendChild(title);
+                this.techContainer.appendChild(projectComp);
+                setTimeout(() => {
+                    setStyles(this.techContainer.element, {
+                        transition: "opacity var(--slow)",
+                        opacity: "1",
+                    });
+                }, 50);
+            }
         }
     }
 
@@ -1679,6 +1876,7 @@
                 container.clean();
                 switch (params[0]) {
                     case undefined:
+                    case "search":
                     case "":
                         new SoftwareView().show(params.splice(1), container);
                         break;
@@ -1711,6 +1909,11 @@
             this.sidebar.appendTo(this.parent);
             this.container.appendTo(this.parent);
             this.modal.appendTo(document.body);
+            setStyles(document.body, {
+                backgroundColor: "#151515",
+                backgroundSize: "cover",
+                backgroundImage: `url(${Configurations.PATHS.WALLPAPERS}/wallpaper.png)`,
+            });
         }
         /**
          * Load a view
@@ -1763,7 +1966,7 @@
             // Adjust zoom 
             Window.setZoomLevel();
             // Set the language
-            Configurations.addConfigVariable("LANG", "es");
+            //Configurations.addConfigVariable("LANG", "es");
             // Set the notification element
             this.notification = new UINotification();
             document.body.appendChild(this.notification.element);

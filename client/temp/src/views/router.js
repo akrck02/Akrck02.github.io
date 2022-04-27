@@ -1,6 +1,6 @@
 import { Sidebar } from "../components/sidebar/sidebar.js";
 import { Configurations } from "../config/config.js";
-import { UIComponent } from "../lib/gtd-ts/web/uicomponent.js";
+import { setStyles, UIComponent } from "../lib/gtd-ts/web/uicomponent.js";
 import ErrorV from "./error/errorV.js";
 import DummyV from "./dummy/dummyView.ui.js";
 import Modal from "../components/modal/modal.js";
@@ -22,6 +22,11 @@ export default class Router {
         this.sidebar.appendTo(this.parent);
         this.container.appendTo(this.parent);
         this.modal.appendTo(document.body);
+        setStyles(document.body, {
+            backgroundColor: "#151515",
+            backgroundSize: "cover",
+            backgroundImage: `url(${Configurations.PATHS.WALLPAPERS}/wallpaper.png)`,
+        });
     }
     /**
      * Load a view

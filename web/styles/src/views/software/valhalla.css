@@ -42,12 +42,21 @@ view#valhalla-view  #valhalla-view-task #icon-bar .text {
 
 @media (max-width: 60rem) {
 
+    view#valhalla-view img#valhalla-view-logo {
+        width: 10rem !important;
+        margin: 1rem 0 !important; 
+    }
+
     view#valhalla-view .section {
         flex-direction: column;
+        justify-content: flex-start;
+        padding: 4rem 0;
+        height: fit-content !important;
     }
 
     view#valhalla-view .section.reverse {
         flex-direction: column-reverse;
+        justify-content: flex-end;
     }
 
     view#valhalla-view .section img {

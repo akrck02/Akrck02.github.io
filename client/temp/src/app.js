@@ -19,7 +19,7 @@ export class App {
         // Adjust zoom 
         Window.setZoomLevel();
         // Set the language
-        Configurations.addConfigVariable("LANG", "es");
+        //Configurations.addConfigVariable("LANG", "es");
         // Set the notification element
         this.notification = new UINotification();
         document.body.appendChild(this.notification.element);

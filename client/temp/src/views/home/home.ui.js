@@ -16,11 +16,10 @@ export default class HomeView extends UIComponent {
                 paddingLeft: "calc(4rem + 7rem)",
                 paddingRight: "calc(10rem)",
                 paddingTop: "6rem",
-                backgroundColor: "#151515",
-                backgroundImage: `url(${Configurations.PATHS.WALLPAPERS}/wallpaper.png)`,
-                backgroundSize: "cover",
                 fontFamily: "Inter",
-                overflowY: "auto"
+                overflowY: "auto",
+                opacity: "0",
+                transition: "opacity var(--slow)",
             }
         });
     }
@@ -30,6 +29,7 @@ export default class HomeView extends UIComponent {
         this.appendChild(presentation);
         this.appendChild(tecnologies);
         this.appendTo(container);
+        setTimeout(() => this.element.style.opacity = "1", 40);
     }
     buildPresentationSection() {
         const section = new UIComponent({

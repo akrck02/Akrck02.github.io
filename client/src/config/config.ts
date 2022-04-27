@@ -122,7 +122,7 @@ export class Configurations {
      * @returns the application configurations
      */
     public static getConfig() {
-        let localStorageConfiguration = JSON.parse(localStorage.getItem("vallhala-config"));
+        let localStorageConfiguration = JSON.parse(localStorage.getItem("akrck02.github.io-config"));
 
         if(!localStorageConfiguration) {
             localStorageConfiguration = {}
@@ -140,7 +140,7 @@ export class Configurations {
         let localStorageConfiguration = Configurations.getConfig();
         const config = localStorageConfiguration;
         config[key] = value;
-        localStorage.setItem("vallhala-config", JSON.stringify(config));
+        localStorage.setItem("akrck02.github.io-config", JSON.stringify(config));
     }
 
     /**

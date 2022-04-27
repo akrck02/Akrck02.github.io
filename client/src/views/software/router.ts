@@ -11,6 +11,7 @@ export default class SoftwareRouter {
             container.clean();
             switch (params[0]) {
                 case undefined:
+                case "search":
                 case "" :
                     new SoftwareView().show(params.splice(1), container);
                     break;
