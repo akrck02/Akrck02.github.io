@@ -719,6 +719,14 @@
         return params;
     }
 
+    const HomeBundleEn = {
+        HI_THERE_IM_AKRCK02: "Hi there!, I’m akrck02.",
+        DESCRIPTION_1: "I’m a 21 year old software developer.  I like puzzles, video games and software architecture.",
+        DESCRIPTION_2: "From time to time I create projects to make development easier or solve problems.",
+        CURRENTLY_WORKING_ON: "Currently working on",
+        TECHNOLOGIES_IVE_USED: "Technologies I’ve used"
+    };
+
     const SystemBundleEn = {
         NOT_IMPLEMENTED_YET: "Not implemented yet",
         COPIED_TO_CLIPBOARD: "Copied to clipboard",
@@ -757,6 +765,14 @@
         NOTES: "Notas"
     };
 
+    const HomeBundleEs = {
+        HI_THERE_IM_AKRCK02: "Hola! Soy akrck02.",
+        DESCRIPTION_1: "Soy un desarrollador de software de 21 años.  Me gustan los puzzles, videojuegos y la arquitectura de software.",
+        DESCRIPTION_2: "De vez en cuando creo proyectos para hacer mas facil el desarrollo o resolver problemas.",
+        CURRENTLY_WORKING_ON: "Trabajando ahora en ",
+        TECHNOLOGIES_IVE_USED: "Tecnologías que he usado"
+    };
+
     class TextBundle {
         static get(lang) {
             //lang = "es";
@@ -772,12 +788,14 @@
         static getBundleEn() {
             return {
                 system: SystemBundleEn,
+                home: HomeBundleEn,
                 valhalla: ValhallaBundleEn
             };
         }
         static getBundleEs() {
             return {
                 system: SystemBundleEs,
+                home: HomeBundleEs,
                 valhalla: ValhallaBundleEs
             };
         }
@@ -1023,7 +1041,7 @@
         constructor() {
             super({
                 type: "view",
-                id: "home",
+                id: "home-view",
                 classes: ["box-column"],
                 styles: {
                     padding: "1rem",
@@ -1036,6 +1054,7 @@
                     backgroundImage: `url(${Configurations.PATHS.WALLPAPERS}/wallpaper.png)`,
                     backgroundSize: "cover",
                     fontFamily: "Inter",
+                    overflowY: "auto"
                 }
             });
         }
@@ -1049,6 +1068,7 @@
         buildPresentationSection() {
             const section = new UIComponent({
                 classes: ["box-x-between", "box-row"],
+                id: "presentation",
                 styles: {
                     width: "100%",
                 }
@@ -1068,14 +1088,14 @@
             });
             const greeting = new UIComponent({
                 type: "p",
-                text: `Hi there!, I’m akrck02. 👋`,
+                text: `${App.getBundle().home.HI_THERE_IM_AKRCK02} 👋`,
                 styles: {
                     marginTop: "0.5rem",
                 }
             });
             const description = new UIComponent({
                 type: "p",
-                text: `I’m a 21 year old software developer.  I like puzzles, video games and software architecture.`,
+                text: App.getBundle().home.DESCRIPTION_1,
                 styles: {
                     marginTop: "1.5rem",
                     fontSize: "1.2rem",
@@ -1084,7 +1104,7 @@
             });
             const description2 = new UIComponent({
                 type: "p",
-                text: `From time to time I create projects to make development easier or solve problems.`,
+                text: App.getBundle().home.DESCRIPTION_2,
                 styles: {
                     marginTop: "1.5rem",
                     fontSize: "1.2rem",
@@ -1093,7 +1113,7 @@
             });
             const currently = new UIComponent({
                 type: "h1",
-                text: "Currently working on...",
+                text: `${App.getBundle().home.CURRENTLY_WORKING_ON}...`,
                 styles: {
                     marginTop: "2rem",
                     fontSize: "1.7rem",
@@ -1177,6 +1197,7 @@
             });
             const profilePicture = new UIComponent({
                 type: "img",
+                id: "profile-pic",
                 attributes: {
                     src: `${Configurations.PATHS.IMAGES}/me.jpg`,
                 },
@@ -1249,7 +1270,7 @@
             });
             const title = new UIComponent({
                 type: "h1",
-                text: "Technologies I’ve used",
+                text: App.getBundle().home.TECHNOLOGIES_IVE_USED,
                 styles: {
                     marginTop: "2rem",
                 }
@@ -1269,13 +1290,14 @@
             return section;
         }
         techCard(name) {
+            const size = 4;
             const card = new UIComponent({
                 classes: ["box-row", "box-center"],
                 styles: {
-                    minWidth: "7rem",
-                    minHeight: "7rem",
-                    maxWidth: "7rem",
-                    maxHeight: "7rem",
+                    minWidth: size + "rem",
+                    minHeight: size + "rem",
+                    maxWidth: size + "rem",
+                    maxHeight: size + "rem",
                     background: "rgba(255, 255, 255, 0.1)",
                     borderRadius: "0.5rem",
                     marginRight: ".5rem",
@@ -1292,8 +1314,8 @@
                     src: `${Configurations.PATHS.ICONS}/${name.toLowerCase()}.svg`,
                 },
                 styles: {
-                    width: "3.5rem",
-                    height: "3.5rem",
+                    width: size * .55 + "rem",
+                    height: size * .55 + "rem",
                 }
             });
             card.appendChild(icon);
