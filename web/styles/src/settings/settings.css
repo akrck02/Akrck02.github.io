@@ -92,6 +92,11 @@ view {
 }
 
 
+@font-face {
+    font-family: "Inter";
+    src: url("/client/resources/fonts/Inter/Inter-VariableFont_slnt\,wght.ttf");
+}
+
 /**
     TODO: MOVE TO SETTINGS
 _**/
@@ -106,19 +111,32 @@ _**/
         height: calc(100%) !important;
     }
 
+    view#home-view #presentation{
+        flex-direction: column;
+    }
+
+    view#home-view #presentation img#profile-pic{
+        margin-top: 2rem;
+    }
+
     #sidebar{
         bottom: 0;
     }
 
-    #sidebar, #sidebar div {
+    #sidebar, #sidebar > div {
         width: 100% !important;
         height: 4rem !important;
         flex-direction: row !important;
     }
 
+    #sidebar > div {
+        flex-direction: row !important;
+        justify-content: center;
+    }
+
     div#sidebar a.sidebar-item {
         --sidebar-item-size: 4rem;
-        display: inline;
+
     }
 
     div#sidebar a.sidebar-item svg {
@@ -127,9 +145,10 @@ _**/
     }
 
     div#sidebar a.sidebar-item::before {
-        left: 0;
-        width: 100%;
-        top: -0rem;
-        height: .2rem;
+        display: none !important;
+        left: 0 !important;
+        width: 100% !important;
+        top: -0rem !important;
+        height: .2rem !important;
     }
 }   

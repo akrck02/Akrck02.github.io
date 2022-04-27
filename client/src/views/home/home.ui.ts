@@ -1,3 +1,4 @@
+import { App } from "../../app.js";
 import { Configurations } from "../../config/config.js";
 import { getMaterialIcon } from "../../lib/gtd-ts/material/materialicons.js";
 import { UIComponent } from "../../lib/gtd-ts/web/uicomponent.js";
@@ -29,7 +30,7 @@ export default class HomeView extends UIComponent {
     public constructor() {
         super({
             type : "view",
-            id : "home",
+            id : "home-view",
             classes: ["box-column"],
             styles : {
                 padding: "1rem",
@@ -59,6 +60,7 @@ export default class HomeView extends UIComponent {
     private buildPresentationSection() : UIComponent {
         const section = new UIComponent({
             classes: ["box-x-between", "box-row"],
+            id: "presentation",
             styles: {
                 width: "100%",
             }
@@ -81,7 +83,7 @@ export default class HomeView extends UIComponent {
 
         const greeting = new UIComponent({
             type: "p",
-            text: `Hi there!, I’m akrck02. 👋`,
+            text: `${App.getBundle().home.HI_THERE_IM_AKRCK02} 👋`,
             styles: {
                 marginTop: "0.5rem",
             }
@@ -89,7 +91,7 @@ export default class HomeView extends UIComponent {
 
         const description = new UIComponent({
             type: "p",
-            text: `I’m a 21 year old software developer.  I like puzzles, video games and software architecture.`,
+            text: App.getBundle().home.DESCRIPTION_1,
             styles: {
                 marginTop: "1.5rem",
                 fontSize: "1.2rem",
@@ -99,7 +101,7 @@ export default class HomeView extends UIComponent {
 
         const description2 = new UIComponent({
             type: "p",
-            text: `From time to time I create projects to make development easier or solve problems.`,
+            text: App.getBundle().home.DESCRIPTION_2,
             styles: {
                 marginTop: "1.5rem",
                 fontSize: "1.2rem",
@@ -109,7 +111,7 @@ export default class HomeView extends UIComponent {
 
         const currently = new UIComponent({
             type: "h1",
-            text: "Currently working on...",
+            text: `${App.getBundle().home.CURRENTLY_WORKING_ON}...`,
             styles: {
                 marginTop: "2rem",
                 fontSize: "1.7rem",
@@ -205,6 +207,7 @@ export default class HomeView extends UIComponent {
 
         const profilePicture = new UIComponent({
             type: "img",
+            id: "profile-pic",
             attributes: {
                 src: `${Configurations.PATHS.IMAGES}/me.jpg`,
             },
@@ -292,7 +295,7 @@ export default class HomeView extends UIComponent {
 
         const title = new UIComponent({
             type: "h1",
-            text: "Technologies I’ve used",
+            text: App.getBundle().home.TECHNOLOGIES_IVE_USED,
             styles: {
                 marginTop: "2rem",
             }
@@ -319,13 +322,15 @@ export default class HomeView extends UIComponent {
 
 
     private techCard(name: string): UIComponent {
+        
+        const size = 4;
         const card = new UIComponent({
             classes: ["box-row", "box-center"],
             styles: {
-                minWidth: "7rem",
-                minHeight: "7rem",
-                maxWidth: "7rem",
-                maxHeight: "7rem",
+                minWidth: size + "rem",
+                minHeight: size + "rem",
+                maxWidth: size + "rem",
+                maxHeight: size + "rem",
                 background: "rgba(255, 255, 255, 0.1)",
                 borderRadius: "0.5rem",
                 marginRight: ".5rem",
@@ -343,8 +348,8 @@ export default class HomeView extends UIComponent {
                 src: `${Configurations.PATHS.ICONS}/${name.toLowerCase()}.svg`,
             },
             styles: {
-                width: "3.5rem",
-                height: "3.5rem",
+                width: size * .55 + "rem",
+                height: size * .55 + "rem",
             }
         });
 
