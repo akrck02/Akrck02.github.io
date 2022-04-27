@@ -111,6 +111,11 @@ _**/
         height: calc(100%) !important;
     }
 
+    view#home-view {
+        align-items: center;
+        padding: 3rem !important;
+    }
+
     view#home-view #presentation{
         flex-direction: column-reverse;
     }

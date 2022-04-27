@@ -65,7 +65,7 @@ export default class HomeView extends UIComponent {
             styles: {
                 marginTop: "1.5rem",
                 fontSize: "1.2rem",
-                width: "25rem",
+                maxWidth: "25rem",
             }
         });
         const description2 = new UIComponent({
@@ -74,7 +74,7 @@ export default class HomeView extends UIComponent {
             styles: {
                 marginTop: "1.5rem",
                 fontSize: "1.2rem",
-                width: "25rem",
+                maxWidth: "25rem",
             }
         });
         const currently = new UIComponent({
@@ -88,7 +88,7 @@ export default class HomeView extends UIComponent {
             }
         });
         const projectOne = new UIComponent({
-            type: "div",
+            type: "a",
             classes: ["box-row", "box-x-between", "box-x-center"],
             styles: {
                 marginTop: "1.5rem",
@@ -96,6 +96,12 @@ export default class HomeView extends UIComponent {
                 background: "rgba(255, 255, 255, 0.1)",
                 borderRadius: "0.35rem",
                 padding: "0.5rem 1.5rem",
+                color: "#fff",
+                cursor: "pointer"
+            },
+            attributes: {
+                href: "https://github.com/akrck02/valhalla",
+                target: "_blank"
             }
         });
         const projectOneTitle = new UIComponent({
@@ -118,7 +124,7 @@ export default class HomeView extends UIComponent {
             }
         });
         const projectTwo = new UIComponent({
-            type: "div",
+            type: "a",
             classes: ["box-row", "box-x-between", "box-x-center"],
             styles: {
                 marginTop: ".5rem",
@@ -126,6 +132,12 @@ export default class HomeView extends UIComponent {
                 background: "rgba(255, 255, 255, 0.1)",
                 borderRadius: "0.35rem",
                 padding: "0.5rem 1.5rem",
+                color: "#fff",
+                cursor: "pointer"
+            },
+            attributes: {
+                href: "https://github.com/Nightlight-studios/io-world",
+                target: "_blank"
             }
         });
         const projectTwoTitle = new UIComponent({
@@ -188,11 +200,17 @@ export default class HomeView extends UIComponent {
             fill: "#fff",
         });
         const companyName = new UIComponent({
-            type: "p",
+            type: "a",
             text: "Nightlight studios ™",
             styles: {
                 fontSize: "1.2rem",
                 marginLeft: "1.25rem",
+                color: "#fff",
+                cursor: "pointer"
+            },
+            attributes: {
+                href: "https://github.com/Nightlight-studios",
+                target: "_blank"
             }
         });
         companyCard.appendChild(companyIcon);
@@ -210,11 +228,17 @@ export default class HomeView extends UIComponent {
             fill: "#fff",
         });
         const githubName = new UIComponent({
-            type: "p",
+            type: "a",
             text: "akrck02",
             styles: {
                 fontSize: "1.2rem",
                 marginLeft: "1.25rem",
+                color: "#fff",
+                cursor: "pointer"
+            },
+            attributes: {
+                href: "https://github.com/akrck02",
+                target: "_blank"
             }
         });
         githubCard.appendChild(githubIcon);
