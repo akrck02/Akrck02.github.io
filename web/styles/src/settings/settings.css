@@ -97,9 +97,6 @@ view {
     src: url("/client/resources/fonts/Inter/Inter-VariableFont_slnt\,wght.ttf");
 }
 
-/**
-    TODO: MOVE TO SETTINGS
-_**/
 @media (max-width: 60rem) {
 
     #view-container{
@@ -109,6 +106,10 @@ _**/
     #view-container-box {
         width: 100% !important;
         height: calc(100%) !important;
+    }
+
+    view {
+        padding-left: 0 !important;
     }
 
     view#home-view {

@@ -28,7 +28,7 @@ export class App {
         Window.setZoomLevel();
 
         // Set the language
-        Configurations.addConfigVariable("LANG", "es");
+        //Configurations.addConfigVariable("LANG", "es");
 
         // Set the notification element
         this.notification = new UINotification();
