@@ -112,10 +112,10 @@ _**/
     }
 
     view#home-view #presentation{
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
 
-    view#home-view #presentation img#profile-pic{
+    view#home-view h1{
         margin-top: 2rem;
     }
 

@@ -43,6 +43,7 @@ export default class HomeView extends UIComponent {
                 backgroundImage: `url(${Configurations.PATHS.WALLPAPERS}/wallpaper.png)`,
                 backgroundSize: "cover",
                 fontFamily: "Inter",
+                overflowY : "auto"
             }
         });
     }
