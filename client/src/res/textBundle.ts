@@ -8,16 +8,13 @@ import { HomeBundleEs } from "./spanish/homeBundle_es.js";
 export class TextBundle {
 
     public static get (lang : string) {
-      //lang = "es";
-      switch (lang) {
-        case "en":
-            return this.getBundleEn();
-        case "es":
-            return this.getBundleEs();
-        default:
-            return this.getBundleEn();
-      }
-
+        
+        //if contains ignore case 
+        if(lang.toLowerCase().includes("es")) {
+            return TextBundle.getBundleEs();
+        } else {
+            return TextBundle.getBundleEn();
+        }
     }
 
 
