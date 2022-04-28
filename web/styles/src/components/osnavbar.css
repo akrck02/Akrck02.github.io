@@ -166,3 +166,15 @@ header#os-navbar div#search #search-modal .task-entry#no-results{
 header#os-navbar div#search #search-modal .task-entry:hover,header#os-navbar div#search #search-modal .task-entry:focus {
     background: rgba(255,255,255,.05);
 }
+
+
+@media (max-width: 60rem) {
+
+    header#os-navbar {
+        display: flex;
+        height: 5rem;
+        background: #202020 !important;
+        padding: .1rem 2rem;
+    }
+
+}

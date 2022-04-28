@@ -59,7 +59,7 @@ SoftwareCore.projects = {
         icon: Configurations.PATHS.ICONS + "gtdf-logo.svg",
     },
     "GTD-LIB-TS": {
-        technologies: [],
+        technologies: ["docker"],
         langs: ["Typescript"],
         github: "akrck02/GTD-LIB-TS",
         icon: Configurations.PATHS.ICONS + "gtd-logo.svg",
@@ -76,16 +76,38 @@ SoftwareCore.projects = {
         github: "akrck02/Bubble-UI",
         icon: Configurations.PATHS.ICONS + "BubbleUI-logo.svg",
     },
+    "IO World": {
+        technologies: ["Unity"],
+        langs: ["Typescript", "Mariadb", "HTML", "CSS"],
+        icon: Configurations.PATHS.ICONS + "io-logo.svg",
+        github: "Nightlight-studios/io-world"
+    },
     "Github backup script": {
-        technologies: ["nodejs"],
+        technologies: ["Nodejs"],
         langs: ["Typescript"],
         github: "akrck02/Github-backup-script",
         icon: Configurations.PATHS.ICONS + "gh-backup-script-logo.svg",
     },
     "moonbot": {
-        techologies: ["nodejs", "discordjs"],
+        technologies: ["Nodejs", "discordjs"],
         langs: ["Typescript"],
         github: "akrck02/moonbot",
         icon: Configurations.PATHS.ICONS + "moonbot-logo.svg",
+    },
+    "enjoined": {
+        technologies: ["libgdx"],
+        langs: ["Java"],
+        github: "akrck02/EnJoined",
+        icon: Configurations.PATHS.ICONS + "enjoined-logo.svg",
+    },
+    "Littlestyles": {
+        technologies: [],
+        langs: ["java"],
+        github: "akrck02/Littlestyles",
+    },
+    "Alice": {
+        technologies: [],
+        langs: ["python"],
+        github: "akrck02/Alice",
     },
 };

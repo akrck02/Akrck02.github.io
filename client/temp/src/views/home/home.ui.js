@@ -282,6 +282,7 @@ export default class HomeView extends UIComponent {
     techCard(name) {
         const size = 4;
         const card = new UIComponent({
+            type: "a",
             classes: ["box-row", "box-center"],
             styles: {
                 minWidth: size + "rem",
@@ -296,6 +297,7 @@ export default class HomeView extends UIComponent {
             },
             attributes: {
                 title: name,
+                href: `${Configurations.VIEWS.SOFTWARE}/search/${name}`,
             }
         });
         const icon = new UIComponent({
