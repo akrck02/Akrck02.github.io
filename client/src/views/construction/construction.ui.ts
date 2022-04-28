@@ -1,6 +1,8 @@
+import { App } from "../../app.js";
 import { Configurations } from "../../config/config.js";
 import { getMaterialIcon } from "../../lib/gtd-ts/material/materialicons.js";
 import { UIComponent } from "../../lib/gtd-ts/web/uicomponent.js";
+import Router from "../router.js";
 
 export default class ConstructionView extends UIComponent {
 
@@ -20,7 +22,7 @@ export default class ConstructionView extends UIComponent {
 
 
     public show(params: string[], parent : UIComponent): void {
-
+        
         const image = new UIComponent({
             type: "img",
             attributes: {
@@ -38,7 +40,7 @@ export default class ConstructionView extends UIComponent {
         const text = new UIComponent({
             type: "p",
             classes: ["box-row","box-center"],
-            text: "This page is under construction ",
+            text: App.getBundle().system.THIS_PAGE_IS_UNDER_CONSTRUCTION, 
             styles: {
                 marginTop: "1rem",
                 textAlign: "center",

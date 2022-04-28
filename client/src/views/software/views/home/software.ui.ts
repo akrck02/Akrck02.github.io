@@ -2,6 +2,7 @@ import { Configurations } from "../../../../config/config.js";
 import { getMaterialIcon } from "../../../../lib/gtd-ts/material/materialicons.js";
 import { setEvents, setStyles, UIComponent } from "../../../../lib/gtd-ts/web/uicomponent.js";
 import { getSocialIcon } from "../../../../lib/social.js";
+import Router from "../../../router.js";
 import SoftwareCore from "./software.core.js";
 
 export default class SoftwareView extends UIComponent {
@@ -116,6 +117,7 @@ export default class SoftwareView extends UIComponent {
     private showTechByCategory(category: string): void {
 
         this.selected = category;
+        Router.setTitle("Software" + (category ? " / " + category : ""));
         this.techContainer.clean();
 
         setStyles(this.techContainer.element, {
@@ -138,7 +140,10 @@ export default class SoftwareView extends UIComponent {
             });
 
             const title = new UIComponent({
-                text: name
+                text: name,
+                styles: {
+                    fontSize: ".75rem",
+                }
             })
 
             if (project.icon) {
@@ -148,8 +153,8 @@ export default class SoftwareView extends UIComponent {
                         src: project.icon,
                     },
                     styles: {
-                        width: "6rem",
-                        height: "6rem",
+                        width: "4rem",
+                        height: "4rem",
                         filter: "drop-shadow(0 .2rem .2rem rgba(0,0,0,.35))"
                     }
                 });
@@ -160,7 +165,7 @@ export default class SoftwareView extends UIComponent {
             } else {
                 const defaultIcon = getMaterialIcon("code", {
                     fill: "#fff",
-                    size: "4rem"
+                    size: "2.5rem"
                 });
 
                 setStyles(defaultIcon.element, {
