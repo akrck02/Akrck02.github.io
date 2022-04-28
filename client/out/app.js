@@ -788,14 +788,12 @@
 
     class TextBundle {
         static get(lang) {
-            //lang = "es";
-            switch (lang) {
-                case "en":
-                    return this.getBundleEn();
-                case "es":
-                    return this.getBundleEs();
-                default:
-                    return this.getBundleEn();
+            //if contains ignore case 
+            if (lang.toLowerCase().includes("es")) {
+                return TextBundle.getBundleEs();
+            }
+            else {
+                return TextBundle.getBundleEn();
             }
         }
         static getBundleEn() {
@@ -1619,8 +1617,12 @@
             const item = new UIComponent({
                 type: "div",
                 classes: ["box-x-between", "box-row", "navbar-item"],
+            });
+            const nameComp = new UIComponent({
+                type: "div",
                 text: name,
             });
+            item.appendChild(nameComp);
             setEvents(item.element, {
                 click: (e) => {
                     this.showTechByCategory(name);
@@ -1642,7 +1644,8 @@
                     id: "software-view-navbar-item-icon",
                     attributes: {
                         src: Configurations.PATHS.ICONS + name.replace("#", "sharp") + ".svg",
-                        alt: name
+                        alt: name,
+                        title: name,
                     },
                 });
                 item.appendChild(icon);
@@ -1652,6 +1655,8 @@
                     size: "1.5rem",
                     fill: "#fff",
                 });
+                icon.element.id = "all-icon";
+                icon.element.title = "All";
                 item.appendChild(icon);
             }
             return item;
@@ -2153,8 +2158,6 @@
             Window.setEvents();
             // Adjust zoom 
             Window.setZoomLevel();
-            // Set the language
-            Configurations.addConfigVariable("LANG", navigator.language);
             // Set the notification element
             this.notification = new UINotification();
             document.body.appendChild(this.notification.element);

@@ -30,7 +30,7 @@ export default class SoftwareView extends UIComponent {
         const tech = SoftwareCore.getTechnologies();
         const langs = SoftwareCore.getLangs();
 
-        const all = this.createNavbarItem("all");
+        const all = this.createNavbarItem("all");   
         navbar.appendChild(all);
 
         langs.forEach((lang) => {
@@ -69,8 +69,14 @@ export default class SoftwareView extends UIComponent {
         const item = new UIComponent({
             type: "div",
             classes: ["box-x-between", "box-row","navbar-item"],
+        });
+
+        const nameComp = new UIComponent({
+            type: "div",
             text: name,
         });
+
+        item.appendChild(nameComp);
 
         setEvents(item.element, {
             click: (e) => {
@@ -96,7 +102,8 @@ export default class SoftwareView extends UIComponent {
                 id: "software-view-navbar-item-icon",
                 attributes: {
                     src: Configurations.PATHS.ICONS + name.replace("#","sharp") + ".svg",
-                    alt: name
+                    alt: name,
+                    title: name,
                 },
             });
 
@@ -106,6 +113,9 @@ export default class SoftwareView extends UIComponent {
                 size: "1.5rem",
                 fill: "#fff",
             });
+
+            icon.element.id = "all-icon";
+            icon.element.title = "All";
 
             item.appendChild(icon);
         }

@@ -1316,6 +1316,9 @@ flex-wrap: wrap;
 justify-content: flex-start;
 align-items: flex-start !important;
 height: fit-content !important;
+max-height: 100% !important;
+width: 100% !important;
+overflow-y: auto ;
 }
 view#software-view .project{
 font-size: 1rem;
@@ -1336,6 +1339,7 @@ transform: scale(1.05) translateY(-.5rem);
 @media (max-width: 80rem) {
 view#software-view #tech-container {
 flex-direction: column;
+flex-wrap: nowrap;
 justify-content: flex-start;
 width: 100%;
 padding: 0 0% !important;
@@ -1365,6 +1369,14 @@ height: 4rem !important;
 }
 @media (max-width: 60rem) {
 view#software-view navbar#software-view-navbar {
+max-width: 4.5rem;
+min-width: 4.5rem;
+}
+view#software-view navbar#software-view-navbar .navbar-item :not(img) {
 display: none;
+}
+view#software-view navbar#software-view-navbar .navbar-item #all-icon,
+view#software-view navbar#software-view-navbar .navbar-item #all-icon * {
+display: block !important;
 }
 }

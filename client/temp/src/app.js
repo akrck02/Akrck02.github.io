@@ -18,8 +18,6 @@ export class App {
         Window.setEvents();
         // Adjust zoom 
         Window.setZoomLevel();
-        // Set the language
-        Configurations.addConfigVariable("LANG", navigator.language);
         // Set the notification element
         this.notification = new UINotification();
         document.body.appendChild(this.notification.element);

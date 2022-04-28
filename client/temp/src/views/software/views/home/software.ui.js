@@ -47,8 +47,12 @@ export default class SoftwareView extends UIComponent {
         const item = new UIComponent({
             type: "div",
             classes: ["box-x-between", "box-row", "navbar-item"],
+        });
+        const nameComp = new UIComponent({
+            type: "div",
             text: name,
         });
+        item.appendChild(nameComp);
         setEvents(item.element, {
             click: (e) => {
                 this.showTechByCategory(name);
@@ -70,7 +74,8 @@ export default class SoftwareView extends UIComponent {
                 id: "software-view-navbar-item-icon",
                 attributes: {
                     src: Configurations.PATHS.ICONS + name.replace("#", "sharp") + ".svg",
-                    alt: name
+                    alt: name,
+                    title: name,
                 },
             });
             item.appendChild(icon);
@@ -80,6 +85,8 @@ export default class SoftwareView extends UIComponent {
                 size: "1.5rem",
                 fill: "#fff",
             });
+            icon.element.id = "all-icon";
+            icon.element.title = "All";
             item.appendChild(icon);
         }
         return item;
