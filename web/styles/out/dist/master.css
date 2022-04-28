@@ -1340,11 +1340,11 @@ background-image: var(--background-image);
 filter: blur(1rem) brightness(.65);
 background-size: cover;
 }
-view#valhalla-view #valhalla-view-task {
+view#valhalla-view .section {
 position: relative;
 width: 100%;
 min-height: 100%;
-background-color: rgba(2,90,255,.01);
+background-color: rgba(0,0,0,.45) !important;
 }
 view#valhalla-view #valhalla-view-task img#screenshot {
 width: 40%;
