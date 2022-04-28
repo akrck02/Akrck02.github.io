@@ -37,6 +37,8 @@ export class Configurations {
         BASE_URL: "index-dev.html#/",
         HOME: "index-dev.html#/home",
         SOFTWARE: "index-dev.html#/software",
+        GAMES: "index-dev.html#/games",
+        MEDIA: "index-dev.html#/media",
         ERROR: "index-dev.html#/error/",
         DUMMY: "index-dev.html#/dummy/",
     };

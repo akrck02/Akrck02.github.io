@@ -170,10 +170,16 @@ header#os-navbar div#search #search-modal .task-entry:hover,header#os-navbar div
 
 @media (max-width: 60rem) {
 
-    header#os-navbar {
+    body{
         display: flex;
-        height: 5rem;
-        background: #202020 !important;
+        flex-direction: column-reverse !important;
+    }
+
+    header#os-navbar {
+        justify-content: space-between;
+        display: flex;
+        height: 4rem;
+        background: rgba(0, 0, 0, .15) !important;
         padding: .1rem 2rem;
     }
 
