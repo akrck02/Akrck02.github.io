@@ -1,6 +1,7 @@
 import { APP } from "../../app.js";
 import { Configurations } from "../../config/config.js";
 import { getMaterialIcon } from "../../lib/gtd-ts/material/materialicons.js";
+import { isMobile, isSmallDevice } from "../../lib/gtd-ts/web/responsivetools.js";
 import { UIComponent } from "../../lib/gtd-ts/web/uicomponent.js";
 
 export class Sidebar extends UIComponent {
@@ -42,6 +43,14 @@ export class Sidebar extends UIComponent {
         this.elements.forEach((element) => {
             this.buttonBar.appendChild(element);
         });
+
+        if(isSmallDevice()) {
+            const mobileSidebar = document.querySelector("header #mobile-sidebar") as HTMLElement;
+            this.elements.forEach((element) => {
+                mobileSidebar.appendChild(element.element);
+            });
+        }
+
     }
 
 
