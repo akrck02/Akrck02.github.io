@@ -38,7 +38,7 @@ export class Sidebar extends UIComponent {
         const games = this.createIcon("sport_esports", Configurations.VIEWS.GAMES);
         const media = this.createIcon("movie", Configurations.VIEWS.MEDIA);
 
-        this.elements = [home,software]//,games, media];
+        this.elements = [home,software ,games, media];
 
         this.elements.forEach((element) => {
             this.buttonBar.appendChild(element);

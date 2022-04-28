@@ -10,6 +10,7 @@ import HomeView from "./home/home.ui.js";
 import SoftwareRouter from "./software/router.js";
 import GamesView from "./games/games.ui.js";
 import { getMaterialIcon } from "../lib/gtd-ts/material/materialicons.js";
+import ConstructionView from "./construction/construction.ui.js";
 
 export default class Router {
 
@@ -99,12 +100,12 @@ export default class Router {
                     break;
                 
                 case "games":
-                    new GamesView().show(params.splice(1), this.container);
+                    new ConstructionView().show(params.splice(1), this.container);
                     this.sidebar.setSelected(2);
                     break;
                 
                 case "media":
-
+                    new ConstructionView().show(params.splice(1), this.container);
                     this.sidebar.setSelected(3);
                     break;
 
