@@ -6,7 +6,6 @@ import DummyV from "./dummy/dummyView.ui.js";
 import Modal from "../components/modal/modal.js";
 import HomeView from "./home/home.ui.js";
 import SoftwareRouter from "./software/router.js";
-import { getMaterialIcon } from "../lib/gtd-ts/material/materialicons.js";
 import ConstructionView from "./construction/construction.ui.js";
 export default class Router {
     constructor(listeners) {
@@ -24,26 +23,9 @@ export default class Router {
         this.sidebar.appendTo(this.parent);
         this.container.appendTo(this.parent);
         this.modal.appendTo(document.body);
-        const navbar = document.getElementById("os-navbar");
-        const navbarTitleBar = document.querySelector("#os-navbar .title-bar");
-        const mobileSidebar = document.querySelector("header #mobile-sidebar");
-        const icon = getMaterialIcon("menu_open", { size: "1.5rem", fill: "#fff" });
-        icon.element.style.cursor = "pointer";
-        icon.element.addEventListener("click", () => {
-            navbar.style.transition = "height var(--medium)";
-            if (navbar.style.height != "15rem") {
-                navbar.style.height = "15rem";
-                navbar.style.justifyContent = "flex-start";
-                mobileSidebar.style.display = "flex";
-            }
-            else {
-                navbar.style.height = "4.1rem";
-                navbar.style.padding = ".1rem 2rem";
-                navbar.style.alignItems = "center";
-                mobileSidebar.style.display = "none";
-            }
-        });
-        navbarTitleBar.appendChild(icon.element);
+        this.container.element.onclick = () => this.sidebar.getMobile().close();
+        this.container.element.onmouseover = () => this.sidebar.getMobile().close();
+        this.container.element.onscroll = () => this.sidebar.getMobile().close();
         setStyles(document.body, {
             backgroundColor: "#151515",
             backgroundSize: "cover",
@@ -55,6 +37,7 @@ export default class Router {
      * @param {array} params
      */
     load(params) {
+        Router.setTitle("Akrck02");
         try {
             this.clear();
             switch (params[0]) {
@@ -75,10 +58,12 @@ export default class Router {
                     new DummyV().show(params.splice(1), this.container);
                     break;
                 case "games":
+                    Router.setTitle("Games");
                     new ConstructionView().show(params.splice(1), this.container);
                     this.sidebar.setSelected(2);
                     break;
                 case "media":
+                    Router.setTitle("Media");
                     new ConstructionView().show(params.splice(1), this.container);
                     this.sidebar.setSelected(3);
                     break;
@@ -90,6 +75,10 @@ export default class Router {
             console.error(e);
         }
         ;
+    }
+    static setTitle(title) {
+        const titleComp = document.querySelector("#os-navbar #title-bar h1");
+        titleComp.innerHTML = title;
     }
     /** show a view */
     clear() {

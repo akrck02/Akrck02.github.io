@@ -45,10 +45,10 @@ view#software-view #tech-container {
 view#software-view .project{
     font-size: 1rem;
     background: rgba(255,255,255,.07);
-    padding: 2rem 1rem;
+    padding: 2rem .5rem;
     color: white;
-    width: 10rem;
-    height: 10rem;
+    width: 7rem;
+    height: 7rem;
     margin: 1rem;
     border-radius: .5rem;
     box-shadow: 0 .2rem 1rem rgba(0,0,0,.1);
@@ -80,8 +80,11 @@ view#software-view .project:hover{
         flex-direction: row-reverse;
         padding: 0 2rem;
         border-radius: 0;
-        font-size: 1rem;
         height: 6rem !important;
+    }
+
+    view#software-view .project > div {
+        font-size: 1rem !important;
     }
 
     view#software-view .project:hover{

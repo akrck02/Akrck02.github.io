@@ -3,6 +3,7 @@ import { Configurations } from "../../../../config/config.js";
 import { getMaterialIcon } from "../../../../lib/gtd-ts/material/materialicons.js";
 import { getOs, isMobile, isSmallDevice } from "../../../../lib/gtd-ts/web/responsivetools.js";
 import { UIComponent } from "../../../../lib/gtd-ts/web/uicomponent.js";
+import Router from "../../../router.js";
 
 export default class ValhallaView extends UIComponent {
 
@@ -21,6 +22,8 @@ export default class ValhallaView extends UIComponent {
     }
 
     public show(params : string[], container : UIComponent) : void {
+
+        Router.setTitle("Valhalla");
 
         const section = this.buildPresentationSection();
         const task = this.buildTaskSection();

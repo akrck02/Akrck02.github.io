@@ -738,6 +738,8 @@
 
     const SystemBundleEn = {
         NOT_IMPLEMENTED_YET: "Not implemented yet",
+        THIS_PAGE_IS_UNDER_CONSTRUCTION: "This page is under construction",
+        UNDER_CONSTRUCTION: "Under construction",
         COPIED_TO_CLIPBOARD: "Copied to clipboard",
     };
 
@@ -757,6 +759,8 @@
 
     const SystemBundleEs = {
         NOT_IMPLEMENTED_YET: "Función en desarrollo",
+        THIS_PAGE_IS_UNDER_CONSTRUCTION: "Esta página está en obras",
+        UNDER_CONSTRUCTION: "En construcción",
         COPIED_TO_CLIPBOARD: "Copiado al portapapeles",
     };
 
@@ -810,26 +814,81 @@
         }
     }
 
-    /**
-     * Get if is small device (less than 768px)
-     * @description This method is useful for checking if the device is a small device.
-     * @returns true if the device is a small device, false otherwise
-     * @example
-     *     const isSmallDevice = isSmallDevice();
-     *     console.log(isSmallDevice); // true
-     */
-    function isSmallDevice() {
-        return window.matchMedia("only screen and (max-width: 760px)").matches;
-    }
-    function getOs() {
-        if (navigator.userAgent.indexOf("Win") != -1)
-            return "Windows";
-        if (navigator.userAgent.indexOf("Mac") != -1)
-            return "MacOS";
-        if (navigator.userAgent.indexOf("Linux") != -1)
-            return "Linux";
-        if (navigator.userAgent.indexOf("X11") != -1)
-            return "UNIX";
+    class MobileSidebar extends UIComponent {
+        constructor() {
+            super({
+                type: "div",
+                classes: ["box-column", "box-y-center"],
+            });
+            this.opened = false;
+            this.element = document.querySelector("header");
+            this.build();
+        }
+        build() {
+            this.clean();
+            const titleBar = new UIComponent({
+                type: "div",
+                id: "title-bar",
+                classes: ["box-y-center", "box-row", "box-x-between"],
+            });
+            const title = new UIComponent({
+                type: "h1",
+                classes: ["title"],
+            });
+            this.title = title;
+            titleBar.appendChild(title);
+            const icon = getMaterialIcon("menu_open", { size: "1.5rem", fill: "#fff" });
+            icon.element.style.cursor = "pointer";
+            icon.element.addEventListener("click", () => this.toggle());
+            titleBar.appendChild(icon);
+            this.buttonBar = new UIComponent({
+                type: "div",
+                id: "mobile-sidebar",
+            });
+            this.appendChild(titleBar);
+            this.appendChild(this.buttonBar);
+            this.elements = [];
+        }
+        setSelected(index) {
+            this.elements.forEach(element => {
+                element.element.classList.remove("selected");
+            });
+            if (index > this.elements.length - 1) {
+                index = this.elements.length - 1;
+            }
+            if (index >= 0) {
+                this.elements[index].element.classList.add("selected");
+            }
+        }
+        setTitle(title) {
+            this.title.element.innerHTML = title;
+        }
+        addIcon(icon) {
+            this.elements.push(icon);
+            this.buttonBar.appendChild(icon);
+        }
+        toggle() {
+            this.element.style.transition = "height var(--medium)";
+            if (this.opened) {
+                this.close();
+            }
+            else {
+                this.open();
+            }
+        }
+        open() {
+            this.element.style.height = "20rem";
+            this.element.style.justifyContent = "flex-start";
+            this.buttonBar.element.style.display = "flex";
+            this.opened = true;
+        }
+        close() {
+            this.element.style.height = "4.1rem";
+            this.element.style.padding = ".1rem 2rem";
+            this.element.style.alignItems = "center";
+            this.buttonBar.element.style.display = "none";
+            this.opened = false;
+        }
     }
 
     class Sidebar extends UIComponent {
@@ -847,23 +906,23 @@
                     width: "100%",
                 }
             });
+            this.mobileSidebar = new MobileSidebar();
             this.build();
             this.appendChild(this.buttonBar);
         }
         build() {
-            const home = this.createIcon("home", Configurations.VIEWS.HOME);
-            const software = this.createIcon("code", Configurations.VIEWS.SOFTWARE);
-            const games = this.createIcon("sport_esports", Configurations.VIEWS.GAMES);
-            const media = this.createIcon("movie", Configurations.VIEWS.MEDIA);
-            this.elements = [home, software, games, media];
-            this.elements.forEach((element) => {
-                this.buttonBar.appendChild(element);
-            });
-            if (isSmallDevice()) {
-                const mobileSidebar = document.querySelector("header #mobile-sidebar");
-                this.elements.forEach((element) => {
-                    mobileSidebar.appendChild(element.element);
-                });
+            this.createIcon("home", Configurations.VIEWS.HOME);
+            this.createIcon("code", Configurations.VIEWS.SOFTWARE);
+            this.createIcon("sport_esports", Configurations.VIEWS.GAMES);
+            this.createIcon("movie", Configurations.VIEWS.MEDIA);
+            this.elements = [];
+            for (const iconName in Sidebar.BUTTON_MAP) {
+                const path = Sidebar.BUTTON_MAP[iconName];
+                const icon = this.createIcon(iconName, path);
+                const iconMobile = this.createIcon(iconName, path);
+                this.elements.push(icon);
+                this.buttonBar.appendChild(icon);
+                this.mobileSidebar.addIcon(iconMobile);
             }
         }
         createIcon(icon, url) {
@@ -878,6 +937,7 @@
             });
         }
         setSelected(index) {
+            this.mobileSidebar.setSelected(index);
             this.elements.forEach(element => {
                 element.element.classList.remove("selected");
             });
@@ -888,10 +948,17 @@
                 this.elements[index].element.classList.add("selected");
             }
         }
-        show() {
+        getMobile() {
+            return this.mobileSidebar;
         }
         ;
     }
+    Sidebar.BUTTON_MAP = {
+        "home": Configurations.VIEWS.HOME,
+        "code": Configurations.VIEWS.SOFTWARE,
+        "sport_esports": Configurations.VIEWS.GAMES,
+        "movie": Configurations.VIEWS.MEDIA,
+    };
 
     const ERRORS = {
         200: {
@@ -1284,7 +1351,7 @@
                 styles: {
                     width: "15rem",
                     height: "3rem",
-                    marginTop: ".1rem",
+                    marginTop: "-.5rem",
                 }
             });
             const githubIcon = getSocialIcon("github", {
@@ -1591,6 +1658,7 @@
         }
         showTechByCategory(category) {
             this.selected = category;
+            Router.setTitle("Software" + (category ? " / " + category : ""));
             this.techContainer.clean();
             setStyles(this.techContainer.element, {
                 transition: "none",
@@ -1608,7 +1676,10 @@
                     },
                 });
                 const title = new UIComponent({
-                    text: name
+                    text: name,
+                    styles: {
+                        fontSize: ".75rem",
+                    }
                 });
                 if (project.icon) {
                     const logo = new UIComponent({
@@ -1617,8 +1688,8 @@
                             src: project.icon,
                         },
                         styles: {
-                            width: "6rem",
-                            height: "6rem",
+                            width: "4rem",
+                            height: "4rem",
                             filter: "drop-shadow(0 .2rem .2rem rgba(0,0,0,.35))"
                         }
                     });
@@ -1627,7 +1698,7 @@
                 else {
                     const defaultIcon = getMaterialIcon("code", {
                         fill: "#fff",
-                        size: "4rem"
+                        size: "2.5rem"
                     });
                     setStyles(defaultIcon.element, {
                         marginBottom: "1rem",
@@ -1647,6 +1718,25 @@
         }
     }
 
+    /**
+     * Get if is small device (less than 768px)
+     * @description This method is useful for checking if the device is a small device.
+     * @returns true if the device is a small device, false otherwise
+     * @example
+     *     const isSmallDevice = isSmallDevice();
+     *     console.log(isSmallDevice); // true
+     */
+    function getOs() {
+        if (navigator.userAgent.indexOf("Win") != -1)
+            return "Windows";
+        if (navigator.userAgent.indexOf("Mac") != -1)
+            return "MacOS";
+        if (navigator.userAgent.indexOf("Linux") != -1)
+            return "Linux";
+        if (navigator.userAgent.indexOf("X11") != -1)
+            return "UNIX";
+    }
+
     class ValhallaView extends UIComponent {
         constructor() {
             super({
@@ -1662,6 +1752,7 @@
             });
         }
         show(params, container) {
+            Router.setTitle("Valhalla");
             const section = this.buildPresentationSection();
             const task = this.buildTaskSection();
             const notes = this.buildNoteSection();
@@ -1954,7 +2045,7 @@
             const text = new UIComponent({
                 type: "p",
                 classes: ["box-row", "box-center"],
-                text: "This page is under construction ",
+                text: App.getBundle().system.THIS_PAGE_IS_UNDER_CONSTRUCTION,
                 styles: {
                     marginTop: "1rem",
                     textAlign: "center",
@@ -1988,26 +2079,9 @@
             this.sidebar.appendTo(this.parent);
             this.container.appendTo(this.parent);
             this.modal.appendTo(document.body);
-            const navbar = document.getElementById("os-navbar");
-            const navbarTitleBar = document.querySelector("#os-navbar .title-bar");
-            const mobileSidebar = document.querySelector("header #mobile-sidebar");
-            const icon = getMaterialIcon("menu_open", { size: "1.5rem", fill: "#fff" });
-            icon.element.style.cursor = "pointer";
-            icon.element.addEventListener("click", () => {
-                navbar.style.transition = "height var(--medium)";
-                if (navbar.style.height != "15rem") {
-                    navbar.style.height = "15rem";
-                    navbar.style.justifyContent = "flex-start";
-                    mobileSidebar.style.display = "flex";
-                }
-                else {
-                    navbar.style.height = "4.1rem";
-                    navbar.style.padding = ".1rem 2rem";
-                    navbar.style.alignItems = "center";
-                    mobileSidebar.style.display = "none";
-                }
-            });
-            navbarTitleBar.appendChild(icon.element);
+            this.container.element.onclick = () => this.sidebar.getMobile().close();
+            this.container.element.onmouseover = () => this.sidebar.getMobile().close();
+            this.container.element.onscroll = () => this.sidebar.getMobile().close();
             setStyles(document.body, {
                 backgroundColor: "#151515",
                 backgroundSize: "cover",
@@ -2019,6 +2093,7 @@
          * @param {array} params
          */
         load(params) {
+            Router.setTitle("Akrck02");
             try {
                 this.clear();
                 switch (params[0]) {
@@ -2039,10 +2114,12 @@
                         new DummyView().show(params.splice(1), this.container);
                         break;
                     case "games":
+                        Router.setTitle("Games");
                         new ConstructionView().show(params.splice(1), this.container);
                         this.sidebar.setSelected(2);
                         break;
                     case "media":
+                        Router.setTitle("Media");
                         new ConstructionView().show(params.splice(1), this.container);
                         this.sidebar.setSelected(3);
                         break;
@@ -2053,6 +2130,10 @@
             catch (e) {
                 console.error(e);
             }
+        }
+        static setTitle(title) {
+            const titleComp = document.querySelector("#os-navbar #title-bar h1");
+            titleComp.innerHTML = title;
         }
         /** show a view */
         clear() {
@@ -2073,7 +2154,7 @@
             // Adjust zoom 
             Window.setZoomLevel();
             // Set the language
-            //Configurations.addConfigVariable("LANG", "es");
+            Configurations.addConfigVariable("LANG", navigator.language);
             // Set the notification element
             this.notification = new UINotification();
             document.body.appendChild(this.notification.element);

@@ -1,3 +1,4 @@
+import { App } from "../../app.js";
 import { Configurations } from "../../config/config.js";
 import { getMaterialIcon } from "../../lib/gtd-ts/material/materialicons.js";
 import { UIComponent } from "../../lib/gtd-ts/web/uicomponent.js";
@@ -32,7 +33,7 @@ export default class ConstructionView extends UIComponent {
         const text = new UIComponent({
             type: "p",
             classes: ["box-row", "box-center"],
-            text: "This page is under construction ",
+            text: App.getBundle().system.THIS_PAGE_IS_UNDER_CONSTRUCTION,
             styles: {
                 marginTop: "1rem",
                 textAlign: "center",

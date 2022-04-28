@@ -14,7 +14,9 @@ view#valhalla-view .section::before {
 view#valhalla-view .section {
     position: relative;
     width: 100%;
-    min-height: 100%;
+    padding-top: 7%;
+    height: max-content !important;
+    min-height: max-content !important;
     background-color: rgba(0,0,0,.45) !important;
 }
 

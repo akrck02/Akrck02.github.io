@@ -1,7 +1,7 @@
 import { Configurations } from "../../config/config.js";
 import { getMaterialIcon } from "../../lib/gtd-ts/material/materialicons.js";
-import { isSmallDevice } from "../../lib/gtd-ts/web/responsivetools.js";
 import { UIComponent } from "../../lib/gtd-ts/web/uicomponent.js";
+import MobileSidebar from "./mobileSidebar.js";
 export class Sidebar extends UIComponent {
     constructor() {
         super({
@@ -17,6 +17,7 @@ export class Sidebar extends UIComponent {
                 width: "100%",
             }
         });
+        this.mobileSidebar = new MobileSidebar();
         this.build();
         this.appendChild(this.buttonBar);
     }
@@ -25,15 +26,14 @@ export class Sidebar extends UIComponent {
         const software = this.createIcon("code", Configurations.VIEWS.SOFTWARE);
         const games = this.createIcon("sport_esports", Configurations.VIEWS.GAMES);
         const media = this.createIcon("movie", Configurations.VIEWS.MEDIA);
-        this.elements = [home, software, games, media];
-        this.elements.forEach((element) => {
-            this.buttonBar.appendChild(element);
-        });
-        if (isSmallDevice()) {
-            const mobileSidebar = document.querySelector("header #mobile-sidebar");
-            this.elements.forEach((element) => {
-                mobileSidebar.appendChild(element.element);
-            });
+        this.elements = [];
+        for (const iconName in Sidebar.BUTTON_MAP) {
+            const path = Sidebar.BUTTON_MAP[iconName];
+            const icon = this.createIcon(iconName, path);
+            const iconMobile = this.createIcon(iconName, path);
+            this.elements.push(icon);
+            this.buttonBar.appendChild(icon);
+            this.mobileSidebar.addIcon(iconMobile);
         }
     }
     createIcon(icon, url) {
@@ -48,6 +48,7 @@ export class Sidebar extends UIComponent {
         });
     }
     setSelected(index) {
+        this.mobileSidebar.setSelected(index);
         this.elements.forEach(element => {
             element.element.classList.remove("selected");
         });
@@ -58,7 +59,14 @@ export class Sidebar extends UIComponent {
             this.elements[index].element.classList.add("selected");
         }
     }
-    show() {
+    getMobile() {
+        return this.mobileSidebar;
     }
     ;
 }
+Sidebar.BUTTON_MAP = {
+    "home": Configurations.VIEWS.HOME,
+    "code": Configurations.VIEWS.SOFTWARE,
+    "sport_esports": Configurations.VIEWS.GAMES,
+    "movie": Configurations.VIEWS.MEDIA,
+};

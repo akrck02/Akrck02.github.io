@@ -38,29 +38,9 @@ export default class Router {
         this.container.appendTo(this.parent);
         this.modal.appendTo(document.body);
 
-        const navbar = document.getElementById("os-navbar") as HTMLElement;
-        const navbarTitleBar = document.querySelector("#os-navbar .title-bar") as HTMLElement;
-        const mobileSidebar = document.querySelector("header #mobile-sidebar") as HTMLElement;
-        
-        const icon = getMaterialIcon("menu_open", {size: "1.5rem", fill: "#fff"});
-        icon.element.style.cursor = "pointer";
-
-        icon.element.addEventListener("click", () => {
-            navbar.style.transition = "height var(--medium)";
-
-            if (navbar.style.height != "15rem") {
-                navbar.style.height = "15rem"
-                navbar.style.justifyContent = "flex-start";
-                mobileSidebar.style.display = "flex";
-            } else {
-                navbar.style.height = "4.1rem";
-                navbar.style.padding = ".1rem 2rem";
-                navbar.style.alignItems = "center";
-                mobileSidebar.style.display = "none";
-            }
-            
-        });
-        navbarTitleBar.appendChild(icon.element);
+        this.container.element.onclick = () => this.sidebar.getMobile().close();
+        this.container.element.onmouseover = () => this.sidebar.getMobile().close();
+        this.container.element.onscroll = () => this.sidebar.getMobile().close();
 
         setStyles(document.body, {
             backgroundColor: "#151515",
@@ -74,6 +54,8 @@ export default class Router {
      */
     public load (params : string[]) {
     
+        Router.setTitle("Akrck02");
+        
         try{
             this.clear();
 
@@ -100,11 +82,13 @@ export default class Router {
                     break;
                 
                 case "games":
+                    Router.setTitle("Games");
                     new ConstructionView().show(params.splice(1), this.container);
                     this.sidebar.setSelected(2);
                     break;
-                
+        
                 case "media":
+                    Router.setTitle("Media");
                     new ConstructionView().show(params.splice(1), this.container);
                     this.sidebar.setSelected(3);
                     break;
@@ -118,7 +102,12 @@ export default class Router {
         };
 
     }
-    
+
+    public static setTitle(title : string) {
+        const titleComp = document.querySelector("#os-navbar #title-bar h1") as HTMLElement;
+        titleComp.innerHTML = title;
+    }
+
     /** show a view */
     public clear() {
         this.container.element.innerHTML="";

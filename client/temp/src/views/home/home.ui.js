@@ -220,7 +220,7 @@ export default class HomeView extends UIComponent {
             styles: {
                 width: "15rem",
                 height: "3rem",
-                marginTop: ".1rem",
+                marginTop: "-.5rem",
             }
         });
         const githubIcon = getSocialIcon("github", {
