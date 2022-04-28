@@ -6,6 +6,8 @@ import DummyV from "./dummy/dummyView.ui.js";
 import Modal from "../components/modal/modal.js";
 import HomeView from "./home/home.ui.js";
 import SoftwareRouter from "./software/router.js";
+import GamesView from "./games/games.ui.js";
+import { getMaterialIcon } from "../lib/gtd-ts/material/materialicons.js";
 export default class Router {
     constructor(listeners) {
         this.parent = document.getElementById("view-container");
@@ -22,6 +24,9 @@ export default class Router {
         this.sidebar.appendTo(this.parent);
         this.container.appendTo(this.parent);
         this.modal.appendTo(document.body);
+        const navbar = document.getElementById("os-navbar");
+        const icon = getMaterialIcon("menu_open", { size: "1.5rem", fill: "#fff" });
+        navbar.appendChild(icon.element);
         setStyles(document.body, {
             backgroundColor: "#151515",
             backgroundSize: "cover",
@@ -52,8 +57,15 @@ export default class Router {
                 case "dummy":
                     new DummyV().show(params.splice(1), this.container);
                     break;
+                case "games":
+                    new GamesView().show(params.splice(1), this.container);
+                    this.sidebar.setSelected(2);
+                    break;
+                case "media":
+                    this.sidebar.setSelected(3);
+                    break;
                 default:
-                    location.href = Configurations.VIEWS.ERROR;
+                    location.href = Configurations.VIEWS.ERROR + "404";
             }
         }
         catch (e) {

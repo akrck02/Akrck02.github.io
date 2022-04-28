@@ -303,7 +303,7 @@ export default class HomeView extends UIComponent {
         const icon = new UIComponent({
             type: "img",
             attributes: {
-                src: `${Configurations.PATHS.ICONS}/${name.toLowerCase()}.svg`,
+                src: `${Configurations.PATHS.ICONS}/${name.toLowerCase().replace("#", "sharp")}.svg`,
             },
             styles: {
                 width: size * .55 + "rem",
@@ -325,7 +325,7 @@ HomeView.technologies = [
     "JavaScript",
     "NodeJS",
     "Unity",
-    "Csharp",
+    "C#",
     "Go",
     "Python",
     "Sqlite",

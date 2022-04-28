@@ -293,6 +293,11 @@
         "code": `<path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>`,
         "business": `<path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/>`,
         "all_inclusive": `<path d="M18.6 6.62c-1.44 0-2.8.56-3.77 1.53L12 10.66 10.48 12h.01L7.8 14.39c-.64.64-1.49.99-2.4.99-1.87 0-3.39-1.51-3.39-3.38S3.53 8.62 5.4 8.62c.91 0 1.76.35 2.44 1.03l1.13 1 1.51-1.34L9.22 8.2C8.2 7.18 6.84 6.62 5.4 6.62 2.42 6.62 0 9.04 0 12s2.42 5.38 5.4 5.38c1.44 0 2.8-.56 3.77-1.53l2.83-2.5.01.01L13.52 12h-.01l2.69-2.39c.64-.64 1.49-.99 2.4-.99 1.87 0 3.39 1.51 3.39 3.38s-1.52 3.38-3.39 3.38c-.9 0-1.76-.35-2.44-1.03l-1.14-1.01-1.51 1.34 1.27 1.12c1.02 1.01 2.37 1.57 3.82 1.57 2.98 0 5.4-2.41 5.4-5.38s-2.42-5.37-5.4-5.37z"/>`,
+        "videogame_asset": `<path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 9 19.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>`,
+        "sport_esports": `<g><rect fill="none" height="24" width="24"/></g><g><g><path d="M21.58,16.09l-1.09-7.66C20.21,6.46,18.52,5,16.53,5H7.47C5.48,5,3.79,6.46,3.51,8.43l-1.09,7.66 C2.2,17.63,3.39,19,4.94,19h0c0.68,0,1.32-0.27,1.8-0.75L9,16h6l2.25,2.25c0.48,0.48,1.13,0.75,1.8,0.75h0 C20.61,19,21.8,17.63,21.58,16.09z M11,11H9v2H8v-2H6v-1h2V8h1v2h2V11z M15,10c-0.55,0-1-0.45-1-1c0-0.55,0.45-1,1-1s1,0.45,1,1 C16,9.55,15.55,10,15,10z M17,13c-0.55,0-1-0.45-1-1c0-0.55,0.45-1,1-1s1,0.45,1,1C18,12.55,17.55,13,17,13z"/></g></g>`,
+        "games": `<path d="M0 0h24v24H0z" fill="none"/><path d="M15 7.5V2H9v5.5l3 3 3-3zM7.5 9H2v6h5.5l3-3-3-3zM9 16.5V22h6v-5.5l-3-3-3 3zM16.5 9l-3 3 3 3H22V9h-5.5z"/>`,
+        "movie": `<path d="M0 0h24v24H0z" fill="none"/><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/`,
+        "menu_open": `<path d="M3 18h13v-2H3v2zm0-5h10v-2H3v2zm0-7v2h13V6H3zm18 9.59L17.42 12 21 8.41 19.59 7l-5 5 5 5L21 15.59z"/>`,
     };
 
     class UINotification extends UIComponent {
@@ -655,6 +660,8 @@
         BASE_URL: "../#/",
         HOME: "../#/home",
         SOFTWARE: "../#/software",
+        GAMES: "../#/games",
+        MEDIA: "../#/media",
         ERROR: "../#/error/",
         DUMMY: "../#/dummy/",
     };
@@ -821,31 +828,24 @@
             this.appendChild(this.buttonBar);
         }
         build() {
-            const home = new UIComponent({
-                type: "a",
-                classes: ["sidebar-item", "box-center"],
-                text: getMaterialIcon("home", {
-                    size: "1.25rem",
-                    fill: "#404040",
-                }).toHTML(),
-                attributes: {
-                    href: Configurations.VIEWS.HOME,
-                },
-            });
-            const dummy = new UIComponent({
-                type: "a",
-                classes: ["sidebar-item", "box-center"],
-                text: getMaterialIcon("code", {
-                    size: "1.25rem",
-                    fill: "#404040",
-                }).toHTML(),
-                attributes: {
-                    href: Configurations.VIEWS.SOFTWARE,
-                },
-            });
-            this.elements = [home, dummy];
+            const home = this.createIcon("home", Configurations.VIEWS.HOME);
+            const software = this.createIcon("code", Configurations.VIEWS.SOFTWARE);
+            this.createIcon("sport_esports", Configurations.VIEWS.GAMES);
+            this.createIcon("movie", Configurations.VIEWS.MEDIA);
+            this.elements = [home, software]; //,games, media];
             this.elements.forEach((element) => {
                 this.buttonBar.appendChild(element);
+            });
+        }
+        createIcon(icon, url) {
+            return new UIComponent({
+                type: "a",
+                classes: ["sidebar-item", "box-center"],
+                text: getMaterialIcon(icon, {
+                    size: "1.25rem",
+                    fill: "#404040",
+                }).toHTML(),
+                attributes: { href: url },
             });
         }
         setSelected(index) {
@@ -1338,7 +1338,7 @@
             const icon = new UIComponent({
                 type: "img",
                 attributes: {
-                    src: `${Configurations.PATHS.ICONS}/${name.toLowerCase()}.svg`,
+                    src: `${Configurations.PATHS.ICONS}/${name.toLowerCase().replace("#", "sharp")}.svg`,
                 },
                 styles: {
                     width: size * .55 + "rem",
@@ -1360,7 +1360,7 @@
         "JavaScript",
         "NodeJS",
         "Unity",
-        "Csharp",
+        "C#",
         "Go",
         "Python",
         "Sqlite",
@@ -1445,7 +1445,7 @@
         },
         "IO World": {
             technologies: ["Unity"],
-            langs: ["Typescript", "Mariadb", "HTML", "CSS"],
+            langs: ["c#"],
             icon: Configurations.PATHS.ICONS + "io-logo.svg",
             github: "Nightlight-studios/io-world"
         },
@@ -1545,7 +1545,7 @@
                     type: "img",
                     id: "software-view-navbar-item-icon",
                     attributes: {
-                        src: Configurations.PATHS.ICONS + name + ".svg",
+                        src: Configurations.PATHS.ICONS + name.replace("#", "sharp") + ".svg",
                         alt: name
                     },
                 });
@@ -1917,6 +1917,15 @@
         }
     }
 
+    class GamesView extends UIComponent {
+        constructor() {
+            super({});
+        }
+        show(params, container) {
+            container.appendChild(this);
+        }
+    }
+
     class Router {
         constructor(listeners) {
             this.parent = document.getElementById("view-container");
@@ -1933,6 +1942,9 @@
             this.sidebar.appendTo(this.parent);
             this.container.appendTo(this.parent);
             this.modal.appendTo(document.body);
+            const navbar = document.getElementById("os-navbar");
+            const icon = getMaterialIcon("menu_open", { size: "1.5rem", fill: "#fff" });
+            navbar.appendChild(icon.element);
             setStyles(document.body, {
                 backgroundColor: "#151515",
                 backgroundSize: "cover",
@@ -1963,8 +1975,15 @@
                     case "dummy":
                         new DummyView().show(params.splice(1), this.container);
                         break;
+                    case "games":
+                        new GamesView().show(params.splice(1), this.container);
+                        this.sidebar.setSelected(2);
+                        break;
+                    case "media":
+                        this.sidebar.setSelected(3);
+                        break;
                     default:
-                        location.href = Configurations.VIEWS.ERROR;
+                        location.href = Configurations.VIEWS.ERROR + "404";
                 }
             }
             catch (e) {

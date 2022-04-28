@@ -121,6 +121,8 @@ Configurations.VIEWS = {
     BASE_URL: "../#/",
     HOME: "../#/home",
     SOFTWARE: "../#/software",
+    GAMES: "../#/games",
+    MEDIA: "../#/media",
     ERROR: "../#/error/",
     DUMMY: "../#/dummy/",
 };

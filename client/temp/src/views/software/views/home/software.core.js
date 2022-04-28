@@ -78,7 +78,7 @@ SoftwareCore.projects = {
     },
     "IO World": {
         technologies: ["Unity"],
-        langs: ["Typescript", "Mariadb", "HTML", "CSS"],
+        langs: ["c#"],
         icon: Configurations.PATHS.ICONS + "io-logo.svg",
         github: "Nightlight-studios/io-world"
     },

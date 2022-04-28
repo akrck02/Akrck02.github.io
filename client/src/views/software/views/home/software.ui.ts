@@ -94,7 +94,7 @@ export default class SoftwareView extends UIComponent {
                 type: "img",
                 id: "software-view-navbar-item-icon",
                 attributes: {
-                    src: Configurations.PATHS.ICONS + name + ".svg",
+                    src: Configurations.PATHS.ICONS + name.replace("#","sharp") + ".svg",
                     alt: name
                 },
             });

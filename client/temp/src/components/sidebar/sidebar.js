@@ -20,31 +20,24 @@ export class Sidebar extends UIComponent {
         this.appendChild(this.buttonBar);
     }
     build() {
-        const home = new UIComponent({
-            type: "a",
-            classes: ["sidebar-item", "box-center"],
-            text: getMaterialIcon("home", {
-                size: "1.25rem",
-                fill: "#404040",
-            }).toHTML(),
-            attributes: {
-                href: Configurations.VIEWS.HOME,
-            },
-        });
-        const dummy = new UIComponent({
-            type: "a",
-            classes: ["sidebar-item", "box-center"],
-            text: getMaterialIcon("code", {
-                size: "1.25rem",
-                fill: "#404040",
-            }).toHTML(),
-            attributes: {
-                href: Configurations.VIEWS.SOFTWARE,
-            },
-        });
-        this.elements = [home, dummy];
+        const home = this.createIcon("home", Configurations.VIEWS.HOME);
+        const software = this.createIcon("code", Configurations.VIEWS.SOFTWARE);
+        const games = this.createIcon("sport_esports", Configurations.VIEWS.GAMES);
+        const media = this.createIcon("movie", Configurations.VIEWS.MEDIA);
+        this.elements = [home, software]; //,games, media];
         this.elements.forEach((element) => {
             this.buttonBar.appendChild(element);
+        });
+    }
+    createIcon(icon, url) {
+        return new UIComponent({
+            type: "a",
+            classes: ["sidebar-item", "box-center"],
+            text: getMaterialIcon(icon, {
+                size: "1.25rem",
+                fill: "#404040",
+            }).toHTML(),
+            attributes: { href: url },
         });
     }
     setSelected(index) {
