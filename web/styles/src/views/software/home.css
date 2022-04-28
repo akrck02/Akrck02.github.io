@@ -4,6 +4,7 @@ view#software-view {
     padding-left: 3rem;
     opacity : 0;
     transition : opacity var(--slow);
+    overflow-y: auto !important;
 }
 
 view#software-view navbar#software-view-navbar {
@@ -79,7 +80,8 @@ view#software-view .project:hover{
         flex-direction: row-reverse;
         padding: 0 2rem;
         border-radius: 0;
-        font-size: .9rem;
+        font-size: 1rem;
+        height: 6rem !important;
     }
 
     view#software-view .project:hover{
