@@ -6,8 +6,8 @@ import DummyV from "./dummy/dummyView.ui.js";
 import Modal from "../components/modal/modal.js";
 import HomeView from "./home/home.ui.js";
 import SoftwareRouter from "./software/router.js";
-import GamesView from "./games/games.ui.js";
 import { getMaterialIcon } from "../lib/gtd-ts/material/materialicons.js";
+import ConstructionView from "./construction/construction.ui.js";
 export default class Router {
     constructor(listeners) {
         this.parent = document.getElementById("view-container");
@@ -75,10 +75,11 @@ export default class Router {
                     new DummyV().show(params.splice(1), this.container);
                     break;
                 case "games":
-                    new GamesView().show(params.splice(1), this.container);
+                    new ConstructionView().show(params.splice(1), this.container);
                     this.sidebar.setSelected(2);
                     break;
                 case "media":
+                    new ConstructionView().show(params.splice(1), this.container);
                     this.sidebar.setSelected(3);
                     break;
                 default:

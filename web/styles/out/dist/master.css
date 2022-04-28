@@ -932,6 +932,7 @@ height: 80%;
 padding: 1rem;
 flex-direction: row;
 flex-wrap: wrap;
+justify-content: space-evenly;
 }
 header#os-navbar #mobile-sidebar .sidebar-item {
 display: flex;
@@ -941,11 +942,12 @@ height: 4rem;
 width: 4rem;
 background: rgba(255, 255, 255, .035) !important;
 border-radius: 1rem;
-margin: 1rem;
+margin-right: .5rem;
+margin-top: .5rem;
 }
 header#os-navbar #mobile-sidebar .sidebar-item svg {
-height: 2.5rem;
-width: 2.5rem;
+height: 2rem;
+width: 2rem;
 }
 header#os-navbar #mobile-sidebar .sidebar-item.selected svg {
 fill: #fff;
