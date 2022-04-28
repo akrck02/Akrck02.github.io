@@ -3,12 +3,20 @@ import { Configurations } from "../../config/config.js";
 import { getMaterialIcon } from "../../lib/gtd-ts/material/materialicons.js";
 import { isMobile, isSmallDevice } from "../../lib/gtd-ts/web/responsivetools.js";
 import { UIComponent } from "../../lib/gtd-ts/web/uicomponent.js";
+import MobileSidebar from "./mobileSidebar.js";
 
 export class Sidebar extends UIComponent {
 
     private buttonBar : UIComponent;
-    private userImage : UIComponent;
+    private mobileSidebar : MobileSidebar;
     private elements : UIComponent[];
+
+    private static BUTTON_MAP = {
+        "home": Configurations.VIEWS.HOME,
+        "code": Configurations.VIEWS.SOFTWARE,
+        "sport_esports": Configurations.VIEWS.GAMES,
+        "movie": Configurations.VIEWS.MEDIA,
+    }
 
     public constructor() {
         super({
@@ -26,9 +34,11 @@ export class Sidebar extends UIComponent {
             }
         });
 
+        this.mobileSidebar = new MobileSidebar();
         this.build();
-
         this.appendChild(this.buttonBar);
+    
+        
     }
 
     public build() {
@@ -38,21 +48,20 @@ export class Sidebar extends UIComponent {
         const games = this.createIcon("sport_esports", Configurations.VIEWS.GAMES);
         const media = this.createIcon("movie", Configurations.VIEWS.MEDIA);
 
-        this.elements = [home,software ,games, media];
+        this.elements = [];
 
-        this.elements.forEach((element) => {
-            this.buttonBar.appendChild(element);
-        });
+        for (const iconName in Sidebar.BUTTON_MAP) {
+            const path = Sidebar.BUTTON_MAP[iconName];
+            const icon = this.createIcon(iconName, path);
+            const iconMobile = this.createIcon(iconName, path);
 
-        if(isSmallDevice()) {
-            const mobileSidebar = document.querySelector("header #mobile-sidebar") as HTMLElement;
-            this.elements.forEach((element) => {
-                mobileSidebar.appendChild(element.element);
-            });
-        }
+            this.elements.push(icon);
 
+            this.buttonBar.appendChild(icon);
+            this.mobileSidebar.addIcon(iconMobile);            
+        }      
+        
     }
-
 
     public createIcon(icon : string, url : string) : UIComponent {
 
@@ -69,6 +78,9 @@ export class Sidebar extends UIComponent {
     }
 
     public setSelected(index: number) {
+
+        this.mobileSidebar.setSelected(index);
+
         this.elements.forEach(element => {
             element.element.classList.remove("selected");
         });
@@ -83,8 +95,8 @@ export class Sidebar extends UIComponent {
         }
     }
 
-    public show(): void {
-
+    public getMobile(): MobileSidebar {
+        return this.mobileSidebar;
     };
 
 }

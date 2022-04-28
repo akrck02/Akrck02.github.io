@@ -13,6 +13,7 @@
 body {
     z-index: 0;
     background-size: cover;
+    overflow-y: hidden;
 }
 
 
@@ -116,7 +117,7 @@ view {
     
     view#home-view {
         align-items: center;
-        padding: 3rem !important;
+        padding: 3rem 2rem !important;
     }
 
     view#home-view #presentation{
