@@ -1,7 +1,7 @@
 import { App } from "../../../../app.js";
 import { Configurations } from "../../../../config/config.js";
 import { getMaterialIcon } from "../../../../lib/gtd-ts/material/materialicons.js";
-import { getOs } from "../../../../lib/gtd-ts/web/responsivetools.js";
+import { getOs, isMobile, isSmallDevice } from "../../../../lib/gtd-ts/web/responsivetools.js";
 import { UIComponent } from "../../../../lib/gtd-ts/web/uicomponent.js";
 
 export default class ValhallaView extends UIComponent {
@@ -18,8 +18,6 @@ export default class ValhallaView extends UIComponent {
                 overflowX: "hidden",
             }
         });
-
-        this.element.style.setProperty("--background-image","url(/client/" + Configurations.PATHS.WALLPAPERS + "wall1.png)",);
     }
 
     public show(params : string[], container : UIComponent) : void {
@@ -45,7 +43,6 @@ export default class ValhallaView extends UIComponent {
                 position: "relative",
                 width: "100%",
                 minHeight: "100%",
-                backgroundColor: "rgba(0,0,0,.55)",
             }
         });
 
@@ -86,6 +83,7 @@ export default class ValhallaView extends UIComponent {
         const description = new UIComponent({
             type: "p",
             id: "valhalla-view-description",
+            classes: ["text-center"],
             text: "Valhalla - " + App.getBundle().valhalla.THE_MODERN_PRODUCTIVITY_APP,
         });
 
@@ -142,7 +140,7 @@ export default class ValhallaView extends UIComponent {
 
             buttonContainer.appendChild(downloadWindows);
             buttonContainer.appendChild(downloadLinux);
-        } else if(os === "Linux"){
+        } else {
             downloadWindows.element.style.background = "transparent";
             downloadWindows.element.innerText = App.getBundle().valhalla.OR_WINDOWS;
 
@@ -165,8 +163,7 @@ export default class ValhallaView extends UIComponent {
             classes: ["box-row","box-center","section","reverse"],
         });
 
-        section.element.style.setProperty("--background-image","url(/client/" + Configurations.PATHS.WALLPAPERS + "wall11.png)",);
-
+       
         const image = new UIComponent({
             type: "img",
             id: "screenshot",
@@ -271,12 +268,9 @@ export default class ValhallaView extends UIComponent {
                 position: "relative",
                 width: "100%",
                 minHeight: "100%",
-                backgroundColor: "rgba(2,90,255,.01)",
+
             }
         });
-
-        section.element.style.setProperty("--background-image","url(/client/" + Configurations.PATHS.WALLPAPERS + "wall13.png)",);
-
 
         const description = new UIComponent({
             type: "p",
