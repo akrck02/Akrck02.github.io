@@ -4,11 +4,11 @@ view#software-view {
     padding-left: 3rem;
     opacity : 0;
     transition : opacity var(--slow);
-    padding-bottom: 3rem;
 }
 
 view#software-view navbar#software-view-navbar {
     min-width: 20rem;
+    overflow-y: auto;
     height: 100%;
     background-color: rgba(0,0,0,0.1);
     border-right: 1px solid rgba(255,255,255,.07);
@@ -34,6 +34,12 @@ view#software-view navbar#software-view-navbar .navbar-item.selected {
     color: rgba(255,255,255,1);
 }
 
+view#software-view #tech-container {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start !important;
+    height: fit-content !important;
+}
 
 view#software-view .project{
     font-size: 1rem;
@@ -72,6 +78,7 @@ view#software-view .project:hover{
         justify-content: space-between;
         flex-direction: row-reverse;
         padding: 0 2rem;
+        border-radius: 0;
         font-size: .9rem;
     }
 

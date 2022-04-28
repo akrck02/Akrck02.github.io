@@ -353,6 +353,7 @@ export default class HomeView extends UIComponent {
         
         const size = 4;
         const card = new UIComponent({
+            type: "a",
             classes: ["box-row", "box-center"],
             styles: {
                 minWidth: size + "rem",
@@ -367,6 +368,7 @@ export default class HomeView extends UIComponent {
             },
             attributes: {
                 title: name,
+                href: `${Configurations.VIEWS.SOFTWARE}/search/${name}`,
             }
         });
 
