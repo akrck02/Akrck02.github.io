@@ -910,11 +910,45 @@ display: flex;
 flex-direction: column-reverse !important;
 }
 header#os-navbar {
-justify-content: space-between;
+flex-direction: column;
 display: flex;
 height: 4rem;
 background: rgba(0, 0, 0, .15) !important;
 padding: .1rem 2rem;
+}
+header#os-navbar .title-bar {
+display: flex;
+align-items: center;
+justify-content: space-between;
+font-size: .7rem;
+height:  4rem;
+min-height:  4rem;
+width: 100%;
+}
+header#os-navbar #mobile-sidebar {
+display: none;
+width: 100%;
+height: 80%;
+padding: 1rem;
+flex-direction: row;
+flex-wrap: wrap;
+}
+header#os-navbar #mobile-sidebar .sidebar-item {
+display: flex;
+align-items: center;
+padding: 2rem;
+height: 4rem;
+width: 4rem;
+background: rgba(255, 255, 255, .035) !important;
+border-radius: 1rem;
+margin: 1rem;
+}
+header#os-navbar #mobile-sidebar .sidebar-item svg {
+height: 2.5rem;
+width: 2.5rem;
+}
+header#os-navbar #mobile-sidebar .sidebar-item.selected svg {
+fill: #fff;
 }
 }
 /**

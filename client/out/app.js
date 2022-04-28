@@ -809,6 +809,28 @@
         }
     }
 
+    /**
+     * Get if is small device (less than 768px)
+     * @description This method is useful for checking if the device is a small device.
+     * @returns true if the device is a small device, false otherwise
+     * @example
+     *     const isSmallDevice = isSmallDevice();
+     *     console.log(isSmallDevice); // true
+     */
+    function isSmallDevice() {
+        return window.matchMedia("only screen and (max-width: 760px)").matches;
+    }
+    function getOs() {
+        if (navigator.userAgent.indexOf("Win") != -1)
+            return "Windows";
+        if (navigator.userAgent.indexOf("Mac") != -1)
+            return "MacOS";
+        if (navigator.userAgent.indexOf("Linux") != -1)
+            return "Linux";
+        if (navigator.userAgent.indexOf("X11") != -1)
+            return "UNIX";
+    }
+
     class Sidebar extends UIComponent {
         constructor() {
             super({
@@ -836,6 +858,12 @@
             this.elements.forEach((element) => {
                 this.buttonBar.appendChild(element);
             });
+            if (isSmallDevice()) {
+                const mobileSidebar = document.querySelector("header #mobile-sidebar");
+                this.elements.forEach((element) => {
+                    mobileSidebar.appendChild(element.element);
+                });
+            }
         }
         createIcon(icon, url) {
             return new UIComponent({
@@ -1618,25 +1646,6 @@
         }
     }
 
-    /**
-     * Get if is small device (less than 768px)
-     * @description This method is useful for checking if the device is a small device.
-     * @returns true if the device is a small device, false otherwise
-     * @example
-     *     const isSmallDevice = isSmallDevice();
-     *     console.log(isSmallDevice); // true
-     */
-    function getOs() {
-        if (navigator.userAgent.indexOf("Win") != -1)
-            return "Windows";
-        if (navigator.userAgent.indexOf("Mac") != -1)
-            return "MacOS";
-        if (navigator.userAgent.indexOf("Linux") != -1)
-            return "Linux";
-        if (navigator.userAgent.indexOf("X11") != -1)
-            return "UNIX";
-    }
-
     class ValhallaView extends UIComponent {
         constructor() {
             super({
@@ -1943,8 +1952,25 @@
             this.container.appendTo(this.parent);
             this.modal.appendTo(document.body);
             const navbar = document.getElementById("os-navbar");
+            const navbarTitleBar = document.querySelector("#os-navbar .title-bar");
+            const mobileSidebar = document.querySelector("header #mobile-sidebar");
             const icon = getMaterialIcon("menu_open", { size: "1.5rem", fill: "#fff" });
-            navbar.appendChild(icon.element);
+            icon.element.style.cursor = "pointer";
+            icon.element.addEventListener("click", () => {
+                navbar.style.transition = "height var(--medium)";
+                if (navbar.style.height != "15rem") {
+                    navbar.style.height = "15rem";
+                    navbar.style.justifyContent = "flex-start";
+                    mobileSidebar.style.display = "flex";
+                }
+                else {
+                    navbar.style.height = "4.1rem";
+                    navbar.style.padding = ".1rem 2rem";
+                    navbar.style.alignItems = "center";
+                    mobileSidebar.style.display = "none";
+                }
+            });
+            navbarTitleBar.appendChild(icon.element);
             setStyles(document.body, {
                 backgroundColor: "#151515",
                 backgroundSize: "cover",

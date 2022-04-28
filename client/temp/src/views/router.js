@@ -25,8 +25,25 @@ export default class Router {
         this.container.appendTo(this.parent);
         this.modal.appendTo(document.body);
         const navbar = document.getElementById("os-navbar");
+        const navbarTitleBar = document.querySelector("#os-navbar .title-bar");
+        const mobileSidebar = document.querySelector("header #mobile-sidebar");
         const icon = getMaterialIcon("menu_open", { size: "1.5rem", fill: "#fff" });
-        navbar.appendChild(icon.element);
+        icon.element.style.cursor = "pointer";
+        icon.element.addEventListener("click", () => {
+            navbar.style.transition = "height var(--medium)";
+            if (navbar.style.height != "15rem") {
+                navbar.style.height = "15rem";
+                navbar.style.justifyContent = "flex-start";
+                mobileSidebar.style.display = "flex";
+            }
+            else {
+                navbar.style.height = "4.1rem";
+                navbar.style.padding = ".1rem 2rem";
+                navbar.style.alignItems = "center";
+                mobileSidebar.style.display = "none";
+            }
+        });
+        navbarTitleBar.appendChild(icon.element);
         setStyles(document.body, {
             backgroundColor: "#151515",
             backgroundSize: "cover",
