@@ -9,7 +9,7 @@ header#os-navbar {
     color: #FFFFFF;
     z-index: 2;
     height: 2.5rem;
-    backdrop-filter: blur(1rem);
+    backdrop-filter: blur(.5rem);
     display: none;
     justify-content: flex-end;
     align-items: center;
