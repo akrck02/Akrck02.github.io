@@ -9,5 +9,14 @@ export const ValhallaBundleEn = {
     CREATE: "Create",
     CALENDAR: "Calendar",
     TASKS: "Tasks",
-    NOTES: "Notes"
+    NOTES: "Notes",
+    MANAGE_YOUR_TIME_OFFLINE: "Manage your time offline",
+    CUSTOMIZE_YOUR_WALLPAPER: "Customize your wallpaper",
+    LANGUAGES: "English, spanish",
+    SUPPORT_OPEN_SOURCE_CODE: "Support open source code!",
+    WINDOWS_MESSAGE_ONE: "Valhalla is a $1 right now, that's why Windows show the next warning, don't worry, is safe to install.",
+    NOT_SIGNED_BETA: "non signed beta",
+    WINDOWS_MESSAGE_TWO: "To finish the instalation click $1 and then click on the $2 button",
+    MORE_INFO: "more information",
+    EJECUTE_ANYWAY: "Ejecute anyway"
 };

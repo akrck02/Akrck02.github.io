@@ -47,20 +47,20 @@ export default class SoftwareCore {
 SoftwareCore.projects = {
     "Valhalla": {
         technologies: ["Electron", "Nodejs", "SQLite"],
-        langs: ["Typescript", "Mariadb", "HTML", "CSS"],
+        langs: ["Typescript", "Javascript", "Mariadb", "HTML", "CSS"],
         icon: Configurations.PATHS.ICONS + "valhalla-logo-light.svg",
         url: Configurations.VIEWS.SOFTWARE + "/valhalla",
         github: "akrck02/valhalla"
     },
     "GTD Framework": {
         technologies: [],
-        langs: ["Typescript"],
+        langs: ["Typescript", "Javascript"],
         github: "akrck02/GTD-Framework",
         icon: Configurations.PATHS.ICONS + "gtdf-logo.svg",
     },
     "GTD-LIB-TS": {
         technologies: ["docker"],
-        langs: ["Typescript"],
+        langs: ["Typescript", "Javascript"],
         github: "akrck02/GTD-LIB-TS",
         icon: Configurations.PATHS.ICONS + "gtd-logo.svg",
     },
@@ -84,13 +84,13 @@ SoftwareCore.projects = {
     },
     "Github backup script": {
         technologies: ["Nodejs"],
-        langs: ["Typescript"],
+        langs: ["Typescript", "Javascript"],
         github: "akrck02/Github-backup-script",
         icon: Configurations.PATHS.ICONS + "gh-backup-script-logo.svg",
     },
     "moonbot": {
         technologies: ["Nodejs", "discordjs"],
-        langs: ["Typescript"],
+        langs: ["Typescript", "Javascript"],
         github: "akrck02/moonbot",
         icon: Configurations.PATHS.ICONS + "moonbot-logo.svg",
     },

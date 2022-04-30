@@ -4,6 +4,7 @@ export class Window {
     }
     static setZoomLevel() {
         const width = window.innerWidth;
+        return;
         if (width < this.FULLHD_WIDTH / 2 + 100) {
             document.body.style['zoom'] = this.DEFAULT_ZOOM * ((width / this.FULLHD_WIDTH) * 1.8);
         }

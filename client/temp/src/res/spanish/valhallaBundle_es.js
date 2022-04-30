@@ -9,5 +9,14 @@ export const ValhallaBundleEs = {
     CREATE: "Crea",
     CALENDAR: "Calendario",
     TASKS: "Tareas",
-    NOTES: "Notas"
+    NOTES: "Notas",
+    MANAGE_YOUR_TIME_OFFLINE: "Gestiona tu tiempo sin conexión a internet.",
+    CUSTOMIZE_YOUR_WALLPAPER: "Personaliza tu fondo de pantalla",
+    LANGUAGES: "Español, inglés",
+    SUPPORT_OPEN_SOURCE_CODE: "Apoya al código abierto!",
+    WINDOWS_MESSAGE_ONE: "Al tratarse de una $1, Windows mostrará el siguiente aviso, no te preocupes, es seguro",
+    NOT_SIGNED_BETA: "applicación en beta no firmada",
+    WINDOWS_MESSAGE_TWO: "Para seguir con la instalación pulsaremos $1 y en la siguiente pantalla $2",
+    MORE_INFO: "mas información",
+    EJECUTE_ANYWAY: "Ejecutar de todas formas"
 };

@@ -25,7 +25,23 @@ export default class MobileSidebar extends UIComponent {
         titleBar.appendChild(title);
         const icon = getMaterialIcon("menu_open", { size: "1.5rem", fill: "#fff" });
         icon.element.style.cursor = "pointer";
-        icon.element.addEventListener("click", () => this.toggle());
+        //icon.element.addEventListener("click", () => this.toggle());
+        titleBar.element.addEventListener("click", () => this.toggle());
+        let touchPos;
+        titleBar.element.ontouchstart = function (e) {
+            touchPos = e.changedTouches[0].clientY;
+        };
+        titleBar.element.ontouchmove = (e) => {
+            let newTouchPos = e.changedTouches[0].clientY;
+            if (newTouchPos > touchPos + 50) {
+                this.element.style.transition = "height var(--medium)";
+                this.close();
+            }
+            else if (newTouchPos < touchPos - 50) {
+                this.element.style.transition = "height var(--medium)";
+                this.open();
+            }
+        };
         titleBar.appendChild(icon);
         this.buttonBar = new UIComponent({
             type: "div",
@@ -67,6 +83,7 @@ export default class MobileSidebar extends UIComponent {
         this.element.style.justifyContent = "flex-start";
         this.buttonBar.element.style.display = "flex";
         this.opened = true;
+        document.documentElement.dataset.menuOpen = "true";
     }
     close() {
         this.element.style.height = "4.1rem";
@@ -74,5 +91,6 @@ export default class MobileSidebar extends UIComponent {
         this.element.style.alignItems = "center";
         this.buttonBar.element.style.display = "none";
         this.opened = false;
+        document.documentElement.dataset.menuOpen = "false";
     }
 }

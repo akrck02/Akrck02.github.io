@@ -3,6 +3,7 @@ import { Configurations } from "../../config/config.js";
 import { getMaterialIcon } from "../../lib/gtd-ts/material/materialicons.js";
 import { UIComponent } from "../../lib/gtd-ts/web/uicomponent.js";
 import { getSocialIcon } from "../../lib/social.js";
+import { getTechIcon } from "../../lib/tech.js";
 import SoftwareCore from "../software/views/home/software.core.js";
 
 export default class HomeView extends UIComponent {
@@ -120,7 +121,7 @@ export default class HomeView extends UIComponent {
                 marginTop: "2rem",
                 fontSize: "1.7rem",
                 fontWeight: "900",
-                fontFamily: "Inter",
+                fontFamily: "'Inter'",
             }
         });
 
@@ -137,8 +138,7 @@ export default class HomeView extends UIComponent {
                 cursor: "pointer"
             },
             attributes : {
-                href: "https://github.com/akrck02/valhalla",
-                target: "_blank"
+                href: Configurations.VIEWS.SOFTWARE + "/valhalla"
             }
         });
 
@@ -372,17 +372,11 @@ export default class HomeView extends UIComponent {
             }
         });
 
-        const icon = new UIComponent({
-            type: "img",
-            attributes: {
-                src: `${Configurations.PATHS.ICONS}/${name.toLowerCase().replace("#","sharp")}.svg`,
-            },
-            styles: {
-                width: size * .55 + "rem",
-                height: size * .55 + "rem",
-            }
-        });
-
+        const icon = getTechIcon(name.toLowerCase(), {
+            fill : "#fff",
+            size: size * .55 + "rem"
+        })
+        
         card.appendChild(icon);
 
 

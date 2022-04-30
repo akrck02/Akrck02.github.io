@@ -24,7 +24,7 @@ export default class UINotification extends UIComponent {
             classes: ["box-column"],
             styles : {
                 position: "fixed",
-                bottom : "-5rem",
+                top : "-5rem",
                 right : "1rem",
                 width : "20rem",
                // maxHeight: "7rem",
@@ -63,7 +63,7 @@ export default class UINotification extends UIComponent {
 
         setTimeout(() => {
             setStyles(this.element, {
-                bottom: "1rem",
+                top: "1rem",
                 opacity: "1",
                 transition: ".5s",
             })
@@ -73,7 +73,7 @@ export default class UINotification extends UIComponent {
 
         setTimeout(() => {
             setStyles(this.element, {
-                bottom: "-5rem",
+                top: "-5rem",
                 opacity: "0"
             })
     

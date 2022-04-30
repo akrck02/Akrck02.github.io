@@ -1,8 +1,8 @@
 import { App } from "../../../../app.js";
 import { Configurations } from "../../../../config/config.js";
 import { getMaterialIcon } from "../../../../lib/gtd-ts/material/materialicons.js";
-import { getOs } from "../../../../lib/gtd-ts/web/responsivetools.js";
-import { UIComponent } from "../../../../lib/gtd-ts/web/uicomponent.js";
+import { getOs, isSmallDevice } from "../../../../lib/gtd-ts/web/responsivetools.js";
+import { setClasses, setEvents, UIComponent } from "../../../../lib/gtd-ts/web/uicomponent.js";
 import Router from "../../../router.js";
 export default class ValhallaView extends UIComponent {
     constructor() {
@@ -13,21 +13,116 @@ export default class ValhallaView extends UIComponent {
             styles: {
                 width: "100%",
                 height: "100%",
-                overflowY: "auto",
+                overflowY: isSmallDevice() ? "hidden" : "auto",
                 overflowX: "hidden",
+                opacity: "0",
+                transition: "opacity var(--medium)"
             }
         });
+        this.section = 0;
+        this.sections = [];
+        this.scrolling = false;
     }
     show(params, container) {
         Router.setTitle("Valhalla");
         const section = this.buildPresentationSection();
         const task = this.buildTaskSection();
         const notes = this.buildNoteSection();
+        const windowsInstallation = this.buildWindowsInstalationSection();
+        const windowsInstallationPartTwo = this.buildWindowsInstalationSectionPartTwo();
         this.appendChild(section);
         this.appendChild(task);
         this.appendChild(notes);
+        this.appendChild(windowsInstallation);
+        this.appendChild(windowsInstallationPartTwo);
+        this.sections = [section, task, notes, windowsInstallation, windowsInstallationPartTwo];
+        if (isSmallDevice()) {
+            this.up = getMaterialIcon("expand_less", {
+                size: "2rem",
+                fill: "#fff"
+            });
+            this.up.element.id = "up";
+            setClasses(this.up.element, ["nav-button"]);
+            setEvents(this.up.element, {
+                click: () => {
+                    this.section--;
+                    this.goToSection(this.section);
+                }
+            });
+            this.appendChild(this.up);
+            // Down button
+            this.down = getMaterialIcon("expand", {
+                size: "2rem",
+                fill: "#fff"
+            });
+            this.down.element.id = "down";
+            setClasses(this.down.element, ["nav-button"]);
+            setEvents(this.down.element, {
+                click: () => {
+                    this.section++;
+                    this.goToSection(this.section);
+                }
+            });
+            this.appendChild(this.down);
+            this.goToSection(0);
+            let touchPos;
+            this.element.ontouchstart = function (e) {
+                touchPos = e.changedTouches[0].clientY;
+            };
+            this.element.ontouchmove = (e) => {
+                let newTouchPos = e.changedTouches[0].clientY;
+                if (!this.scrolling && newTouchPos > touchPos + 100) {
+                    if (this.section == 0) {
+                        return;
+                    }
+                    this.section--;
+                    this.scrolling = true;
+                    this.goToSection(this.section);
+                    setTimeout(() => this.scrolling = false, 80);
+                }
+                else if (!this.scrolling && newTouchPos < touchPos - 100) {
+                    if (this.section == this.sections.length - 1) {
+                        return;
+                    }
+                    this.section++;
+                    this.scrolling = true;
+                    this.goToSection(this.section);
+                    setTimeout(() => this.scrolling = false, 80);
+                }
+            };
+        }
         container.appendChild(this);
+        setTimeout(() => {
+            this.element.style.opacity = "1";
+        }, 50);
     }
+    /**
+     * Select a section and scroll into that viewx
+     * @param index
+     */
+    goToSection(index) {
+        if (this.up) {
+            this.up.element.style.display = "flex";
+            this.down.element.style.display = "flex";
+        }
+        if (index <= 0) {
+            index = 0;
+            if (this.up) {
+                this.up.element.style.display = "none";
+            }
+        }
+        if (index >= this.sections.length - 1) {
+            index = this.sections.length - 1;
+            if (this.down) {
+                this.down.element.style.display = "none";
+            }
+        }
+        this.sections[index].element.scrollIntoView();
+    }
+    /**
+     * Build the presentation section
+     * @returns The section UIComponent
+     */
     buildPresentationSection() {
         const section = new UIComponent({
             type: "div",
@@ -90,6 +185,12 @@ export default class ValhallaView extends UIComponent {
                 padding: "1rem",
                 borderRadius: ".15rem",
                 color: "white",
+            },
+            events: {
+                click: () => {
+                    this.section = 3;
+                    this.goToSection(this.section);
+                }
             }
         });
         const downloadLinux = new UIComponent({
@@ -134,6 +235,10 @@ export default class ValhallaView extends UIComponent {
         section.appendChild(image);
         return section;
     }
+    /**
+     * Build the task section
+     * @returns The task section UIComponent
+     */
     buildTaskSection() {
         const section = new UIComponent({
             type: "div",
@@ -214,6 +319,10 @@ export default class ValhallaView extends UIComponent {
         section.appendChild(box);
         return section;
     }
+    /**
+     * Build the notes section
+     * @returns The notes section UIComponent
+     */
     buildNoteSection() {
         const section = new UIComponent({
             type: "div",
@@ -223,22 +332,48 @@ export default class ValhallaView extends UIComponent {
                 position: "relative",
                 width: "100%",
                 minHeight: "100%",
+                paddingBottom: "2rem",
             }
         });
         const description = new UIComponent({
             type: "p",
             id: "valhalla-view-task-description",
-            text: `
-            Valhalla is a modern productivity app that helps you 
-            manage your tasks and projects.
-            
-            It is a simple, yet powerful tool that can help 
-            you manage your tasks and projects.
-            `.replaceAll("\n", "<br>"),
             styles: {
                 width: "30%",
             }
         });
+        const offline = getMaterialIcon('wifi_off', { size: "1.7rem", fill: "#fff" });
+        offline.element.style.marginRight = "1rem";
+        offline.element.style.marginBottom = ".5rem";
+        const offlineMessage = new UIComponent({
+            classes: ["box-x-start", "box-y-center"],
+            text: offline.toHTML() + App.getBundle().valhalla.MANAGE_YOUR_TIME_OFFLINE
+        });
+        const wallpaper = getMaterialIcon("wallpaper", { size: "1.7rem", fill: "#fff" });
+        wallpaper.element.style.marginRight = "1rem";
+        wallpaper.element.style.marginBottom = ".5rem";
+        const wallpaperMessage = new UIComponent({
+            classes: ["box-x-start", "box-y-center"],
+            text: wallpaper.toHTML() + App.getBundle().valhalla.CUSTOMIZE_YOUR_WALLPAPER
+        });
+        const langs = getMaterialIcon("translate", { size: "1.7rem", fill: "#fff" });
+        langs.element.style.marginRight = "1rem";
+        langs.element.style.marginBottom = ".5rem";
+        const langsMessage = new UIComponent({
+            classes: ["box-x-start", "box-y-center"],
+            text: langs.toHTML() + App.getBundle().valhalla.LANGUAGES
+        });
+        const coffee = getMaterialIcon('coffee', { size: "1.7rem", fill: "#fff" });
+        coffee.element.style.marginRight = "1rem";
+        coffee.element.style.marginBottom = ".5rem";
+        const coffeeMessage = new UIComponent({
+            classes: ["box-x-start", "box-y-center"],
+            text: coffee.toHTML() + App.getBundle().valhalla.SUPPORT_OPEN_SOURCE_CODE
+        });
+        description.appendChild(offlineMessage);
+        description.appendChild(wallpaperMessage);
+        description.appendChild(langsMessage);
+        description.appendChild(coffeeMessage);
         const image = new UIComponent({
             type: "img",
             id: "valhalla-view-task-image",
@@ -254,6 +389,84 @@ export default class ValhallaView extends UIComponent {
         });
         section.appendChild(description);
         section.appendChild(image);
+        return section;
+    }
+    buildWindowsInstalationSection() {
+        const section = new UIComponent({
+            type: "div",
+            id: "valhalla-view-windows-installation",
+            classes: ["box-column", "box-center", "section"],
+            styles: {
+                position: "relative",
+                width: "100%",
+                minHeight: "100%",
+                padding: "2rem",
+            }
+        });
+        const title = new UIComponent({
+            type: "h1",
+            text: "Instalación en Windows:",
+            styles: {
+                marginBottom: "1rem"
+            }
+        });
+        const container = new UIComponent({
+            classes: ["box-row", "box-y-center", "win-container"]
+        });
+        const message = new UIComponent({
+            type: "p",
+            text: App.getBundle().valhalla.WINDOWS_MESSAGE_ONE.replace("$1", `<b class="bold">${App.getBundle().valhalla.NOT_SIGNED_BETA}</b>`)
+        });
+        const img = new UIComponent({
+            type: "img",
+            attributes: {
+                src: Configurations.PATHS.IMAGES + "win-instalation-warning.jpg"
+            },
+            styles: {
+                marginTop: "3rem",
+                maxWidth: "30rem"
+            }
+        });
+        section.appendChild(title);
+        container.appendChild(message);
+        container.appendChild(img);
+        section.appendChild(container);
+        return section;
+    }
+    buildWindowsInstalationSectionPartTwo() {
+        const section = new UIComponent({
+            type: "div",
+            id: "valhalla-view-windows-installation",
+            classes: ["box-column", "box-center", "section"],
+            styles: {
+                position: "relative",
+                width: "100%",
+                minHeight: "100%",
+                padding: "2rem",
+            }
+        });
+        const container = new UIComponent({
+            classes: ["box-row", "box-y-center", "win-container"]
+        });
+        const message = new UIComponent({
+            type: "p",
+            text: App.getBundle().valhalla.WINDOWS_MESSAGE_TWO
+                .replace("$1", `<b class="bold">${App.getBundle().valhalla.MORE_INFO}</b>`)
+                .replace("$2", `<b class="bold">${App.getBundle().valhalla.EJECUTE_ANYWAY}</b>`)
+        });
+        const img = new UIComponent({
+            type: "img",
+            attributes: {
+                src: Configurations.PATHS.IMAGES + "win-instalation-warning-2.jpg"
+            },
+            styles: {
+                marginTop: "3rem",
+                maxWidth: "30rem"
+            }
+        });
+        container.appendChild(message);
+        container.appendChild(img);
+        section.appendChild(container);
         return section;
     }
 }

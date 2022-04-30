@@ -1,6 +1,6 @@
-import { Configurations } from "../../../../config/config.js";
 import { getMaterialIcon } from "../../../../lib/gtd-ts/material/materialicons.js";
 import { setEvents, setStyles, UIComponent } from "../../../../lib/gtd-ts/web/uicomponent.js";
+import { getTechIcon } from "../../../../lib/tech.js";
 import Router from "../../../router.js";
 import SoftwareCore from "./software.core.js";
 export default class SoftwareView extends UIComponent {
@@ -69,15 +69,12 @@ export default class SoftwareView extends UIComponent {
             item.element.classList.add("selected");
         }
         if (name !== "all") {
-            const icon = new UIComponent({
-                type: "img",
-                id: "software-view-navbar-item-icon",
-                attributes: {
-                    src: Configurations.PATHS.ICONS + name.replace("#", "sharp") + ".svg",
-                    alt: name,
-                    title: name,
-                },
+            const icon = getTechIcon(name, {
+                size: "1.5rem",
+                fill: "#fff"
             });
+            icon.element.classList.add("icon");
+            icon.element.title = "All";
             item.appendChild(icon);
         }
         else {
@@ -85,7 +82,7 @@ export default class SoftwareView extends UIComponent {
                 size: "1.5rem",
                 fill: "#fff",
             });
-            icon.element.id = "all-icon";
+            icon.element.classList.add("icon");
             icon.element.title = "All";
             item.appendChild(icon);
         }

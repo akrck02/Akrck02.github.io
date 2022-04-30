@@ -598,6 +598,7 @@ body {
 z-index: 0;
 background-size: cover;
 overflow-y: hidden;
+background: #202020;
 }
 body.loading::after {
 content: "";
@@ -1255,6 +1256,26 @@ view#valhalla-view  #valhalla-view-task #icon-bar .text {
 text-align: center;
 font-size: .8rem;
 }
+view#valhalla-view .nav-button {
+position: fixed;
+right: 1rem;
+padding: .5rem;
+background: rgba(255,255,255,.05);
+border-radius: 5rem;
+}
+view#valhalla-view .nav-button#up {
+top: 1rem;
+}
+view#valhalla-view .nav-button#down {
+bottom: 5rem;
+}
+view#valhalla-view .win-container p {
+margin-right: 2rem;
+max-width: 30rem;
+}
+:root[data-menu-open=true] view#valhalla-view .nav-button {
+display: none !important;
+}
 @media (max-width: 60rem) {
 view#valhalla-view img#valhalla-view-logo {
 width: 10rem !important;
@@ -1277,6 +1298,13 @@ max-width: 500px;
 }
 view#valhalla-view p {
 width: 80% !important;
+}
+view#valhalla-view .win-container {
+flex-direction: column !important;
+justify-content: center;
+}
+view#valhalla-view .win-container p{
+margin-right: 0;
 }
 }
 view#software-view {
@@ -1372,11 +1400,11 @@ view#software-view navbar#software-view-navbar {
 max-width: 4.5rem;
 min-width: 4.5rem;
 }
-view#software-view navbar#software-view-navbar .navbar-item :not(img) {
+view#software-view navbar#software-view-navbar .navbar-item :not(.icon) {
 display: none;
 }
-view#software-view navbar#software-view-navbar .navbar-item #all-icon,
-view#software-view navbar#software-view-navbar .navbar-item #all-icon * {
+view#software-view navbar#software-view-navbar .navbar-item .icon,
+view#software-view navbar#software-view-navbar .navbar-item .icon * {
 display: block !important;
 }
 }
