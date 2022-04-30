@@ -20,6 +20,15 @@ export function isSmallDevice() {
 export function isMediumDevice() {
     return window.matchMedia("only screen and (min-width: 760px) and (max-width: 1024px)").matches;
 }
+export function isFuckingChrome() {
+    let isChromium = window.chrome;
+    let winNav = window.navigator;
+    let vendorName = winNav.vendor;
+    let isOpera = typeof window.opr !== "undefined";
+    let isIEedge = winNav.userAgent.indexOf("Edg") > -1;
+    let isIOSChrome = winNav.userAgent.match("CriOS");
+    return isChromium || isOpera || isIEedge || isIOSChrome || vendorName === "Google Inc.";
+}
 /**
  * Get if is large device (more than 1024px)
  * @description This method is useful for checking if the device is a large device.

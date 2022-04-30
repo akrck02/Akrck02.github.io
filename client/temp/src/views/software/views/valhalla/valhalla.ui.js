@@ -1,7 +1,7 @@
 import { App } from "../../../../app.js";
 import { Configurations } from "../../../../config/config.js";
 import { getMaterialIcon } from "../../../../lib/gtd-ts/material/materialicons.js";
-import { getOs, isSmallDevice } from "../../../../lib/gtd-ts/web/responsivetools.js";
+import { getOs, isFuckingChrome, isSmallDevice } from "../../../../lib/gtd-ts/web/responsivetools.js";
 import { setClasses, setEvents, UIComponent } from "../../../../lib/gtd-ts/web/uicomponent.js";
 import Router from "../../../router.js";
 export default class ValhallaView extends UIComponent {
@@ -65,31 +65,33 @@ export default class ValhallaView extends UIComponent {
             });
             this.appendChild(this.down);
             this.goToSection(0);
-            let touchPos;
-            this.element.ontouchstart = function (e) {
-                touchPos = e.changedTouches[0].clientY;
-            };
-            this.element.ontouchmove = (e) => {
-                let newTouchPos = e.changedTouches[0].clientY;
-                if (!this.scrolling && newTouchPos > touchPos + 100) {
-                    if (this.section == 0) {
-                        return;
+            if (!isFuckingChrome()) {
+                let touchPos;
+                this.element.ontouchstart = function (e) {
+                    touchPos = e.changedTouches[0].clientY;
+                };
+                this.element.ontouchmove = (e) => {
+                    let newTouchPos = e.changedTouches[0].clientY;
+                    if (!this.scrolling && newTouchPos > touchPos + 100) {
+                        if (this.section == 0) {
+                            return;
+                        }
+                        this.section--;
+                        this.scrolling = true;
+                        this.goToSection(this.section);
+                        setTimeout(() => this.scrolling = false, 80);
                     }
-                    this.section--;
-                    this.scrolling = true;
-                    this.goToSection(this.section);
-                    setTimeout(() => this.scrolling = false, 80);
-                }
-                else if (!this.scrolling && newTouchPos < touchPos - 100) {
-                    if (this.section == this.sections.length - 1) {
-                        return;
+                    else if (!this.scrolling && newTouchPos < touchPos - 100) {
+                        if (this.section == this.sections.length - 1) {
+                            return;
+                        }
+                        this.section++;
+                        this.scrolling = true;
+                        this.goToSection(this.section);
+                        setTimeout(() => this.scrolling = false, 80);
                     }
-                    this.section++;
-                    this.scrolling = true;
-                    this.goToSection(this.section);
-                    setTimeout(() => this.scrolling = false, 80);
-                }
-            };
+                };
+            }
         }
         container.appendChild(this);
         setTimeout(() => {
@@ -177,7 +179,7 @@ export default class ValhallaView extends UIComponent {
             id: "valhalla-view-download",
             text: App.getBundle().valhalla.DOWNLOAD_FOR_WINDOWS,
             attributes: {
-                href: "https://github.com/akrck02/Valhalla/releases/download/v1.0.6b/Valhalla.Setup.1.0.6-b.exe",
+                href: "https://github.com/akrck02/Valhalla/releases/download/v1.0.7b/Valhalla.Setup.1.0.7-b.exe",
             },
             styles: {
                 fontSize: ".9rem",
@@ -198,7 +200,7 @@ export default class ValhallaView extends UIComponent {
             id: "valhalla-view-download",
             text: App.getBundle().valhalla.DOWNLOAD_FOR_LINUX,
             attributes: {
-                href: "https://github.com/akrck02/Valhalla/releases/download/v1.0.6b/Valhalla-1.0.6-b.AppImage",
+                href: "https://github.com/akrck02/Valhalla/releases/download/v1.0.7b/Valhalla-1.0.7-b.AppImage",
             },
             styles: {
                 fontSize: ".9rem",
