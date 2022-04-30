@@ -108,12 +108,12 @@ view#software-view .project:hover{
         min-width: 4.5rem;
     }
 
-    view#software-view navbar#software-view-navbar .navbar-item :not(img) {
+    view#software-view navbar#software-view-navbar .navbar-item :not(.icon) {
         display: none;
     }
 
-    view#software-view navbar#software-view-navbar .navbar-item #all-icon, 
-    view#software-view navbar#software-view-navbar .navbar-item #all-icon * {
+    view#software-view navbar#software-view-navbar .navbar-item .icon, 
+    view#software-view navbar#software-view-navbar .navbar-item .icon * {
         display: block !important;
     }
 }
