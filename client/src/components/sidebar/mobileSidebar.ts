@@ -3,10 +3,10 @@ import { UIComponent } from "../../lib/gtd-ts/web/uicomponent.js";
 
 export default class MobileSidebar extends UIComponent {
 
-    private title : UIComponent;
-    private buttonBar : UIComponent;
-    private elements : UIComponent[];
-    private opened : boolean;
+    private title: UIComponent;
+    private buttonBar: UIComponent;
+    private elements: UIComponent[];
+    private opened: boolean;
 
     public constructor() {
         super({
@@ -26,7 +26,7 @@ export default class MobileSidebar extends UIComponent {
         const titleBar = new UIComponent({
             type: "div",
             id: "title-bar",
-            classes: ["box-y-center", "box-row","box-x-between"],
+            classes: ["box-y-center", "box-row", "box-x-between"],
         });
 
         const title = new UIComponent({
@@ -37,10 +37,33 @@ export default class MobileSidebar extends UIComponent {
         this.title = title;
         titleBar.appendChild(title);
 
-    
-        const icon = getMaterialIcon("menu_open", {size: "1.5rem", fill: "#fff"});
+
+        const icon = getMaterialIcon("menu_open", { size: "1.5rem", fill: "#fff" });
         icon.element.style.cursor = "pointer";
-        icon.element.addEventListener("click", () => this.toggle());    
+        //icon.element.addEventListener("click", () => this.toggle());
+        titleBar.element.addEventListener("click", () => this.toggle());
+
+        let touchPos;
+
+        titleBar.element.ontouchstart = function(e){
+            touchPos = e.changedTouches[0].clientY;
+        }            
+
+
+        titleBar.element.ontouchmove = (e:any) =>{
+
+         
+            let newTouchPos = e.changedTouches[0].clientY;
+            if (newTouchPos > touchPos + 50) {
+                this.element.style.transition = "height var(--medium)";
+                this.close();
+            }else if(newTouchPos < touchPos - 50) {
+                this.element.style.transition = "height var(--medium)";
+                this.open();
+            }
+
+        }
+
 
         titleBar.appendChild(icon);
 
@@ -61,47 +84,51 @@ export default class MobileSidebar extends UIComponent {
             element.element.classList.remove("selected");
         });
 
-        if(index > this.elements.length - 1){
+        if (index > this.elements.length - 1) {
             index = this.elements.length - 1;
         }
 
 
-        if(index >= 0){
+        if (index >= 0) {
             this.elements[index].element.classList.add("selected");
         }
     }
 
-    public setTitle(title : string) {
+    public setTitle(title: string) {
         this.title.element.innerHTML = title;
     }
 
-    public addIcon(icon : UIComponent) : void {
+    public addIcon(icon: UIComponent): void {
         this.elements.push(icon);
         this.buttonBar.appendChild(icon);
     }
 
-    public toggle() : void {
+    public toggle(): void {
         this.element.style.transition = "height var(--medium)";
-       
-        if(this.opened){
+
+        if (this.opened) {
             this.close();
-        }else {
+        } else {
             this.open();
         }
     }
 
-    public open() : void {
+    public open(): void {
         this.element.style.height = "20rem"
         this.element.style.justifyContent = "flex-start";
-        this.buttonBar.element.style.display = "flex";    
+        this.buttonBar.element.style.display = "flex";
         this.opened = true;
+
+        document.documentElement.dataset.menuOpen = "true";
     }
 
-    public close() : void {
+    public close(): void {
         this.element.style.height = "4.1rem";
         this.element.style.padding = ".1rem 2rem";
         this.element.style.alignItems = "center";
         this.buttonBar.element.style.display = "none";
         this.opened = false;
+
+        document.documentElement.dataset.menuOpen = "false";
     }
 } 

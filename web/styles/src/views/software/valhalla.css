@@ -42,6 +42,31 @@ view#valhalla-view  #valhalla-view-task #icon-bar .text {
     font-size: .8rem;
 }
 
+view#valhalla-view .nav-button {
+    position: fixed;
+    right: 1rem;
+    padding: .5rem;
+    background: rgba(255,255,255,.05);
+    border-radius: 5rem;
+}
+
+view#valhalla-view .nav-button#up {
+    top: 1rem;
+}
+
+view#valhalla-view .nav-button#down {
+    bottom: 5rem;
+}
+
+view#valhalla-view .win-container p {
+    margin-right: 2rem;
+    max-width: 30rem;
+}
+
+:root[data-menu-open=true] view#valhalla-view .nav-button {
+    display: none !important;
+}
+
 @media (max-width: 60rem) {
 
     view#valhalla-view img#valhalla-view-logo {
@@ -70,4 +95,14 @@ view#valhalla-view  #valhalla-view-task #icon-bar .text {
     view#valhalla-view p {
         width: 80% !important;
     }
+
+    view#valhalla-view .win-container {
+        flex-direction: column !important;
+        justify-content: center;
+    }
+
+    view#valhalla-view .win-container p{
+        margin-right: 0;
+    }
+    
 }   
