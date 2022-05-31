@@ -177,7 +177,6 @@ export default class SoftwareView extends UIComponent {
                 });
 
                 setStyles(defaultIcon.element, {
-                    marginBottom: "1rem",
                     padding: ".5rem"
                 });
 
