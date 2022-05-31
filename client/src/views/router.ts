@@ -45,7 +45,7 @@ export default class Router {
         setStyles(document.body, {
             backgroundColor: "#151515",
             backgroundSize: "cover",
-            backgroundImage: `url(${Configurations.PATHS.WALLPAPERS}/wallpaper.png)`,
+          //  backgroundImage: `url(${Configurations.PATHS.WALLPAPERS}/wallpaper.png)`,
         });
     }
     /**
