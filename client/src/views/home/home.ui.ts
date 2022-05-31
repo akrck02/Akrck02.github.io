@@ -338,9 +338,14 @@ export default class HomeView extends UIComponent {
         });
 
 
-        HomeView.technologies.forEach(tech => {
+        SoftwareCore.getLangs().forEach(tech => {
             techContainer.appendChild(this.techCard(tech));
         });
+
+        SoftwareCore.getTechnologies().forEach(tech => {
+            techContainer.appendChild(this.techCard(tech));
+        });
+
 
 
         section.appendChild(title);

@@ -4,6 +4,7 @@ import { getMaterialIcon } from "../../lib/gtd-ts/material/materialicons.js";
 import { UIComponent } from "../../lib/gtd-ts/web/uicomponent.js";
 import { getSocialIcon } from "../../lib/social.js";
 import { getTechIcon } from "../../lib/tech.js";
+import SoftwareCore from "../software/views/home/software.core.js";
 export default class HomeView extends UIComponent {
     constructor() {
         super({
@@ -272,7 +273,10 @@ export default class HomeView extends UIComponent {
                 width: "100%",
             }
         });
-        HomeView.technologies.forEach(tech => {
+        SoftwareCore.getLangs().forEach(tech => {
+            techContainer.appendChild(this.techCard(tech));
+        });
+        SoftwareCore.getTechnologies().forEach(tech => {
             techContainer.appendChild(this.techCard(tech));
         });
         section.appendChild(title);
