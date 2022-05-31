@@ -26,8 +26,18 @@ view#software-view navbar#software-view-navbar .navbar-item {
     cursor: pointer;
 }
 
+view#software-view navbar#software-view-navbar .navbar-item svg { 
+    fill: rgba(255, 255, 255, .5);
+    transition: fill var(--fast);
+}
+
 view#software-view navbar#software-view-navbar .navbar-item:hover {
     color: rgba(255, 255, 255, 1);
+}
+
+view#software-view navbar#software-view-navbar .navbar-item:hover svg,
+view#software-view navbar#software-view-navbar .navbar-item.selected svg {
+    fill: rgba(255, 255, 255, 1);
 }
 
 view#software-view navbar#software-view-navbar .navbar-item.selected {
@@ -63,8 +73,6 @@ view#software-view .project:hover {
     transform: scale(1.05) translateY(-.5rem);
 }
 
-
-
 view#software-view #tech-container {
     flex-direction: column;
     flex-wrap: nowrap;
@@ -96,6 +104,7 @@ view#software-view .project:hover {
     background: rgba(255, 255, 255, .05);
     transform: none;
 }
+
 
 view#software-view .project img {
     width: 3rem !important;
