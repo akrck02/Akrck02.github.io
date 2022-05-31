@@ -85,6 +85,7 @@ view#software-view .project {
     border-radius: 0;
     height: 6rem !important;
     align-items: center;
+    min-height: 6rem;
 }
 
 view#software-view .project>div {
