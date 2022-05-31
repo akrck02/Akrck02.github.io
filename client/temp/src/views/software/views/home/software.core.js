@@ -52,6 +52,16 @@ SoftwareCore.projects = {
         url: Configurations.VIEWS.SOFTWARE + "/valhalla",
         github: "akrck02/valhalla"
     },
+    "Valhalla-sync": {
+        technologies: ["Nodejs", "SQLite"],
+        langs: ["Typescript", "Javascript", "Mariadb"],
+        github: "akrck02/valhalla-sync"
+    },
+    "Valhalla-db-core": {
+        technologies: ["Electron", "Nodejs", "SQLite"],
+        langs: ["Typescript", "Javascript", "Mariadb"],
+        github: "akrck02/valhalla-db-core"
+    },
     "GTD Framework": {
         technologies: [],
         langs: ["Typescript", "Javascript"],
@@ -69,6 +79,11 @@ SoftwareCore.projects = {
         langs: ["Go"],
         github: "akrck02/GTDF-CLI",
         icon: Configurations.PATHS.ICONS + "gtdf-cli-logo.svg",
+    },
+    "GTD-TEST": {
+        technologies: ["Nodejs"],
+        langs: ["Typescript"],
+        github: "akrck02/GTD-TEST",
     },
     "Bubble-UI": {
         technologies: [],
@@ -110,4 +125,9 @@ SoftwareCore.projects = {
         langs: ["python"],
         github: "akrck02/Alice",
     },
+    "NodeStreamServer": {
+        technologies: ["Nodejs"],
+        langs: ["Typescript", "Javascript"],
+        github: "akrck02/NodeStreamServer "
+    }
 };
