@@ -133,7 +133,6 @@ export default class SoftwareView extends UIComponent {
                     size: "2.5rem"
                 });
                 setStyles(defaultIcon.element, {
-                    marginBottom: "1rem",
                     padding: ".5rem"
                 });
                 projectComp.appendChild(defaultIcon);
