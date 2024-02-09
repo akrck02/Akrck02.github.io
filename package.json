@@ -10,7 +10,8 @@
         "pack-client": "rollup client/temp/src/app.js --file client/out/app.js --format iife",
         "dev": "node update.js - -d - false",
         "prod": "node update.js - -p - false",
-        "dist": "npm run compile-client && npm run pack-client && npm run pack-styles"
+        "dist": "npm run compile-client && npm run pack-client && npm run pack-styles",
+        "serve": "python -m http.server 5500"
     },
     "repository": {
         "type": "git",
