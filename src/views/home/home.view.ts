@@ -80,12 +80,17 @@ export default class HomeView extends ViewUI {
 
         const text = new UIComponent({
             type : HTML.P,
-            text : "This page is being redone from scratch to offer a better experience. Sorry for the inconvenience."
+            text : "This page is being redone from scratch to offer a better experience. Sorry for the inconvenience.",
+            styles : {
+                marginTop : "1rem",
+                fontSize : ".9rem"
+            }
         })
 
         
         images.appendTo(this);
         labelContainer.appendTo(this);
+        text.appendTo(this);
 
         this.appendTo(container);
     }
