@@ -74,11 +74,7 @@ let Router = Router_1 = class Router {
                 }
             });
             if (!found) {
-                ErrorView.instance().show(["404"], this.container);
-                this.viewChangedSignal.emit({
-                    view: ErrorView.instance().routes[0],
-                    params: ["404"],
-                });
+                HomeView.instance().show(["404"], this.container);
             }
         }
         catch (error) {

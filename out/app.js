@@ -1411,11 +1411,7 @@
                     }
                 });
                 if (!found) {
-                    ErrorView$1.instance().show(["404"], this.container);
-                    this.viewChangedSignal.emit({
-                        view: ErrorView$1.instance().routes[0],
-                        params: ["404"],
-                    });
+                    HomeView$1.instance().show(["404"], this.container);
                 }
             }
             catch (error) {
