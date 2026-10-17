@@ -16,5 +16,6 @@ export enum MaterialIcons {
 	PhotoCamera = "photo_camera",
 	SportsEsports = "sports_esports",
 	Home = "home",
-	Info = "info"
+	Info = "info",
+	Forum = "forum"
 }
