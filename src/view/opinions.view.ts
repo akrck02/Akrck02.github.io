@@ -47,7 +47,9 @@ export async function showOpinionsView(parameters: string[], container: HTMLElem
   view.appendChild(wiki);
   container.appendChild(view);
 
-  const { createPapiro } = await import(`${getWebUrl(PAPIRO)}/papiro.js`);
+  // loaded at runtime, typed with the declarations kept next to it
+  const papiro: typeof import("../../resources/lib/papiro/papiro.js") = await import(`${getWebUrl(PAPIRO)}/papiro.js`);
+  const { createPapiro } = papiro;
   await createPapiro(wiki, {
     source: OPINIONS,
     title: "Opinions",
