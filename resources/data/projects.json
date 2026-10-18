@@ -625,7 +625,7 @@
 		{
 			"id": "go-renderer",
 			"name": "Go Renderer",
-			"description": "Simple graphics renderer.",
+			"description": "A small graphics renderer in Go: 3D scenes and the 2D interfaces over them.",
 			"language": "Go",
 			"stars": 0,
 			"tags": [
@@ -633,7 +633,8 @@
 			],
 			"url": "https://github.com/akrck02/go-renderer",
 			"archived": false,
-			"featured": false
+			"featured": false,
+			"docs": "https://akrck02.org/go-renderer"
 		},
 		{
 			"id": "whisper-app",
@@ -643,6 +644,242 @@
 			"stars": 0,
 			"tags": [],
 			"url": "https://github.com/akrck02/whisper-app",
+			"archived": false,
+			"featured": false
+		},
+		{
+			"id": "go-ui",
+			"name": "Go UI",
+			"description": "Immediate-mode interfaces in Go, drawn over a Go Renderer view.",
+			"language": "Go",
+			"stars": 1,
+			"tags": [
+				"go-renderer",
+				"gui",
+				"immediate-mode"
+			],
+			"url": "https://github.com/akrck02/go-ui",
+			"archived": false,
+			"featured": false,
+			"docs": "https://akrck02.org/go-ui"
+		},
+		{
+			"id": "go-ui-android",
+			"name": "Go UI for Android",
+			"description": "Android apps in Go with Go UI and Go Renderer, in Material Design.",
+			"language": "Go",
+			"stars": 1,
+			"tags": [
+				"android",
+				"go-ui",
+				"golang",
+				"material-design",
+				"material3"
+			],
+			"url": "https://github.com/akrck02/go-ui-android",
+			"archived": false,
+			"featured": false,
+			"docs": "https://akrck02.org/go-ui-android"
+		},
+		{
+			"id": "go-3ds",
+			"name": "Go for 3DS",
+			"description": "Go programs on the Nintendo 3DS: controls, program loop and examples, drawn with Go Renderer.",
+			"language": "Go",
+			"stars": 0,
+			"tags": [
+				"nintendo-3ds",
+				"homebrew",
+				"go-renderer"
+			],
+			"url": "https://github.com/akrck02/go-3ds",
+			"archived": false,
+			"featured": false,
+			"docs": "https://akrck02.org/go-3ds"
+		},
+		{
+			"id": "tinygo-3ds",
+			"name": "TinyGo for 3DS",
+			"description": "TinyGo with a homebrew target for the Nintendo 3DS (work in progress).",
+			"language": "Go",
+			"stars": 1,
+			"tags": [
+				"tinygo",
+				"nintendo-3ds",
+				"homebrew"
+			],
+			"url": "https://github.com/akrck02/tinygo-3ds",
+			"archived": false,
+			"featured": false
+		},
+		{
+			"id": "go-sound",
+			"name": "Go Sound",
+			"description": "Sound for Go programs: mixed players on Android, Linux, macOS, Windows and the web, with WAV and Ogg Vorbis.",
+			"language": "Go",
+			"stars": 0,
+			"tags": [
+				"android",
+				"audio",
+				"go",
+				"go-ui",
+				"golang",
+				"sound"
+			],
+			"url": "https://github.com/akrck02/go-sound",
+			"archived": false,
+			"featured": false,
+			"docs": "https://akrck02.org/go-sound"
+		},
+		{
+			"id": "go-engine",
+			"name": "Go Engine",
+			"description": "A small game maker in Go: an editor on Go Renderer and Go UI.",
+			"language": "Go",
+			"stars": 1,
+			"tags": [
+				"game-engine",
+				"go-renderer",
+				"go-ui"
+			],
+			"url": "https://github.com/akrck02/go-engine",
+			"archived": false,
+			"featured": false
+		},
+		{
+			"id": "go-simulator",
+			"name": "Go Simulator",
+			"description": "Plugin based simulation engine.",
+			"language": "Go",
+			"stars": 1,
+			"tags": [
+				"go",
+				"plugin-system",
+				"procedural-generation",
+				"simulation",
+				"worldbuilding"
+			],
+			"url": "https://github.com/akrck02/go-simulator",
+			"archived": false,
+			"featured": false,
+			"docs": "https://akrck02.org/go-simulator"
+		},
+		{
+			"id": "go-simulator-terrain",
+			"name": "Go Terrain Simulator",
+			"description": "Terrain plugin for Go Simulator.",
+			"language": "Go",
+			"stars": 1,
+			"tags": [
+				"go",
+				"simulation",
+				"terrain"
+			],
+			"url": "https://github.com/akrck02/go-simulator-terrain",
+			"archived": false,
+			"featured": false,
+			"docs": "https://akrck02.org/go-simulator-terrain"
+		},
+		{
+			"id": "go-simulator-climate",
+			"name": "Go Climate Simulator",
+			"description": "Climate and biomes plugin for Go Simulator.",
+			"language": "Go",
+			"stars": 1,
+			"tags": [
+				"biomes",
+				"climate",
+				"go",
+				"procedural-generation",
+				"simulation"
+			],
+			"url": "https://github.com/akrck02/go-simulator-climate",
+			"archived": false,
+			"featured": false,
+			"docs": "https://akrck02.org/go-simulator-climate"
+		},
+		{
+			"id": "go-simulator-flora",
+			"name": "Go Flora Simulator",
+			"description": "Vegetation growth plugin for Go Simulator.",
+			"language": "Go",
+			"stars": 1,
+			"tags": [
+				"ecology",
+				"go",
+				"procedural-generation",
+				"simulation",
+				"vegetation"
+			],
+			"url": "https://github.com/akrck02/go-simulator-flora",
+			"archived": false,
+			"featured": false,
+			"docs": "https://akrck02.org/go-simulator-flora"
+		},
+		{
+			"id": "go-simulator-motion",
+			"name": "Go Motion Simulator",
+			"description": "Scene motion plugin for Go Simulator.",
+			"language": "Go",
+			"stars": 1,
+			"tags": [
+				"animation",
+				"go",
+				"simulation"
+			],
+			"url": "https://github.com/akrck02/go-simulator-motion",
+			"archived": false,
+			"featured": false,
+			"docs": "https://akrck02.org/go-simulator-motion"
+		},
+		{
+			"id": "go-simulator-urban",
+			"name": "Go Urban Simulator",
+			"description": "Town growth plugin for Go Simulator.",
+			"language": "Go",
+			"stars": 1,
+			"tags": [
+				"go",
+				"procedural-generation",
+				"simulation",
+				"urban-morphology"
+			],
+			"url": "https://github.com/akrck02/go-simulator-urban",
+			"archived": false,
+			"featured": false,
+			"docs": "https://akrck02.org/go-simulator-urban"
+		},
+		{
+			"id": "go-scene-builder",
+			"name": "Go Scene Builder",
+			"description": "3D scene builder from 2D maps.",
+			"language": "Go",
+			"stars": 1,
+			"tags": [
+				"3d",
+				"gltf",
+				"go",
+				"procedural-generation",
+				"worldbuilding"
+			],
+			"url": "https://github.com/akrck02/go-scene-builder",
+			"archived": false,
+			"featured": false,
+			"docs": "https://akrck02.org/go-scene-builder"
+		},
+		{
+			"id": "diskscan",
+			"name": "Diskscan",
+			"description": "Disk scan utility for macOS and Linux.",
+			"language": "Go",
+			"stars": 2,
+			"tags": [
+				"disk-scanner",
+				"go-ui",
+				"linux",
+				"macos"
+			],
+			"url": "https://github.com/akrck02/diskscan",
 			"archived": false,
 			"featured": false
 		}
@@ -690,7 +927,8 @@
 			"platforms": [
 				"windows",
 				"linux",
-				"mac"
+				"mac",
+				"3ds"
 			],
 			"screenshots": 4
 		},
