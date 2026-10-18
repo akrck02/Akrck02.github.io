@@ -54,6 +54,17 @@ const PLATFORM_ICONS: {
     label: "Web",
     color: "#0EA5A4",
     path: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"
+  },
+  "3ds": {
+    label: "Nintendo 3DS",
+    // a generic two-screen handheld, not Nintendo's logo
+    svg:
+      `<rect x="4" y="1.5" width="16" height="10" rx="1.6" fill="#CE181E"/>` +
+      `<rect x="6" y="3.2" width="12" height="6.6" rx=".6" fill="#ffffff"/>` +
+      `<rect x="4" y="12.5" width="16" height="10" rx="1.6" fill="#CE181E"/>` +
+      `<rect x="8" y="14.2" width="8" height="6.4" rx=".6" fill="#ffffff"/>` +
+      `<circle cx="18" cy="16" r=".9" fill="#ffffff"/>` +
+      `<rect x="5.2" y="15.6" width="2" height=".8" fill="#ffffff"/><rect x="5.8" y="15" width=".8" height="2" fill="#ffffff"/>`
   }
 };
 

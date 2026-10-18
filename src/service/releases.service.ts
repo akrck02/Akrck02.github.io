@@ -19,6 +19,7 @@ export interface Release {
 // Map an asset filename to one of the platform keys used by PLATFORM_ICONS.
 function platformOf(name: string): string | undefined {
   const n = name.toLowerCase();
+  if (/(\.3dsx$|\.cia$)/.test(n)) return "3ds";
   if (/(\.apk$|android)/.test(n)) return "android";
   if (/(\.ipa$|ios)/.test(n)) return "ios";
   if (/(\.exe$|\.msi$|win(dows|32|64)?|\.zip$)/.test(n) && /win/.test(n)) return "windows";
