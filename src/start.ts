@@ -14,8 +14,22 @@ import { showSoftwareView } from "./view/software.view.js";
 import { showStoriesView } from "./view/stories.view.js";
 import { showGamesView } from "./view/games.view.js";
 import { showMusicView } from "./view/music.view.js";
+import { showOpinionsView } from "./view/opinions.view.js";
 
-window.addEventListener("hashchange", start);
+/** the first section of the address: "opinions" in #/opinions/wiki/… */
+function section(hash: string): string {
+  return hash.replace(/^#\/?/, "").split("/")[0].toLowerCase();
+}
+
+let shownSection = section(location.hash);
+
+window.addEventListener("hashchange", () => {
+  // papiro moves between opinions pages by itself, the view stays
+  const next = section(location.hash);
+  const insideOpinions = "opinions" == next && "opinions" == shownSection;
+  shownSection = next;
+  if (!insideOpinions) start();
+});
 
 window.onload = async function () {
   await loadConfiguration("gtdf.config.json");
@@ -60,5 +74,6 @@ function setRoutes(parent: HTMLElement) {
   setRoute("/games", showGamesView);
   setRoute("/games/$", showGamesView);
   setRoute("/music", showMusicView);
+  setRoute("/opinions", showOpinionsView);
   showRoute(window.location.hash.slice(1).toLowerCase(), parent);
 }

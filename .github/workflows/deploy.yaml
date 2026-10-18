@@ -11,6 +11,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Index the opinions with papiro
+        run: |
+          curl -sSfL -o papiro-indexer https://github.com/akrck02/papiro/raw/main/bin/papiro-indexer
+          chmod +x papiro-indexer
+          obsidian=""
+          [ -d opinions/.obsidian ] && obsidian="-obsidian"
+          ./papiro-indexer -path ./opinions -destination ./resources/opinions $obsidian
+          rm papiro-indexer
       - name: Minify the css
         run: ./bin/lit -f styles.env
 
@@ -21,7 +30,7 @@ jobs:
         run: mkdir -p styles/src && mv styles/out/master.css styles/src/master.css
 
       - name: Remove innecesary files and directories
-        run: rm -rf .gitignore .github bin temp src styles/out styles.env tsconfig.json README.md
+        run: rm -rf .gitignore .github bin temp src styles/out styles.env tsconfig.json README.md opinions
 
       - name: Show directories
         run: tree -L 2 .

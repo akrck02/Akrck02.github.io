@@ -53,7 +53,8 @@ export async function showHomeView(parameters: string[], container: HTMLElement)
     { icon: MaterialIcons.Code, route: "software" },
     { icon: MaterialIcons.AutoStories, route: "stories" },
     { icon: MaterialIcons.SportsEsports, route: "games" },
-    { icon: MaterialIcons.MusicNote, route: "music" }
+    { icon: MaterialIcons.MusicNote, route: "music" },
+    { icon: MaterialIcons.Forum, route: "opinions" }
   ];
 
   navItems.forEach(({ icon, route }) => {

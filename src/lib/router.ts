@@ -71,8 +71,9 @@ export function showRoute(path: string, container: HTMLElement, override : boole
 	// Else search matching route
 	const keys = Array.from(paths.keys()).sort(compareRouteLength);
 	for (const route of keys) {
-		// Check if route matches
-		const regexp = RegExp(route);
+		// Check if route matches from the start of the path,
+		// so "/software" does not match "/opinions/wiki/software/…"
+		const regexp = RegExp(route.startsWith("^") ? route : `^${route}`);
 		const params = path.match(regexp);
 
 		if (null != params && 0 != params.length) {
